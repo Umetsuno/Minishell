@@ -63,7 +63,7 @@ fclean:
 		@$(RM) $(OBJS)
 		@$(RM) $(NAME)
 		@rm -rf *.dSYM
-		@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
+		@printf "$(CYAN)'$(NAME)', all .o $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
 		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
@@ -75,8 +75,7 @@ norm:
 re : fclean all
 
 help :
-		@printf "\n$(GREY)Welcome to my Makefile.$(RESET)\n\n"
-		@printf "$(YELLOW)all              $(RESET)$(WHITE) - run compilation of $(NAME)\n\n"
+		@printf "\n$(YELLOW)all              $(RESET)$(WHITE) - run compilation of $(NAME)\n\n"
 		@printf "$(YELLOW)exe              $(RESET)$(WHITE) - run gcc compilation with CFLAGS (-Wall -Wextra -Werror) and run $(NAME)\n\n"
 		@printf "$(YELLOW)exeb             $(RESET)$(WHITE) - run gcc compilation with CFLAGS (-Wall -Wextra -Werror) and run $(NAME) + bonus\n\n"
 		@printf "$(YELLOW)clean            $(RESET)$(WHITE) - delete all .o (OBJS) \n\n"
