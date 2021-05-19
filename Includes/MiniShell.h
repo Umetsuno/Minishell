@@ -10,7 +10,7 @@
 # include <sys/stat.h>
 # include <limits.h>
 # include <fcntl.h>
-# include "../Lib_perso/Includes/libft.h"
+/* # include "../best-libft" */
 
 /*
 **	?? Main functions ??
