@@ -18,13 +18,13 @@ WHITE = \033[1;49;97m
 NAME = MiniShell
 
 # Include
-HEADER = ./Includes/MiniShell.h
+HEADER = ./includes/minishell.h
 
 # Libf_perso
-LIB_PERSO = ./Lib_perso
+LBFT = ./best-libft
 
-# Lib_perso (.a)
-.. = -L./Lib_perso -l
+# LBFT (.a)
+.. = -L./best-libft -l
 
 LIB = $(..)ftprintf
 
@@ -44,25 +44,24 @@ CFLAGS = -Wall -Wextra -g3 -fsanitize=address
 all:	compil $(NAME)
 
 compil:
-	@make -C $(LIB_PERSO)
+	@make -C $(LBFT)
 
 %.o: %.c $(HEADER)
 			@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
 			@gcc $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
+$(NAME): $(OBJS) $(HEADER) $(LBFT)/libftprintf.a
 		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 		@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
-		@make clean -C $(LIB_PERSO)
+		@make clean -C $(LBFT)
 		@$(RM) $(OBJS)
 
 fclean:
-		@make fclean -C $(LIB_PERSO)
+		@make fclean -C $(LBFT)
 		@$(RM) $(OBJS)
 		@$(RM) $(NAME)
-		@$(RM) Lib_perso/libftprintf.a
 		@rm -rf *.dSYM
 		@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
@@ -71,7 +70,7 @@ shell:
 		@./$(NAME)
 
 norm:
-		@norminette Includes Lib_perso Makefile Sources_checker Sources_push_swap
+		@norminette includes best-libft Makefile
 
 re : fclean all
 

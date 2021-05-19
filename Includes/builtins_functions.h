@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   builtins_functions.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/23 13:41:58 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/03/24 15:55:47 by sbaranes         ###   ########lyon.fr   */
+/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
+/*   Updated: 2021/05/19 17:19:56 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/libft.h"
+#ifndef BUILTINS_FUNCTIONS_H
+# define BUILTINS_FUNCTIONS_H
 
-size_t	ft_strlen(const char *str)
-{
-	size_t	i;
+# include "minishell.h"
 
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i])
-		i++;
-	return (i);
-}
+int	ft_pwd(void);
+
+#endif

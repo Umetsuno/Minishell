@@ -1,24 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/19 16:12:39 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
+/*   Updated: 2021/05/19 17:18:55 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCT_H
+# define STRUCT_H
 
-#include "../../Includes/MiniShell.h"
+# include "minishell.h"
 
-int	ft_pwd(void)
+typedef struct s_parsing
 {
-	char str[200];
+	char	*line;
+	char	*command;
+	char	*flag;
+	char	*argument;
+}				t_parsing;
 
-	if (getcwd(str, 200) == NULL)
-		return (EXIT_FAILURE);
-	puts(str);
-	return EXIT_SUCCESS;
-}
+typedef struct s_data
+{
+	int			i;
+	char		*line;
+	t_parsing	parsing;
+}				t_data;
+
+typedef enum e_code
+{
+	SUCCESS,
+	FAIL,
+}				t_code;
+
+#endif
