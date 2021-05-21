@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2020/11/23 17:11:37 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/03/24 15:45:50 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../Includes/libft.h"
 
-# include "MiniShell.h"
-
-int	ft_pwd(void);
-
-#endif
+t_list	*ft_lstlast(t_list *lst)
+{
+	if (!lst)
+		return (lst);
+	while (lst->next)
+	{
+		lst = lst->next;
+	}
+	return (lst);
+}

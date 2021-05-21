@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2020/11/23 13:40:00 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/03/24 15:47:38 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../Includes/libft.h"
 
-# include "MiniShell.h"
+void	ft_putnbr_fd(int n, int fd)
+{
+	long int	nb;
 
-int	ft_pwd(void);
-
-#endif
+	nb = n;
+	if (nb < 0)
+	{
+		ft_putchar_fd('-', fd);
+		nb *= -1;
+	}
+	if (nb > 9)
+		ft_putnbr_fd(nb / 10, fd);
+	ft_putchar_fd((48 + nb % 10), fd);
+}

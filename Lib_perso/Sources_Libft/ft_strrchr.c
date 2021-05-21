@@ -1,20 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2020/11/23 13:38:00 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/03/24 15:56:58 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../Includes/libft.h"
 
-# include "MiniShell.h"
+char	*ft_strrchr(const char *s, int c)
+{
+	int	i;
 
-int	ft_pwd(void);
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	while (i >= 0)
+	{
+		if (s[i] == (char)c)
+			return ((char *)(s + i));
+		i--;
+	}
+	return (NULL);
+}

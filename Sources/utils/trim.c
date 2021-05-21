@@ -1,20 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   trim.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2021/05/21 17:11:49 by faherrau          #+#    #+#             */
+/*   Updated: 2021/05/21 17:22:45 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../../Includes/MiniShell.h"
 
-# include "MiniShell.h"
+char	*strtrim_space(char *str)
+{
+	int i;
+	int    i2;
+	char *new_str;
 
-int	ft_pwd(void);
-
-#endif
+	i = 0;
+	while (str[i] == ' ')
+		i++;
+	i2 = i;
+	while (str[i2])
+		i2++;
+	new_str = malloc(sizeof(char) * i2 + 1);
+	i2 = 0;
+	while (str[i])
+		new_str[i2++] = str[i++];
+	new_str[i2] = 0;
+	free(str);
+	return (new_str);
+}

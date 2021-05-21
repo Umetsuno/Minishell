@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Created: 2020/11/25 10:05:50 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/03/24 15:45:44 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../Includes/libft.h"
 
-# include "MiniShell.h"
+void	ft_lstclear(t_list **lst, void (*del)(void *))
+{
+	t_list	*p;
 
-int	ft_pwd(void);
-
-#endif
+	while (*lst)
+	{
+		p = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		(*lst) = p;
+	}
+}

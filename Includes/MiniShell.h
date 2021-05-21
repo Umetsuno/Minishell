@@ -1,6 +1,7 @@
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
+# include "../Lib_perso/Includes/libft.h"
 # include <errno.h>
 # include <string.h>
 # include <stdio.h>
@@ -10,7 +11,9 @@
 # include <sys/stat.h>
 # include <limits.h>
 # include <fcntl.h>
-# include "../best-libft/includes/libft.h"
+# include "struct.h"
+# include "builtins_functions.h"
+# include "get_next_line.h"
 
 /*
 **	?? Main functions ??

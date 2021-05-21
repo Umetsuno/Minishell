@@ -6,14 +6,14 @@
 /*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/19 17:18:55 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/05/21 17:21:41 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# include "minishell.h"
+# include "MiniShell.h"
 
 typedef struct s_parsing
 {

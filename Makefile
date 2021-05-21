@@ -18,19 +18,26 @@ WHITE = \033[1;49;97m
 NAME = MiniShell
 
 # Include
-HEADER = ./includes/minishell.h
+HEADER = ./Includes/MiniShell.h
 
 # Libf_perso
-LBFT = ./best-libft
+LIB_PERSO = ./Lib_perso
 
-# LBFT (.a)
-.. = -L./best-libft -l
+# Lib_perso (.a)
+.. = -L./Lib_perso -l
+
+LIB = $(..)ftprintf
 
 # chemin Sources
 SA = Sources/
+SM = Sources/mandatory_function/
+SU = Sources/utils/
 
-SRCS =	$(SA)main.c \
-		$(SA)mandatory_function/ft_pwd.c
+SRCS =  $(SA)main.c \
+        $(SM)ft_pwd.c \
+        $(SU)trim.c \
+        $(SU)get_next_line_utils.c \
+        $(SU)get_next_line.c
 
 # normal Flags
 CC = gcc
@@ -42,44 +49,35 @@ CFLAGS = -Wall -Wextra -g3 -fsanitize=address
 all:	compil $(NAME)
 
 compil:
-	@make -C $(LBFT)
+	@make -C $(LIB_PERSO)
 
 %.o: %.c $(HEADER)
 			@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
 			@gcc $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(HEADER) $(LBFT)/libft.a
-		@gcc $(CFLAGS) $(SRCS) $(LBFT) -o $(NAME)
+$(NAME): $(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
+		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 		@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
-		@make clean -C $(LBFT)
+		@make clean -C $(LIB_PERSO)
 		@$(RM) $(OBJS)
 
 fclean:
-		@make fclean -C $(LBFT)
+		@make fclean -C $(LIB_PERSO)
 		@$(RM) $(OBJS)
 		@$(RM) $(NAME)
+		@$(RM) Lib_perso/libftprintf.a
 		@rm -rf *.dSYM
-		@printf "$(CYAN)'$(NAME)', all .o & libft.a $(RESET)has been $(RED)deleted. 🗑️\n"
+		@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-		@gcc $(CFLAGS) $(SRCS) $(LBFT) -o $(NAME)
+		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 		@./$(NAME)
 
 norm:
-		@norminette includes best-libft Makefile
+		@norminette Includes Lib_perso Makefile Sources/*.c Sources/mandatory_function/*.c
 
 re : fclean all
 
-help :
-		@printf "\n$(GREY)Welcome to my Makefile.$(RESET)\n\n"
-		@printf "$(YELLOW)all              $(RESET)$(WHITE) - run compilation of $(NAME)\n\n"
-		@printf "$(YELLOW)exe              $(RESET)$(WHITE) - run gcc compilation with CFLAGS (-Wall -Wextra -Werror) and run $(NAME)\n\n"
-		@printf "$(YELLOW)exeb             $(RESET)$(WHITE) - run gcc compilation with CFLAGS (-Wall -Wextra -Werror) and run $(NAME) + bonus\n\n"
-		@printf "$(YELLOW)clean            $(RESET)$(WHITE) - delete all .o (OBJS) \n\n"
-		@printf "$(YELLOW)fclean           $(RESET)$(WHITE) - delete all .o (OBJS) and $(NAME) \n\n"
-		@printf "$(YELLOW)norm             $(RESET)$(WHITE) - run norminette v3 for all .c \n\n"
-		@printf "$(YELLOW)re               $(RESET)$(WHITE) - do fclean and all\n\n"
-
-.PHONY: all clean fclean re shell help
+.PHONY: all clean fclean re shell
