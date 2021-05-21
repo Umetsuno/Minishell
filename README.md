@@ -1,5 +1,6 @@
 # MiniShell | 42 - Common Core 
-Our own Shell.
+Note that this is an ongoing version of the 42-minishell project.
+This README file will be updated step by step.
 
 Part 1 - Baseline
 
