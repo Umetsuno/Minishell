@@ -6,11 +6,11 @@
 /*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/19 21:36:15 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/05/21 16:46:06 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/minishell.h"
+#include "../Includes/MiniShell.h"
 
 void	free_all(t_data *data)
 {
