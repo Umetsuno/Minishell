@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:21:41 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/05/24 18:45:30 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,23 @@
 
 # include "MiniShell.h"
 
+typedef struct s_data t_data;
+
 typedef struct s_parsing
 {
 	char	*line;
 	char	*command;
 	char	*flag;
 	char	*argument;
-}				t_parsing;
+}t_parsing;
 
-typedef struct s_data
+struct s_data
 {
-	int			i;
-	char		*line;
 	t_parsing	parsing;
-}				t_data;
-
-typedef enum e_code
-{
-	SUCCESS,
-	FAIL,
-}				t_code;
+	void		(*f[8])(t_data*);
+	char		*line;
+	char		**env;
+	int			index;
+};
 
 #endif

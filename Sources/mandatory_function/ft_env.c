@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pwd.c                                           :+:      :+:    :+:   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/24 18:46:21 by sbaranes         ###   ########lyon.fr   */
+/*   Created: 2021/05/24 16:06:21 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/05/24 18:45:45 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-void	ft_pwd(t_data *data)
+void	ft_env(t_data *data)
 {
-	char str[200];
+	int index;
 
-	data->index = 0;
-	if (getcwd(str, 200) == NULL)
-		errno = 1;
+	index = 0;
+	if (data->env[0] == NULL)
+		errno = 127;
 	else
 	{
-		printf("%s\n", str);
+		while (data->env[index])
+		{
+			printf("%s\n",data->env[index]);
+			index++;
+		}
 		errno = 0;
 	}
 }

@@ -35,9 +35,14 @@ SU = Sources/utils/
 
 SRCS =  $(SA)main.c \
         $(SM)ft_pwd.c \
-        $(SU)trim.c \
-        $(SU)get_next_line_utils.c \
-        $(SU)get_next_line.c
+		$(SM)ft_cd.c \
+		$(SM)ft_echo.c \
+		$(SM)ft_env.c \
+		$(SM)ft_export.c \
+		$(SM)ft_unset.c \
+		$(SU)trim.c \
+		$(SU)get_next_line_utils.c \
+		$(SU)get_next_line.c
 
 # normal Flags
 CC = gcc

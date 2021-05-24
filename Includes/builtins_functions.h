@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   builtins_functions.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:22:02 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/05/24 18:21:43 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,11 @@
 
 # include "MiniShell.h"
 
-int	ft_pwd(void);
+void	ft_cd(t_data *data);
+void	ft_echo(t_data *data);
+void	ft_env(t_data *data);
+void	ft_export(t_data *data);
+void	ft_pwd(t_data *data);
+void	ft_unset(t_data *data);
 
 #endif
