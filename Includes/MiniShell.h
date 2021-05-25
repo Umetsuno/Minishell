@@ -10,13 +10,17 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <limits.h>
+# include <stdbool.h>
 # include <fcntl.h>
 # include "struct.h"
+# include <sys/_pthread/_pthread_types.h>
+# include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"
 # include "get_next_line.h"
 
 # define SUCCESS 0
-# define FAILURE 0
+# define FAILURE 1
+
 
 # define NO_FCT 0
 # define FCT_EXIT 1
@@ -30,6 +34,13 @@
 /*
 **	?? Main functions ??
 */
+void	free_minishell(t_data *data);
+
+void	init_structure(t_data *data, char **av);
+void	init_ptr(void (*f[8])(t_data*));
+
 char	*strtrim_space(char *str);
+int		get_path(t_data *data);
+void	free_double_etoile(char **str);
 
 #endif

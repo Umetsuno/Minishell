@@ -39,8 +39,12 @@ SRCS =  $(SA)main.c \
 		$(SM)ft_echo.c \
 		$(SM)ft_env.c \
 		$(SM)ft_export.c \
+		$(SM)ft_exec.c \
 		$(SM)ft_unset.c \
 		$(SU)trim.c \
+		$(SU)get_path.c \
+		$(SU)free.c \
+		$(SU)init.c \
 		$(SU)get_next_line_utils.c \
 		$(SU)get_next_line.c
 
@@ -49,7 +53,7 @@ CC = gcc
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra #-g3 -fsanitize=address
 
 all:	compil $(NAME)
 

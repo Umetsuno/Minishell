@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   builtins_functions.h                               :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/05/19 17:16:42 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/25 21:30:23 by sbaranes         ###   ########lyon.fr   */
+/*   Created: 2021/05/25 17:58:30 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/05/25 18:32:30 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUILTINS_FUNCTIONS_H
-# define BUILTINS_FUNCTIONS_H
+#include "../../Includes/MiniShell.h"
 
-# include "MiniShell.h"
+void	free_double_etoile(char **str)
+{
+	int i;
 
-void	ft_cd(t_data *data);
-void	ft_echo(t_data *data);
-void	ft_env(t_data *data);
-void	ft_export(t_data *data);
-void	ft_pwd(t_data *data);
-void	ft_unset(t_data *data);
-void	ft_exec_path(t_data *data);
-void	ft_exec_builting_cmd(t_data *data);
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		str[i] = NULL;
+	}
+	free(str);
+	str = NULL;
+}
 
-#endif
+void	free_minishell(t_data *data)
+{
+	if (data->line)
+		free(data->line);
+	exit(0);
+}

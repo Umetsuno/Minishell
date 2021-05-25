@@ -6,44 +6,32 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/24 19:23:07 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/25 22:26:21 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/MiniShell.h"
-void	free_all(t_data *data)
-{
-	if (data->line)
-		free(data->line);
-	exit(0);
-}
 
-void	init_ptr(void (*f[8])(t_data*))
-{
-	f[FCT_EXIT] = &free_all;
-	f[FCT_CD] = &ft_cd;
-	f[FCT_ECHO] = &ft_echo;
-	f[FCT_ENV] = &ft_env;
-	f[FCT_EXPORT] = &ft_export;
-	f[FCT_PWD] = &ft_pwd;
-	f[FCT_UNSET] = &ft_unset;
-}
 
-void	init_structure(t_data *data, char **av)
+int		is_builting_cmd(t_data *data)
 {
-	*av = NULL;
-	data->line = NULL;
-	init_ptr(data->f);
+	if (ft_strcmp("exit", data->line) == SUCCESS)
+		return (true);
+	else if (ft_strcmp("pwd", data->line) == SUCCESS)
+		return (true);
+	else if (ft_strcmp("env", data->line) == SUCCESS)
+		return (true);
+	else
+		return (false);
 }
 
 void	recover_data(t_data *data)
 {
-	if (ft_strcmp("exit", data->line) == SUCCESS)
-		data->f[FCT_EXIT](data);
-	else if (ft_strcmp("pwd", data->line) == SUCCESS)
-		data->f[FCT_PWD](data);
-	else if (ft_strcmp("env", data->line) == SUCCESS)
-		data->f[FCT_ENV](data);
+	/* parsing fab */
+	if (is_builting_cmd(data) == true)
+		ft_exec_builting_cmd(data);
+	else if (get_path(data) == SUCCESS)
+		ft_exec_path(data);
 	else
 		printf("bash: %s: command not found\n", data->line);
 }
