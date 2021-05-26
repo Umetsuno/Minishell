@@ -6,22 +6,42 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/24 18:46:21 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:36:22 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
+void	build_pwd(t_data *data)
+{
+	char *pwd;
+
+	pwd = NULL;
+	data->index = -1;
+	while (data->env[++data->index])
+	{
+		if (!ft_strncmp(data->env[data->index] , "PWD=", 4))
+		{
+			pwd = ft_strdup(data->env[data->index]);
+			break ;
+		}
+	}
+	data->path_pwd = pwd;
+	if (data->path_pwd == NULL)
+	{
+		data->path_pwd = ft_calloc(sizeof(char), PATH_MAX + 1);
+		if (data->path_pwd == NULL)
+			return ;
+		if (getcwd(data->path_pwd, (PATH_MAX + 1)) == NULL)
+		{
+			printf("Error (getcwd) : %s\n", strerror(errno));
+			errno = 132;
+		}
+	}
+}
+
 void	ft_pwd(t_data *data)
 {
-	char str[200];
-
-	data->index = 0;
-	if (getcwd(str, 200) == NULL)
-		errno = 1;
-	else
-	{
-		printf("%s\n", str);
-		errno = 0;
-	}
+	printf("%s\n", &data->path_pwd[4]);
+	errno = 0;
 }

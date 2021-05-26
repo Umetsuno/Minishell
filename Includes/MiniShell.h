@@ -13,6 +13,7 @@
 # include <stdbool.h>
 # include <fcntl.h>
 # include "struct.h"
+# include <signal.h>
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"

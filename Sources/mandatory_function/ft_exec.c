@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:09:27 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/25 22:31:11 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:21:12 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 void	ft_exec_path(t_data *data)
 {
-	// data->parsing.argument = malloc(sizeof(char *) * 2);
-	// data->parsing.argument[0] = "ls";
-	// data->parsing.argument[1] = NULL;
 	pid_t	pid;
 	int		status;
 
@@ -24,7 +21,7 @@ void	ft_exec_path(t_data *data)
 	pid = 0;
 	pid = fork();
 	if (pid == -1)
-		perror("fork");
+		printf("Error (fork) : %s\n", strerror(errno));
 	else if (pid > 0)
 	{
 		waitpid(pid, &status, 0);
@@ -33,7 +30,8 @@ void	ft_exec_path(t_data *data)
 	else
 	{
 		if (execve(data->parsing.cmd, data->parsing.argument, data->env) == -1)
-			printf("Error: %s\n", strerror(errno));
+			printf("Error (execve) : %s\n", strerror(errno));
+		errno = 0;
 		exit(EXIT_FAILURE);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/25 22:26:21 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:31:35 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ void	recover_data(t_data *data)
 	else if (get_path(data) == SUCCESS)
 		ft_exec_path(data);
 	else
+	{
 		printf("bash: %s: command not found\n", data->line);
+		errno = 127;
+	}
 }
 
 int	ft_strerror(char *str)
@@ -54,6 +57,7 @@ int	main(int ac, char **av, char **env)
 		return (ft_strerror("Argument Error: wrong number of arguments.\n"));
 	while (1)
 	{
+		build_pwd(&data);
 		dprintf(1, "\033[3;34mprompt : \033[0m");
 		ret = get_next_line(1, &data.line);
 		if (ret == -1)

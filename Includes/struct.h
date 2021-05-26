@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/25 21:18:56 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:30:32 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ struct s_data
 	char		*path;
 	char		**path_split;
 	char		**env;
+	char		*path_pwd;
 	int			index;
 };
 

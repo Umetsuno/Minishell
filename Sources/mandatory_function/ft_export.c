@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/24 18:46:11 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 18:42:16 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,4 +15,5 @@
 void	ft_export(t_data *data)
 {
 	data->index = 0;
+
 }

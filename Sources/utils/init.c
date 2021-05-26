@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/25 18:33:00 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:30:59 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	init_structure(t_data *data, char **av)
 	data->line = NULL;
 	data->env = NULL;
 	data->path = NULL;
+	data->path_pwd = NULL;
 	data->path_split = NULL;
 	data->parsing.cmd = NULL;
 	data->parsing.line = NULL;

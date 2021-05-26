@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:37:28 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/25 22:27:51 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/26 19:21:56 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	get_path(t_data *data)
 	data->parsing.argument = malloc(sizeof(char *) * 2);
 	fh_strcpy(data->parsing.cmd, data->line);
 	data->parsing.argument[0] = data->line;
-	data->parsing.argument[2] = "coucou";
+	data->parsing.argument[2] = "hello!";
 	data->parsing.argument[1] = NULL;
 	if (data->parsing.cmd[0] != '/' && ft_strncmp (data->parsing.cmd, "./", 2) != 0)
 	{
@@ -104,7 +104,7 @@ int	get_path(t_data *data)
 		if (data->path == NULL)
 			return (FAILURE);
 		data->parsing.cmd = do_split_path(data);
-		puts(data->parsing.cmd);
+		// puts(data->parsing.cmd);
 		if (data->parsing.cmd == NULL)
 			return (FAILURE);
 	}
