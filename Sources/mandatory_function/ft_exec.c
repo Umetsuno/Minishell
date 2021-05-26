@@ -36,12 +36,20 @@ void	ft_exec_path(t_data *data)
 	}
 }
 
-void	ft_exec_builting_cmd(t_data *data)
+void	ft_exec_builting_cmd(t_data *data, int code)
 {
-	if (ft_strcmp("exit", data->line) == SUCCESS)
+	if (FCT_EXIT == code)
 		data->f[FCT_EXIT](data);
-	else if (ft_strcmp("pwd", data->line) == SUCCESS)
+	else if (FCT_PWD == code)
 		data->f[FCT_PWD](data);
-	else if (ft_strcmp("env", data->line) == SUCCESS)
+	else if (FCT_ENV == code)
 		data->f[FCT_ENV](data);
+	else if (FCT_CD == code)
+		data->f[FCT_CD](data);
+	else if (FCT_UNSET == code)
+		data->f[FCT_UNSET](data);
+	else if (FCT_ECHO == code)
+		data->f[FCT_ECHO](data);
+	else if (FCT_EXPORT == code)
+		data->f[FCT_EXPORT](data);
 }

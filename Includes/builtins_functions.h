@@ -29,6 +29,6 @@ void	build_pwd(t_data *data);
 void	ft_unset(t_data *data);
 
 void	ft_exec_path(t_data *data);
-void	ft_exec_builting_cmd(t_data *data);
+void	ft_exec_builting_cmd(t_data *data, int code);
 
 #endif

@@ -14,19 +14,7 @@
 
 void	build_pwd(t_data *data)
 {
-	char *pwd;
-
-	pwd = NULL;
-	data->index = -1;
-	while (data->env[++data->index])
-	{
-		if (!ft_strncmp(data->env[data->index] , "PWD=", 4))
-		{
-			pwd = ft_strdup(data->env[data->index]);
-			break ;
-		}
-	}
-	data->path_pwd = pwd;
+	data->path_pwd = getenv("PWD");
 	if (data->path_pwd == NULL)
 	{
 		data->path_pwd = ft_calloc(sizeof(char), PATH_MAX + 1);
@@ -38,6 +26,7 @@ void	build_pwd(t_data *data)
 			errno = 132;
 		}
 	}
+	puts(data->path_pwd);
 }
 
 void	ft_pwd(t_data *data)

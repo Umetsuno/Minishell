@@ -45,6 +45,7 @@ SRCS =  $(SA)main.c \
 		$(SU)get_path.c \
 		$(SU)free.c \
 		$(SU)init.c \
+		$(SU)ft_strerror.c \
 		$(SU)get_next_line_utils.c \
 		$(SU)get_next_line.c
 

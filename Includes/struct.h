@@ -21,7 +21,6 @@ typedef struct s_parsing
 {
 	char	*line;
 	char	*cmd;
-	char	*flag;
 	char	**argument;
 }t_parsing;
 
@@ -34,6 +33,8 @@ struct s_data
 	char		**path_split;
 	char		**env;
 	char		*path_pwd;
+	char		*path_home;
+	char		*path_oldpwd;
 	int			index;
 };
 

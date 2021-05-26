@@ -14,6 +14,7 @@
 # include <fcntl.h>
 # include "struct.h"
 # include <signal.h>
+# include <dirent.h>
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"
@@ -42,6 +43,8 @@ void	init_ptr(void (*f[8])(t_data*));
 
 char	*strtrim_space(char *str);
 int		get_path(t_data *data);
+void	ft_strerror(char *s1, char *s2, char *s3);
+int		ft_error_arg(char *str);
 void	free_double_etoile(char **str);
 
 #endif

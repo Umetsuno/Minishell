@@ -30,5 +30,6 @@ void	free_minishell(t_data *data)
 {
 	if (data->line)
 		free(data->line);
+	free(data->path_home);
 	exit(0);
 }

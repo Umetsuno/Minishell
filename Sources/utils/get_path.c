@@ -85,12 +85,6 @@ char	*do_split_path(t_data *data)
 int	get_path(t_data *data)
 {
 	data->index = -1;
-	data->parsing.cmd = ft_calloc(sizeof(char), 3);
-	data->parsing.argument = malloc(sizeof(char *) * 2);
-	fh_strcpy(data->parsing.cmd, data->line);
-	data->parsing.argument[0] = data->line;
-	data->parsing.argument[2] = "hello!";
-	data->parsing.argument[1] = NULL;
 	if (data->parsing.cmd[0] != '/' && ft_strncmp (data->parsing.cmd, "./", 2) != 0)
 	{
 		while (data->env[++data->index])

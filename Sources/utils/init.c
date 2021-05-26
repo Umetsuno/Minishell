@@ -22,7 +22,8 @@ void	init_structure(t_data *data, char **av)
 	data->path_split = NULL;
 	data->parsing.cmd = NULL;
 	data->parsing.line = NULL;
-	data->parsing.flag = NULL;
+	data->path_oldpwd = NULL;
+	data->path_home = ft_strdup("/Users/user");
 	data->parsing.argument = NULL;
 	init_ptr(data->f);
 }
@@ -30,10 +31,10 @@ void	init_structure(t_data *data, char **av)
 void	init_ptr(void (*f[8])(t_data*))
 {
 	f[FCT_EXIT] = &free_minishell;
-	f[FCT_CD] = &ft_cd;
-	f[FCT_ECHO] = &ft_echo;
-	f[FCT_ENV] = &ft_env;
-	f[FCT_EXPORT] = &ft_export;
 	f[FCT_PWD] = &ft_pwd;
+	f[FCT_ENV] = &ft_env;
+	f[FCT_CD] = &ft_cd;
 	f[FCT_UNSET] = &ft_unset;
+	f[FCT_ECHO] = &ft_echo;
+	f[FCT_EXPORT] = &ft_export;
 }

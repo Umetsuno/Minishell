@@ -15,21 +15,40 @@
 
 int		is_builting_cmd(t_data *data)
 {
-	if (ft_strcmp("exit", data->line) == SUCCESS)
-		return (true);
-	else if (ft_strcmp("pwd", data->line) == SUCCESS)
-		return (true);
-	else if (ft_strcmp("env", data->line) == SUCCESS)
-		return (true);
+	if (ft_strcmp("exit", data->parsing.cmd) == SUCCESS)
+		return (FCT_EXIT);
+	else if (ft_strcmp("pwd", data->parsing.cmd) == SUCCESS)
+		return (FCT_PWD);
+	else if (ft_strcmp("env", data->parsing.cmd) == SUCCESS)
+		return (FCT_ENV);
+	else if (ft_strcmp("cd", data->parsing.cmd) == SUCCESS)
+		return (FCT_CD);
+	else if (ft_strcmp("unset", data->parsing.cmd) == SUCCESS)
+		return (FCT_UNSET);
+	else if (ft_strcmp("echo", data->parsing.cmd) == SUCCESS)
+		return (FCT_ECHO);
+	else if (ft_strcmp("export", data->parsing.cmd) == SUCCESS)
+		return (FCT_EXPORT);
 	else
-		return (false);
+		return (NO_FCT);
 }
 
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
-	if (is_builting_cmd(data) == true)
-		ft_exec_builting_cmd(data);
+		data->parsing.cmd = ft_calloc(sizeof(char), 3);
+	data->parsing.argument = malloc(sizeof(char *) * 2);
+	fh_strcpy(data->parsing.cmd, data->line);
+	// data->parsing.argument[0] = data->line;
+	data->parsing.argument[0] = data->parsing.cmd;
+	data->parsing.argument[1] = "lol";
+	data->parsing.argument[2] = NULL;
+	/* parsing fab */
+	int code;
+
+	code = is_builting_cmd(data);
+	if (code != NO_FCT)
+		ft_exec_builting_cmd(data, code);
 	else if (get_path(data) == SUCCESS)
 		ft_exec_path(data);
 	else
@@ -39,9 +58,9 @@ void	recover_data(t_data *data)
 	}
 }
 
-int	ft_strerror(char *str)
+int	ft_error_arg(char *str)
 {
-	write(1, &str[0], ft_strlen(str));
+	write(1, &str, ft_strlen(str));
 	return (1);
 }
 
@@ -54,7 +73,7 @@ int	main(int ac, char **av, char **env)
 	data.env = env;
 	data.line = NULL;
 	if (ac != 1)
-		return (ft_strerror("Argument Error: wrong number of arguments.\n"));
+		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	while (1)
 	{
 		build_pwd(&data);
