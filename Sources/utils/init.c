@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/26 19:30:59 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/27 15:44:57 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	init_structure(t_data *data, char **av)
 	data->parsing.cmd = NULL;
 	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
-	data->path_home = ft_strdup("/Users/user");
+	data->path_home = ft_strdup("/Users/sbaranes"); // fonction a faire pour le recuperer.
 	data->parsing.argument = NULL;
 	init_ptr(data->f);
 }
