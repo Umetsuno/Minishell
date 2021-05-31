@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/26 19:36:22 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 17:05:45 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,13 @@ void	build_pwd(t_data *data)
 			errno = 132;
 		}
 	}
-	puts(data->path_pwd);
+}
+
+void	set_oldpwd(t_data *data)
+{
+	if (data->path_oldpwd)
+		free(data->path_oldpwd);
+	data->path_oldpwd = ft_strdup(data->path_pwd);
 }
 
 void	ft_pwd(t_data *data)

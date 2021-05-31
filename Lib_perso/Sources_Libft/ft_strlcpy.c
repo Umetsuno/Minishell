@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 13:40:38 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/03/24 15:55:43 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 17:50:11 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,18 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 		dest[x] = '\0';
 	}
 	return (ft_strlen(src));
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int x;
+
+	x = 0;
+	while (src[x] != '\0')
+	{
+		dest[x] = src[x];
+		x++;
+	}
+	dest[x] = '\0';
+	return (dest);
 }

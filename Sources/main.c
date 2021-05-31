@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/27 15:15:57 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 18:05:34 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,19 @@ int		is_builting_cmd(t_data *data)
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
-		data->parsing.cmd = ft_calloc(sizeof(char), 3);
-	data->parsing.argument = malloc(sizeof(char *) * 2);
-	fh_strcpy(data->parsing.cmd, data->line);
-	// data->parsing.argument[0] = data->line;
+	data->parsing.cmd = wrmalloc(sizeof(char) * 10);
+	data->parsing.argument = wrmalloc(sizeof(char *) * 2);
+	data->parsing.cmd = ft_strcpy(data->parsing.cmd, data->line);
 	data->parsing.argument[0] = data->parsing.cmd;
-	data->parsing.argument[1] = "lol";
-	data->parsing.argument[2] = NULL;
+	data->parsing.argument[1] = NULL;
 	/* parsing fab */
 	int code;
 
 	code = is_builting_cmd(data);
-	if (code != NO_FCT)
-		ft_exec_builting_cmd(data, code);
-	else if (get_path(data) == SUCCESS)
+	if (get_path(data) == SUCCESS)
 		ft_exec_path(data);
+	else if (code != NO_FCT)
+		ft_exec_builting_cmd(data, code);
 	else
 	{
 		printf("bash: %s: command not found\n", data->line);

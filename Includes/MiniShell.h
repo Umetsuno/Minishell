@@ -46,5 +46,6 @@ int		get_path(t_data *data);
 void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
 void	free_double_etoile(char **str);
+void	set_oldpwd(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:37:28 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/26 19:21:56 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/05/31 18:02:43 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ int	check_path(char *path)
 
 	check = stat(path, &buffer);
 	if(check == 0)
-		return 1;
+		return (SUCCESS);
 	else
-		return 0;
+		return (FAILURE);
 }
 
 char	*do_split_path(t_data *data)
@@ -57,21 +57,16 @@ char	*do_split_path(t_data *data)
 	index = 0;
 	tmp = NULL;
 	data->path_split = ft_split(data->path, ':');
-	free(data->path);
 	while (data->path_split[index])
 	{
 		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + strlen(data->parsing.cmd) + 2)));
 		if (tmp == NULL)
 			return (NULL);
 		ft_concate(tmp, data, index);
-		// if (check_path(tmp) == SUCCESS)
-		// {
-		// 	free(data->parsing.cmd);
-		// 	break ;
-		// }
-		if (access(tmp, F_OK) == SUCCESS)
+		if (check_path(tmp) == SUCCESS)
 		{
-			free(data->parsing.cmd);
+			if (data->parsing.cmd)
+				wrfree(data->parsing.cmd);
 			break ;
 		}
 		free(tmp);
@@ -85,20 +80,12 @@ char	*do_split_path(t_data *data)
 int	get_path(t_data *data)
 {
 	data->index = -1;
-	if (data->parsing.cmd[0] != '/' && ft_strncmp (data->parsing.cmd, "./", 2) != 0)
+	if (data->parsing.cmd[0] != '/' && ft_strncmp(data->parsing.cmd, "./", 2) != 0)
 	{
-		while (data->env[++data->index])
-		{
-			if (!ft_strncmp(data->env[data->index] , "PATH=", 5))
-			{
-				data->path = ft_strdup(&data->env[data->index][5]);
-				break ;
-			}
-		}
+		data->path = getenv("PATH");
 		if (data->path == NULL)
 			return (FAILURE);
 		data->parsing.cmd = do_split_path(data);
-		// puts(data->parsing.cmd);
 		if (data->parsing.cmd == NULL)
 			return (FAILURE);
 	}
