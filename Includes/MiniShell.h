@@ -38,7 +38,7 @@
 */
 void	free_minishell(t_data *data);
 
-void	init_structure(t_data *data, char **av);
+void	init_structure(t_data *data, char **av, char **env);
 void	init_ptr(void (*f[8])(t_data*));
 
 char	*strtrim_space(char *str);

@@ -36,11 +36,8 @@ int		is_builting_cmd(t_data *data)
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
-	data->parsing.cmd = wrmalloc(sizeof(char) * 10);
-	data->parsing.argument = wrmalloc(sizeof(char *) * 2);
-	data->parsing.cmd = ft_strcpy(data->parsing.cmd, data->line);
-	data->parsing.argument[0] = data->parsing.cmd;
-	data->parsing.argument[1] = NULL;
+	data->parsing.argument = ft_split(data->line, ' ');
+	data->parsing.cmd = data->parsing.argument[0];
 	/* parsing fab */
 	int code;
 
@@ -67,9 +64,7 @@ int	main(int ac, char **av, char **env)
 	t_data	data;
 	int		ret;
 
-	init_structure(&data, av);
-	data.env = env;
-	data.line = NULL;
+	init_structure(&data, av, env);
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	while (1)

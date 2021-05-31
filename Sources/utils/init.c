@@ -12,9 +12,10 @@
 
 #include "../../Includes/MiniShell.h"
 
-void	init_structure(t_data *data, char **av)
+void	init_structure(t_data *data, char **av, char **env)
 {
 	*av = NULL;
+	data->env = env;
 	data->line = NULL;
 	data->env = NULL;
 	data->path = NULL;
@@ -23,7 +24,6 @@ void	init_structure(t_data *data, char **av)
 	data->parsing.cmd = NULL;
 	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
-	data->path_home = ft_strdup("/Users/sbaranes"); // fonction a faire pour le recuperer.
 	data->parsing.argument = NULL;
 	init_ptr(data->f);
 }
