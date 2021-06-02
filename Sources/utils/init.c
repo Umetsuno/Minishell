@@ -12,10 +12,10 @@
 
 #include "../../Includes/MiniShell.h"
 
-void	init_structure(t_data *data, char **av, char **env)
+void	init_structure(t_data *data, char **av)
 {
 	*av = NULL;
-	data->env = env;
+
 	data->line = NULL;
 	data->env = NULL;
 	data->path = NULL;

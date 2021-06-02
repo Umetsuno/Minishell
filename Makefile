@@ -24,9 +24,7 @@ HEADER = ./Includes/MiniShell.h
 LIB_PERSO = ./Lib_perso
 
 # Lib_perso (.a)
-.. = -L./Lib_perso -l
-
-LIB = $(..)ftprintf
+LIB = -L./Lib_perso -lftprintf
 
 # chemin Sources
 SA = Sources/

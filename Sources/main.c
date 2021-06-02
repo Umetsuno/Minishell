@@ -64,7 +64,8 @@ int	main(int ac, char **av, char **env)
 	t_data	data;
 	int		ret;
 
-	init_structure(&data, av, env);
+	init_structure(&data, av);
+	data.env = env;
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	while (1)
