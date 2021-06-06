@@ -2,6 +2,10 @@
 Note that this is an ongoing version of the 42-minishell project.
 This README file will be updated step by step.
 
+fonction pratique :
+
+- which nom_de_la_commande - pour savoir on elle se trouve.
+
 Part 1 - Baseline
 
 1. Prompt creation									- OK

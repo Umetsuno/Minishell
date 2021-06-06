@@ -22,15 +22,18 @@ static int	check_cd_args(t_data *data, char *arg)
 	else
 	{
 		set_oldpwd(data);
-		return (chdir(arg));
+		chdir(arg);
+		return (0);
 	}
 }
 
 void	ft_cd(t_data *data)
 {
 	char	*home;
+	char buf[256]; // a vire
 
 	home = NULL;
+	if(getcwd(buf, sizeof buf)!=NULL) puts(buf); // a vire
 	if (!data->parsing.argument[1] || !ft_strcmp(data->parsing.argument[1], "~"))
 	{
 		home = getenv("HOME");
@@ -42,7 +45,10 @@ void	ft_cd(t_data *data)
 	else if (data->parsing.argument[1])
 	{
 		if (check_cd_args(data, data->parsing.argument[1]) == SUCCESS)
+		{
+			if(getcwd(buf, sizeof buf)!=NULL) puts(buf); // a vire
 			return ;
+		}
 		else
 		{
 			errno = 1;
@@ -50,4 +56,5 @@ void	ft_cd(t_data *data)
 		}
 	}
 	errno = 0;
+	
 }
