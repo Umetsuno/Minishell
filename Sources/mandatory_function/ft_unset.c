@@ -14,5 +14,22 @@
 
 void	ft_unset(t_data *data)
 {
-	data->index = 0;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (data->env[i])
+	{
+		j = 0;
+		while (data->parsing.argument[j])
+		{
+			if (!strncmp(data->env[i], data->parsing.argument[j], ft_strlen(data->parsing.argument[j])))
+			{
+				data->env[i] = 0;
+			}
+			j++;
+		}
+		i++;
+	}
+	
 }

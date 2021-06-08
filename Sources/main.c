@@ -42,10 +42,10 @@ void	recover_data(t_data *data)
 	int code;
 
 	code = is_builting_cmd(data);
-	if (get_path(data) == SUCCESS)
-		ft_exec_path(data);
-	else if (code != NO_FCT)
+	if (code != NO_FCT)
 		ft_exec_builting_cmd(data, code);
+	else if (get_path(data) == SUCCESS)
+		ft_exec_path(data);
 	else
 	{
 		printf("bash: %s: command not found\n", data->line);

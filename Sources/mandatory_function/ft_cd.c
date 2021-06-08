@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:18 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/08 14:40:07 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 18:37:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,10 @@ static int	check_cd_args(t_data *data, char *arg)
 void	ft_cd(t_data *data)
 {
 	char	*home;
+	char buf[256]; // a vire
 
 	home = NULL;
+	if(getcwd(buf, sizeof buf)!=NULL) puts(buf); // a vire
 	if (!data->parsing.argument[1] || !ft_strcmp(data->parsing.argument[1], "~"))
 	{
 		home = getenv("HOME");
@@ -47,7 +49,10 @@ void	ft_cd(t_data *data)
 	else if (data->parsing.argument[1])
 	{
 		if (check_cd_args(data, data->parsing.argument[1]) == SUCCESS)
+		{
+			if(getcwd(buf, sizeof buf)!=NULL) puts(buf); // a vire
 			return ;
+		}
 		else
 		{
 			errno = 1;
@@ -55,4 +60,5 @@ void	ft_cd(t_data *data)
 		}
 	}
 	errno = 0;
+
 }
