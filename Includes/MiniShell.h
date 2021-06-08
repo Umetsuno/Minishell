@@ -38,7 +38,7 @@
 */
 void	free_minishell(t_data *data);
 
-void	init_structure(t_data *data, char **av);
+void	init_structure(t_data *data, char **av, char **env);
 void	init_ptr(void (*f[8])(t_data*));
 
 char	*strtrim_space(char *str);
@@ -47,5 +47,10 @@ void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
 void	free_double_etoile(char **str);
 void	set_oldpwd(t_data *data);
+
+void	print_lst(t_data *data);
+t_env	*new_lst(char *name, char *value);
+void	lstadd_back(t_env **alst, t_env *new);
+void	lstclear(t_env **lst);
 
 #endif

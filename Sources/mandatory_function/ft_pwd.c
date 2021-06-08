@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/31 17:05:45 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 14:26:18 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ void	set_oldpwd(t_data *data)
 
 void	ft_pwd(t_data *data)
 {
-	printf("%s\n", &data->path_pwd[4]);
+	printf("%s\n", data->path_pwd);
 	errno = 0;
 }

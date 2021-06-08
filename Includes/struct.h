@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/26 19:30:32 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 14:58:14 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,17 @@ typedef struct s_parsing
 	char	**argument;
 }t_parsing;
 
+typedef	struct s_env
+{
+	char			*name;
+	char			*value;
+	struct s_env	*next;
+}t_env;
+
 struct s_data
 {
 	t_parsing	parsing;
+	t_env		*env;
 	void		(*f[8])(t_data*);
 	char		*line;
 	char		*path;
@@ -37,5 +45,7 @@ struct s_data
 	char		*path_oldpwd;
 	int			index;
 };
+
+
 
 #endif

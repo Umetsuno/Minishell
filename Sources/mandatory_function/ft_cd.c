@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:18 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/31 16:58:11 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 14:40:07 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,9 @@ static int	check_cd_args(t_data *data, char *arg)
 	else
 	{
 		set_oldpwd(data);
-		return (chdir(arg));
+		chdir(arg);
+		build_pwd(data);
+		return (SUCCESS);
 	}
 }
 
@@ -37,7 +39,10 @@ void	ft_cd(t_data *data)
 		if (!home && !data->parsing.argument[1])
 			return (ft_strerror("cd", NULL, "HOME not set\n"));
 		else
+		{
 			chdir(home);
+			build_pwd(data);
+		}
 	}
 	else if (data->parsing.argument[1])
 	{

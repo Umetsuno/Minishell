@@ -6,18 +6,17 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/27 15:44:57 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 14:47:21 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-void	init_structure(t_data *data, char **av)
+void	init_structure(t_data *data, char **av, char **env)
 {
 	*av = NULL;
 
 	data->line = NULL;
-	data->env = NULL;
 	data->path = NULL;
 	data->path_pwd = NULL;
 	data->path_split = NULL;
@@ -25,6 +24,7 @@ void	init_structure(t_data *data, char **av)
 	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
 	data->parsing.argument = NULL;
+	copy_env(data, env);
 	init_ptr(data->f);
 }
 

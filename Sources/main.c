@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/31 18:05:34 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/08 14:48:33 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,7 @@ int	main(int ac, char **av, char **env)
 	t_data	data;
 	int		ret;
 
-	init_structure(&data, av);
-	data.env = env;
+	init_structure(&data, av, env);
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	while (1)
