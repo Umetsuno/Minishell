@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:18 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/08 18:37:26 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/09 20:55:05 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	ft_cd(t_data *data)
 	if(getcwd(buf, sizeof buf)!=NULL) puts(buf); // a vire
 	if (!data->parsing.argument[1] || !ft_strcmp(data->parsing.argument[1], "~"))
 	{
-		home = getenv("HOME");
+		home = my_getenv(data, "HOME");
 		if (!home && !data->parsing.argument[1])
 			return (ft_strerror("cd", NULL, "HOME not set\n"));
 		else
