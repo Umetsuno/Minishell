@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/10 16:32:55 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 18:11:34 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,10 @@ void	do_prompt(t_data *data)
 		build_pwd(data);
 		data->line = readline( "\033[3;34mprompt : \033[0m");
 		if (data->line == NULL)
+		{
+			data->ctrl_d = 1;
 			free_minishell(data);
+		}
 		data->line = strtrim_space(data->line);
 		recover_data(data);
 		free(data->line);
