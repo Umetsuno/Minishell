@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/09 17:31:56 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 16:32:55 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,24 +59,38 @@ int	ft_error_arg(char *str)
 	return (1);
 }
 
-int	main(int ac, char **av, char **env)
+void	sig_ctrl_c(int signal)
 {
-	t_data	data;
-	int		ret;
+	printf("\ntest ctrl_c %d\n", signal);
+	do_prompt(&g_data);
+}
 
-	init_structure(&data, av, env);
-	if (ac != 1)
-		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
+void	sig_ctrl_bs(int signal)
+{
+	(void)signal;
+}
+
+void	do_prompt(t_data *data)
+{
 	while (1)
 	{
-		build_pwd(&data);
-		dprintf(1, "\033[3;34mprompt : \033[0m");
-		ret = get_next_line(1, &data.line);
-		if (ret == -1)
-			return (EXIT_FAILURE);
-		data.line = strtrim_space(data.line);
-		recover_data(&data);
-		free(data.line);
+		build_pwd(data);
+		data->line = readline( "\033[3;34mprompt : \033[0m");
+		if (data->line == NULL)
+			free_minishell(data);
+		data->line = strtrim_space(data->line);
+		recover_data(data);
+		free(data->line);
 	}
+}
+
+int	main(int ac, char **av, char **env)
+{
+	init_structure(&g_data, av, env);
+	signal(SIGINT, sig_ctrl_c);
+	signal(SIGQUIT, sig_ctrl_bs);
+	if (ac != 1)
+		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
+	do_prompt(&g_data);
 	return (EXIT_SUCCESS);
 }

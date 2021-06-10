@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:49 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/24 18:46:25 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 17:21:34 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_echo(t_data *data)
 
 	index = 1;
 	flag = 0;
-	if (!strcmp("-n", data->parsing.argument[1]))
+	while (data->parsing.argument[index] && (strcmp("-n", data->parsing.argument[index]) == 0))
 	{
 		flag++;
 		index++;

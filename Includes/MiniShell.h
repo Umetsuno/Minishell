@@ -12,6 +12,8 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <readline/readline.h>
+# include <readline/history.h>
 # include "struct.h"
 # include <signal.h>
 # include <dirent.h>
@@ -33,6 +35,7 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
+t_data g_data;
 /*
 **	?? Main functions ??
 */
@@ -49,5 +52,8 @@ int		ft_strerror_export(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
 void	free_double_etoile(char **str);
 void	set_oldpwd(t_data *data);
+void	sig_ctrl_c(int signal);
+void	sig_ctrl_bs(int signal);
+void	do_prompt(t_data *data);
 
 #endif

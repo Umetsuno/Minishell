@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/09 19:23:21 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/10 16:28:58 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ static void	copy_env(t_data *data, char **env)
 void	init_structure(t_data *data, char **av, char **env)
 {
 	*av = NULL;
-
 	data->line = NULL;
 	data->path = NULL;
 	data->path_pwd = NULL;

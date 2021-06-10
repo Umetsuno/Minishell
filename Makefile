@@ -59,13 +59,13 @@ all:	compil $(NAME)
 compil:
 	@make -C $(LIB_PERSO)
 
-%.o: %.c $(HEADER)
-			@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
-			@gcc $(CFLAGS) -c $< -o $@
+%.o:	%.c $(HEADER)
+	@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
+	@gcc $(CFLAGS) -c $< -o $@
 
-$(NAME): $(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
-		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
-		@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
+$(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
+	@gcc -lreadline $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
 		@make clean -C $(LIB_PERSO)
@@ -80,7 +80,7 @@ fclean:
 		@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-		@gcc $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+		@gcc -lreadline $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 		@./$(NAME)
 
 norm:
