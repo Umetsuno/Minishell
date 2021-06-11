@@ -25,7 +25,6 @@
 # define SUCCESS 0
 # define FAILURE 1
 
-
 # define NO_FCT 0
 # define FCT_EXIT 1
 # define FCT_PWD 2
@@ -41,7 +40,7 @@ t_data g_data;
 */
 void	free_minishell(t_data *data);
 
-void	init_structure(t_data *data, char **av, char **env);
+void	init_structure(t_data *data, char **av);
 void	init_ptr(void (*f[8])(t_data*));
 char	*my_getenv(t_data *data, char *str);
 
@@ -55,5 +54,6 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
+void	copy_env(t_data *data, char **env);
 
 #endif

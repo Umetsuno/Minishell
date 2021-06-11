@@ -62,11 +62,23 @@ int	ft_error_arg(char *str)
 void	sig_ctrl_c(int signal)
 {
 	printf("\ntest ctrl_c %d\n", signal);
+	free(g_data.line);
 	do_prompt(&g_data);
 }
 
-void	sig_ctrl_bs(int signal)
+void	sig_catch(int signal)
 {
+	if (signal == SIGINT)
+	{
+		printf("\ntest ctrl_c %d\n", signal);
+	}
+	else if (signal == SIGQUIT)
+	{
+		printf("\ntest ctrl_\\ %d\n", signal);
+	}
+	free(g_data.line);
+	do_prompt(&g_data);
+	
 	(void)signal;
 }
 
@@ -75,11 +87,13 @@ void	do_prompt(t_data *data)
 	while (1)
 	{
 		build_pwd(data);
-		data->line = readline( "\033[3;34mprompt : \033[0m");
+		// data->line = readline("$> ");
+		data->line = readline("\033[3;34mprompt : \033[0m");
 		if (data->line == NULL)
 		{
-			data->ctrl_d = 1;
-			free_minishell(data);
+			free(data->line);
+			ft_putstr("\r\033[3;34mprompt : \033[0m");
+			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
 		recover_data(data);
@@ -89,9 +103,10 @@ void	do_prompt(t_data *data)
 
 int	main(int ac, char **av, char **env)
 {
-	init_structure(&g_data, av, env);
-	signal(SIGINT, sig_ctrl_c);
-	signal(SIGQUIT, sig_ctrl_bs);
+	init_structure(&g_data, av);
+	copy_env(&g_data, env);
+	signal(SIGINT, sig_catch);
+	signal(SIGQUIT, sig_catch);
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	do_prompt(&g_data);

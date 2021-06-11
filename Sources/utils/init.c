@@ -12,7 +12,7 @@
 
 #include "../../Includes/MiniShell.h"
 
-static void	copy_env(t_data *data, char **env)
+void	copy_env(t_data *data, char **env)
 {
 	int	i;
 
@@ -21,6 +21,7 @@ static void	copy_env(t_data *data, char **env)
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
 	data->env[i] = 0;
+	i = 0;
 	while (env[i])
 	{
 		data->env[i] = ft_strdup(env[i]);
@@ -28,7 +29,7 @@ static void	copy_env(t_data *data, char **env)
 	}
 }
 
-void	init_structure(t_data *data, char **av, char **env)
+void	init_structure(t_data *data, char **av)
 {
 	*av = NULL;
 	data->line = NULL;
@@ -39,7 +40,7 @@ void	init_structure(t_data *data, char **av, char **env)
 	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
 	data->parsing.argument = NULL;
-	copy_env(data, env);
+	
 	init_ptr(data->f);
 }
 
