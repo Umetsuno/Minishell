@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:37 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/08 14:26:18 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/14 20:10:49 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 
 void	build_pwd(t_data *data)
 {
-	data->path_pwd = getenv("PWD");
+	if (data->path_pwd)
+		free(data->path_pwd);
+	data->path_pwd = ft_calloc(sizeof(char), PATH_MAX + 1);
 	if (data->path_pwd == NULL)
+		return ;
+	if (getcwd(data->path_pwd, (PATH_MAX + 1)) == NULL)
 	{
-		data->path_pwd = ft_calloc(sizeof(char), PATH_MAX + 1);
-		if (data->path_pwd == NULL)
-			return ;
-		if (getcwd(data->path_pwd, (PATH_MAX + 1)) == NULL)
-		{
-			printf("Error (getcwd) : %s\n", strerror(errno));
-			errno = 132;
-		}
+		printf("Error (getcwd) : %s\n", strerror(errno));
+		errno = 132;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:58:30 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/10 18:13:57 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/14 20:14:05 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	free_minishell(t_data *data)
 		free(data->line);
 	if (data->path_oldpwd)
 		free(data->path_oldpwd);
-	free(data->path_home);
+	if (data->path_home)
+		free(data->path_home);
 	printf("exit\n");
 	exit(0);
 }

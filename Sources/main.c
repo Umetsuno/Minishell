@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/10 18:11:34 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/14 20:36:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,18 @@ int	ft_error_arg(char *str)
 void	sig_ctrl_c(int signal)
 {
 	printf("\ntest ctrl_c %d\n", signal);
-	free(g_data.line);
 	do_prompt(&g_data);
 }
 
 void	sig_catch(int signal)
 {
 	if (signal == SIGINT)
-	{
 		printf("\ntest ctrl_c %d\n", signal);
-	}
 	else if (signal == SIGQUIT)
-	{
 		printf("\ntest ctrl_\\ %d\n", signal);
-	}
-	free(g_data.line);
+	if (g_data.line)
+		free(g_data.line);
 	do_prompt(&g_data);
-	
 	(void)signal;
 }
 
@@ -87,11 +82,9 @@ void	do_prompt(t_data *data)
 	while (1)
 	{
 		build_pwd(data);
-		// data->line = readline("$> ");
 		data->line = readline("\033[3;34mprompt : \033[0m");
 		if (data->line == NULL)
 		{
-			free(data->line);
 			ft_putstr("\r\033[3;34mprompt : \033[0m");
 			data->line = ft_strdup("exit");
 		}
@@ -105,7 +98,7 @@ int	main(int ac, char **av, char **env)
 {
 	init_structure(&g_data, av);
 	copy_env(&g_data, env);
-	signal(SIGINT, sig_catch);
+	signal(SIGINT, sig_ctrl_c);
 	signal(SIGQUIT, sig_catch);
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
