@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/14 20:36:26 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/14 21:15:27 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,8 @@ void	do_prompt(t_data *data)
 			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
+		if (ft_strlen(data->line) == 0)
+			do_prompt(data);
 		recover_data(data);
 		free(data->line);
 	}
