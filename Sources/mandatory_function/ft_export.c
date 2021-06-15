@@ -6,49 +6,65 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/09 20:55:24 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/15 18:20:19 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-// static int	get_size_env(t_data *data)
-// {
-// 	return (lstsize(data));
-// }
+static int	get_size_env(t_data *data)
+{
+	int	i;
 
-// static int	add_elem_to_env(t_data *data, char *elem, int last_elem_env)
-// {
-// 	data->env[last_elem_env] = ft_strdup(elem);
-// 	data->env[last_elem_env + 1] = 0;
-// 	last_elem_env++;
-// 	return (last_elem_env);
-// }
+	i = 0;
+	while (data->env[i])
+		i++;
+	return (i);
+}
+
+bool	parse_arg(char *str)
+{
+	int	i;
+	int	p1;
+	int	p2;
+
+	i = 0;
+	p1 = 0;
+	p2= 0;
+	errno = 1;
+	if (ft_strchr(str, '=') == NULL)
+		return ();
+	while (str[i])
+	{
+		while (str[i] != '')
+		{
+			/* code */
+		}
+
+	}
+
+}
 
 void	ft_export(t_data *data)
 {
-	// int	index;
-	// int	last_elem_env;
-	// int	j;
-	// int error;
+	int	i;
+	int	last_index_env;
 
-	data->index = 0;
-	// j = 1;
-	// last_elem_env = get_size_env(data);
-	// while (data->parsing.argument[j])
-	// {
-	// 	index = 0;
-	// 	error = 0;
-	// 	while (data->parsing.argument[j][index])
-	// 	{
-	// 		if (data->parsing.argument[j][index] == '=' && data->parsing.argument[j][index - 1] == ' ')
-	// 			error = ft_strerror_export("export:", data->parsing.argument[j], "not a valid identifier\n");
-	// 		index++;
-	// 	}
-	// 	if (error == 0)
-	// 		last_elem_env = add_elem_to_env(data, data->parsing.argument[j], last_elem_env);
-	// 	j++;
-	// 	skip_space_i(data->parsing.argument[index], &index);
-	// }
-	// ft_env(data);
+	i = 0;
+	last_index_env = get_size_env(data);
+	errno = 0;
+	if (!data->parsing.argument[1])
+		put_put_all();
+	while (data->parsing.argument[i])
+	{
+		if (data->parsing.argument[i][0] == '=' ||
+			ft_isnumber(data->parsing.argument[i][0]))
+			nique_sa_mere();
+		else
+		{
+
+		}
+		i++;
+	}
+
 }

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:06:21 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/09 19:28:55 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/15 18:44:00 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*my_getenv(t_data *data, char *str)
 	while (data->env[i])
 	{
 		if (!ft_strncmp(data->env[i], str, size_str))
-			return	(&data->env[i][size_str + 1]);
+			return	(&data->env[i][size_str]);
 		i++;
 	}
 	return (NULL);
@@ -38,7 +38,11 @@ void	ft_env(t_data *data)
 	else
 	{
 		while (data->env[index])
-			printf("%s\n", data->env[index++]);
+		{
+			if (ft_strchr(data->env[index], '=') != NULL)
+				printf("%s\n", data->env[index]);
+			index++;
+		}
 		errno = 0;
 	}
 }
