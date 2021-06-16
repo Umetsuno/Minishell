@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/10 18:14:04 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/16 15:03:35 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,26 @@ void	copy_env(t_data *data, char **env)
 	int	i;
 
 	i = 0;
+	while (env[i])
+		i++;
+	data->env = malloc(sizeof(char *) * (i + 1));
+	data->env[i] = 0;
+	i = 0;
+	while (env[i])
+	{
+		data->env[i] = ft_strdup(env[i]);
+		i++;
+	}
+}
+
+void	copy_env_add_one(t_data *data, char *new_elem)
+{
+	int		i;
+	char	**env;
+
+	i = 0;
+	env = data->env;
+
 	while (env[i])
 		i++;
 	data->env = malloc(sizeof(char *) * (i + 1));
@@ -40,7 +60,7 @@ void	init_structure(t_data *data, char **av)
 	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
 	data->parsing.argument = NULL;
-	
+
 	init_ptr(data->f);
 }
 
