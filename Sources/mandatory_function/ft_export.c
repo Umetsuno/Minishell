@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/15 18:20:19 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/16 12:55:47 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,29 +20,6 @@ static int	get_size_env(t_data *data)
 	while (data->env[i])
 		i++;
 	return (i);
-}
-
-bool	parse_arg(char *str)
-{
-	int	i;
-	int	p1;
-	int	p2;
-
-	i = 0;
-	p1 = 0;
-	p2= 0;
-	errno = 1;
-	if (ft_strchr(str, '=') == NULL)
-		return ();
-	while (str[i])
-	{
-		while (str[i] != '')
-		{
-			/* code */
-		}
-
-	}
-
 }
 
 void	ft_export(t_data *data)
@@ -59,7 +36,7 @@ void	ft_export(t_data *data)
 	{
 		if (data->parsing.argument[i][0] == '=' ||
 			ft_isnumber(data->parsing.argument[i][0]))
-			nique_sa_mere();
+			ft_strerror_export("export", data->parsing.argument[i], "not a valid identifier\n");
 		else
 		{
 
