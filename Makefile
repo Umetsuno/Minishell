@@ -43,6 +43,7 @@ SRCS =  $(SA)main.c \
 		$(SU)get_path.c \
 		$(SU)free.c \
 		$(SU)init.c \
+		$(SU)function_env.c \
 		$(SU)ft_strerror.c
 
 # normal Flags

@@ -54,6 +54,9 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
-void	copy_env(t_data *data, char **env);
+
+int		get_size_env(t_data *data);
+char	**copy_env(char **env);
+void	copy_env_add_one(t_data *data, char *new_elem);
 
 #endif

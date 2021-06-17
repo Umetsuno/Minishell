@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:58:30 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/14 20:14:05 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/17 10:16:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	free_double_etoile(char **str)
 	{
 		free(str[i]);
 		str[i] = NULL;
+		i++;
 	}
 	free(str);
 	str = NULL;
