@@ -50,8 +50,7 @@ void	copy_env_add_one(t_data *data, char *new_elem)
 	i = 0;
 	env = copy_env(data->env);
 	free_double_etoile(data->env);
-	while (env[i])
-		i++;
+	i = get_size_env(data);
 	data->env = malloc(sizeof(char *) * (i + 2));
 	data->env[i] = 0;
 	i = 0;

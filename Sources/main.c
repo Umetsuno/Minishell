@@ -62,12 +62,15 @@ int	ft_error_arg(char *str)
 void	sig_ctrl_c(int signal)
 {
 	printf("coucou c");
+	ft_putstr("\r\033[3;34mprompt : \033[0m");
+	(void)signal;
 }
 
 void	sig_ctrl_bs(int signal)
 {
 	printf("coucou \\");
-
+	ft_putstr("\r\033[3;34mprompt : \033[0m");
+	(void)signal;
 }
 
 void	do_prompt(t_data *data)

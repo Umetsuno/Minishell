@@ -12,8 +12,6 @@
 
 #include "../../Includes/MiniShell.h"
 
-
-
 bool	check_if_already_exists(t_data *data, char *elem)
 {
 	int i;
@@ -23,37 +21,45 @@ bool	check_if_already_exists(t_data *data, char *elem)
 	{
 		if (!strcmp(data->env[i], elem))
 			return (true);
+		i++;
 	}
 	return (false);
 }
 
 void	add_elem_to_env(t_data *data, char *elem)
 {
-	int	i;
-	int	last_index_env;
-
-	i = 0;
-	last_index_env = get_size_env(data);
 	if (check_if_already_exists(data, elem) == true)
 		return ;
+	copy_env_add_one(data, elem);
+}
 
+void	print_export(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	while (data->env[i])
+	{
+		printf("declare -x %s\n", data->env[i]);
+		i++;
+	}
 }
 
 void	ft_export(t_data *data)
 {
-	// int	i;
+	int	i;
 
-	// i = 0;
-	// errno = 0;
-	// if (!data->parsing.argument[1])
-	// 	print_export(data);
-	// while (data->parsing.argument[i])
-	// {
-	// 	if (data->parsing.argument[i][0] == '=' ||
-	// 		ft_isnumber(data->parsing.argument[i][0]))
-	// 		ft_strerror_export("export", data->parsing.argument[i], "not a valid identifier\n");
-	// 	else
-	// 		add_elem_to_env(data, data->parsing.argument[i]);
-	// 	i++;
-	// }
+	i = 0;
+	errno = 0;
+	if (!data->parsing.argument[1])
+		print_export(data);
+	while (data->parsing.argument[i])
+	{
+		if (data->parsing.argument[i][0] == '=' ||
+			ft_isnumber(data->parsing.argument[i][0]))
+			ft_strerror_export("export", data->parsing.argument[i], "not a valid identifier\n");
+		else
+			add_elem_to_env(data, data->parsing.argument[i]);
+		i++;
+	}
 }
