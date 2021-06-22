@@ -6,11 +6,29 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 13:38:49 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/03/24 15:55:38 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 10:57:53 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/libft.h"
+
+char	*ft_strcat(char *dest, char *src)
+{
+	int x;
+	int y;
+
+	x = 0;
+	y = 0;
+	if (dest)
+	{
+		while (dest[x])
+		x++;
+	}
+	while (src[y])
+		dest[x++] = src[y++];
+	dest[x] = '\0';
+	return (dest);
+}
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {

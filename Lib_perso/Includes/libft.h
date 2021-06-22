@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 16:24:54 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/31 17:50:38 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 10:58:28 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	*ft_memset(void *b, int c, size_t len);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
+char	*ft_strcat(char *dest, char *src);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlen(const char *str);
 char	*ft_strcpy(char *dest, char *src);

@@ -6,29 +6,11 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:37:28 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/31 18:02:43 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/22 14:41:31 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
-
-char	*ft_strcat(char *dest, char *src)
-{
-	int x;
-	int y;
-
-	x = 0;
-	y = 0;
-	if (dest)
-	{
-		while (dest[x])
-		x++;
-	}
-	while (src[y])
-		dest[x++] = src[y++];
-	dest[x] = '\0';
-	return (dest);
-}
 
 static void	ft_concate(char *tmp, t_data *data, int index)
 {
@@ -82,7 +64,7 @@ int	get_path(t_data *data)
 	data->index = -1;
 	if (data->parsing.cmd[0] != '/' && ft_strncmp(data->parsing.cmd, "./", 2) != 0)
 	{
-		data->path = getenv("PATH");
+		data->path = my_getenv(data, "PATH=");
 		if (data->path == NULL)
 			return (FAILURE);
 		data->parsing.cmd = do_split_path(data);
