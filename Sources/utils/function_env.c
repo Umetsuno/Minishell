@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 10:10:42 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/22 16:49:18 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/23 10:49:43 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,22 +62,23 @@ void	copy_env_add_one(t_data *data, char *new_elem)
 	free_double_etoile(env);
 }
 
-void	copy_env_del_one(t_data *data, char *elem_to_del)
+void	copy_env_del_one(t_data *data, char *elem_to_del, int index_elem_to_del)
 {
 	int		i;
+	int		size_env;
 	char	**env;
 
 	i = 0;
 	env = copy_env(data->env);
 	free_double_etoile(data->env);
-	i = get_size_env(env);
-	data->env = malloc(sizeof(char *) * (i));
-	data->env[i] = 0;
-	i = 0;
-	while (env[i])
+	size_env = get_size_env(env);
+	data->env = malloc(sizeof(char *) * (size_env));
+	data->env[size_env] = 0;
+	while (i < size_env)
 	{
-		if (!ft_strncmp(env[i], elem_to_del, ft_strlen(elem_to_del)))
+		if (i != index_elem_to_del)
 			data->env[i] = ft_strdup(env[i]);
 		i++;
 	}
+	free_double_etoile(env);
 }
