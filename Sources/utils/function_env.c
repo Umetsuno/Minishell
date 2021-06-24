@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/17 10:10:42 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/23 10:49:43 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 15:55:34 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	copy_env_add_one(t_data *data, char *new_elem)
 	free_double_etoile(env);
 }
 
-void	copy_env_del_one(t_data *data, char *elem_to_del, int index_elem_to_del)
+void	copy_env_del_one(t_data *data, int index_elem_to_del)
 {
 	int		i;
 	int		size_env;

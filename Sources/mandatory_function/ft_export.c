@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/22 14:44:07 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/24 15:48:24 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,22 @@ bool	check_if_already_exists(t_data *data, char *elem)
 	i = 0;
 	while (data->env[i])
 	{
-		if (!strcmp(data->env[i], elem))
+		if (!strncmp(data->env[i], elem, ft_strlen(elem)))
 			return (true);
 		i++;
 	}
+	puts("prout");
 	return (false);
 }
 
 void	add_elem_to_env(t_data *data, char *elem)
 {
+	printf("add elem avent check\n");
 	if (check_if_already_exists(data, elem) == true)
 		return ;
+	printf("add elem avent copy env add one\n");
 	copy_env_add_one(data, elem);
+	printf("add elem apres copy env add one\n");
 }
 
 void	print_export(t_data *data)
@@ -40,7 +44,7 @@ void	print_export(t_data *data)
 	i = 0;
 	while (data->env[i])
 	{
-		printf("declare -x %s\n", data->env[i]);
+		printf("declare -x (%d) %s\n", i, data->env[i]);
 		i++;
 	}
 }
@@ -60,10 +64,9 @@ void	ft_export(t_data *data)
 			ft_strerror_export("export", data->parsing.argument[i], "not a valid identifier\n");
 		else
 		{
-			puts("here");
-			puts(data->parsing.argument[i]);
+			printf("export - avent rajout de %s\n", data->parsing.argument[i]);
 			add_elem_to_env(data, data->parsing.argument[i]);
-			puts("here2");
+			printf("export - apres rajout de %s\n", data->parsing.argument[i]);
 		}
 		i++;
 	}

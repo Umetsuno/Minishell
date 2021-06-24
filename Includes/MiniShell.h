@@ -58,6 +58,6 @@ void	do_prompt(t_data *data);
 int		get_size_env(char **env);
 char	**copy_env(char **env);
 void	copy_env_add_one(t_data *data, char *new_elem);
-void	copy_env_del_one(t_data *data, char *elem_to_del);
+void	copy_env_del_one(t_data *data, int index_elem_to_del);
 
 #endif
