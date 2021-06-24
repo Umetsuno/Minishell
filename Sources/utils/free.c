@@ -19,12 +19,12 @@ void	free_double_etoile(char **str)
 	i = 0;
 	while (str[i])
 	{
-		free(str[i]);
-		str[i] = NULL;
+		if (str[i])
+			free(str[i]);
 		i++;
 	}
-	free(str);
-	str = NULL;
+	if (str)
+		free(str);
 }
 
 void	free_minishell(t_data *data)

@@ -44,41 +44,48 @@ char	**copy_env(char **env)
 void	copy_env_add_one(t_data *data, char *new_elem)
 {
 	int		i;
+	int		j;
 	char	**env;
 
-	i = 0;
-	env = copy_env(data->env);
-	free_double_etoile(data->env);
-	i = get_size_env(env);
-	data->env = malloc(sizeof(char *) * (i + 2));
-	data->env[i] = 0;
-	i = 0;
-	while (env[i])
+	j = 0;
+	env = NULL;
+	i = get_size_env(data->env);
+	env = malloc(sizeof(char *) * (i + 2));
+	while (j < i)
 	{
-		data->env[i] = ft_strdup(env[i]);
-		i++;
+		env[j] = ft_strdup(data->env[j]);
+		j++;
 	}
-	data->env[i] = ft_strdup(new_elem);
-	free_double_etoile(env);
+	env[j] = ft_strdup(new_elem);
+	j++;
+	env[j] = 0;
+	free_double_etoile(data->env);
+	data->env = env;
 }
 
 void	copy_env_del_one(t_data *data, int index_elem_to_del)
 {
 	int		i;
+	int		j;
 	int		size_env;
 	char	**env;
 
 	i = 0;
-	env = copy_env(data->env);
-	free_double_etoile(data->env);
-	size_env = get_size_env(env);
-	data->env = malloc(sizeof(char *) * (size_env));
-	data->env[size_env] = 0;
+	j = 0;
+	size_env = get_size_env(data->env);
+	env = malloc(sizeof(char *) * (size_env + 1));
+	env[size_env] = NULL;
+	env[size_env - 1] = NULL;
 	while (i < size_env)
 	{
 		if (i != index_elem_to_del)
-			data->env[i] = ft_strdup(env[i]);
-		i++;
+		{
+			env[j] = ft_strdup(data->env[i++]);
+			j++;
+		}
+		else
+			i++;
 	}
-	free_double_etoile(env);
+	free_double_etoile(data->env);
+	data->env = env;
 }

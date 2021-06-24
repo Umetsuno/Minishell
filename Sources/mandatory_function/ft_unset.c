@@ -27,16 +27,8 @@ void	ft_unset(t_data *data)
 		{
 			if (ft_strncmp(data->env[j], data->parsing.argument[i], size_elem) == 0)
 			{
-				puts("avant fonction");
 				copy_env_del_one(data, j);
-				puts("check apres fonction");
-				int o = 0;
-				while (data->env[o])
-				{
-					printf("ligne %d = '%s'\n", o, data->env[o]);
-					o++;
-				}
-				puts("fin de if");
+				break ;
 			}
 			j++;
 		}
