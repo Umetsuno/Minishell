@@ -12,7 +12,7 @@
 
 #include "../../Includes/MiniShell.h"
 
-bool	check_if_already_exists(t_data *data, char *elem)
+static bool	check_if_already_exists(t_data *data, char *elem)
 {
 	int i;
 
@@ -21,19 +21,24 @@ bool	check_if_already_exists(t_data *data, char *elem)
 	{
 		if (!strncmp(data->env[i], elem, ft_strlen(elem)))
 			return (true);
+		else if (!strncmp(elem, data->env[i], ft_strlen(data->env[i])))
+		{
+			copy_env_del_one(data, i);
+			return (false);
+		}
 		i++;
 	}
 	return (false);
 }
 
-void	add_elem_to_env(t_data *data, char *elem)
+static void	add_elem_to_env(t_data *data, char *elem)
 {
 	if (check_if_already_exists(data, elem) == true)
 		return ;
 	copy_env_add_one(data, elem);
 }
 
-void	print_export(t_data *data)
+static void	print_export(t_data *data)
 {
 	int	i;
 

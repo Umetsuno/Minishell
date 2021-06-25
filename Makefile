@@ -31,8 +31,8 @@ SA = Sources/
 SM = Sources/mandatory_function/
 SU = Sources/utils/
 
-SRCS =  $(SA)main.c \
-        $(SM)ft_pwd.c \
+SRCS =	$(SA)main.c \
+		$(SM)ft_pwd.c \
 		$(SM)ft_cd.c \
 		$(SM)ft_echo.c \
 		$(SM)ft_env.c \
@@ -67,23 +67,23 @@ $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
-		@make clean -C $(LIB_PERSO)
-		@$(RM) $(OBJS)
+	@make clean -C $(LIB_PERSO)
+	@$(RM) $(OBJS)
 
 fclean:
-		@make fclean -C $(LIB_PERSO)
-		@$(RM) $(OBJS)
-		@$(RM) $(NAME)
-		@$(RM) Lib_perso/libftprintf.a
-		@rm -rf *.dSYM
-		@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
+	@make fclean -C $(LIB_PERSO)
+	@$(RM) $(OBJS)
+	@$(RM) $(NAME)
+	@$(RM) Lib_perso/libftprintf.a
+	@rm -rf *.dSYM
+	@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-		@gcc -lreadline $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
-		@./$(NAME)
+	@gcc -lreadline $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@./$(NAME)
 
 norm:
-		@norminette Includes Lib_perso Makefile Sources/*.c Sources/mandatory_function/*.c
+	@norminette Includes Lib_perso Makefile Sources/*.c Sources/mandatory_function/*.c
 
 re : fclean all
 
