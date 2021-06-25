@@ -29,11 +29,11 @@ void	ft_echo(t_data *data)
 		if (!strcmp("$?", data->parsing.argument[index]))
 			ft_putnbr_fd(errno, 1);
 		else
-			ft_putstr(data->parsing.argument[index]);
-		ft_putstr(" ");
+			ft_putstr_fd(data->parsing.argument[index], data->fd);
+		ft_putstr_fd(" ", data->fd);
 		index++;
 	}
 	if (flag == 0)
-		ft_putstr("\n");
+		ft_putstr_fd("\n", data->fd);
 	errno = 0;
 }

@@ -61,7 +61,6 @@ int	ft_error_arg(char *str)
 
 void	sig_ctrl_c(int signal)
 {
-	printf("coucou c");
 	ft_putstr("\r\033[3;34mprompt : \033[0m");
 	(void)signal;
 }
@@ -77,8 +76,9 @@ void	do_prompt(t_data *data)
 {
 	while (1)
 	{
+		data->fd = 1;
 		build_pwd(data);
-		data->line = readline("\r\033[3;34mprompt : \033[0m");
+		data->line = readline("\033[3;34mprompt : \033[0m");
 		if (data->line == NULL)
 		{
 			ft_putstr("\r\033[3;34mprompt : \033[0m");
