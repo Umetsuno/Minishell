@@ -30,6 +30,7 @@ LIB = -L./Lib_perso -lftprintf
 SA = Sources/
 SM = Sources/mandatory_function/
 SU = Sources/utils/
+SP = Sources/parsing/
 
 SRCS =	$(SA)main.c \
 		$(SM)ft_pwd.c \
@@ -44,7 +45,8 @@ SRCS =	$(SA)main.c \
 		$(SU)free.c \
 		$(SU)init.c \
 		$(SU)function_env.c \
-		$(SU)ft_strerror.c
+		$(SU)ft_strerror.c \
+		$(SP)parser.c
 
 # normal Flags
 CC = gcc

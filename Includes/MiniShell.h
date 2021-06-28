@@ -20,6 +20,8 @@
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"
+# include "env.h"
+# include "parsing.h"
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -41,7 +43,6 @@ void	free_minishell(t_data *data);
 
 void	init_structure(t_data *data, char **av);
 void	init_ptr(void (*f[8])(t_data*));
-char	*my_getenv(t_data *data, char *str);
 
 char	*strtrim_space(char *str);
 int		get_path(t_data *data);
@@ -53,10 +54,5 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
-
-int		get_size_env(char **env);
-char	**copy_env(char **env);
-void	copy_env_add_one(t_data *data, char *new_elem);
-void	copy_env_del_one(t_data *data, int index_elem_to_del);
 
 #endif
