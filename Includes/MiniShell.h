@@ -43,7 +43,6 @@ void	free_minishell(t_data *data);
 
 void	init_structure(t_data *data, char **av);
 void	init_ptr(void (*f[8])(t_data*));
-char	*my_getenv(t_data *data, char *str);
 
 char	*strtrim_space(char *str);
 int		get_path(t_data *data);
