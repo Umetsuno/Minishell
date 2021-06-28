@@ -30,6 +30,7 @@ LIB = -L./Lib_perso -lftprintf
 SA = Sources/
 SM = Sources/mandatory_function/
 SU = Sources/utils/
+SP = Sources/parsing/
 
 SRCS =	$(SA)main.c \
 		$(SM)ft_pwd.c \
