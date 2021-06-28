@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 10:36:26 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 10:39:56 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	sig_ctrl_c(int signal)
 void	sig_ctrl_bs(int signal)
 {
 	printf("coucou \\");
-	ft_putstr("bash-3.2$ ");
+	ft_putstr("MiniShell ");
 	(void)signal;
 }
 
@@ -77,11 +77,11 @@ void	do_prompt(t_data *data)
 	{
 		data->fd = 1;
 		build_pwd(data);
-		data->line = readline("bash-3.2$ ");
+		data->line = readline("MiniShell ");
 		add_history(data->line);
 		if (data->line == NULL)
 		{
-			ft_putstr("\rbash-3.2$ ");
+			ft_putstr("\rMiniShell ");
 			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
