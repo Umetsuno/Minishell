@@ -45,7 +45,8 @@ SRCS =	$(SA)main.c \
 		$(SU)free.c \
 		$(SU)init.c \
 		$(SU)function_env.c \
-		$(SU)ft_strerror.c
+		$(SU)ft_strerror.c \
+		$(SP)start_parsing.c
 
 # normal Flags
 CC = gcc
