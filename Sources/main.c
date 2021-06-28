@@ -6,12 +6,11 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 10:39:56 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 15:14:27 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/MiniShell.h"
-
 
 int		is_builting_cmd(t_data *data)
 {
@@ -41,6 +40,7 @@ void	recover_data(t_data *data)
 	/* parsing fab */
 	int code;
 
+	data->in_cmd = true;
 	code = is_builting_cmd(data);
 	if (code != NO_FCT)
 		ft_exec_builting_cmd(data, code);
@@ -61,13 +61,20 @@ int	ft_error_arg(char *str)
 
 void	sig_ctrl_c(int signal)
 {
+	printf("\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 	(void)signal;
 }
 
 void	sig_ctrl_bs(int signal)
 {
-	printf("coucou \\");
-	ft_putstr("MiniShell ");
+	if (g_data.in_cmd == true)
+		printf("Quit: 3\n");
+	rl_on_new_line();
+	rl_replace_line("", 0);
+	rl_redisplay();
 	(void)signal;
 }
 
@@ -77,17 +84,17 @@ void	do_prompt(t_data *data)
 	{
 		data->fd = 1;
 		build_pwd(data);
-		data->line = readline("MiniShell ");
+		data->in_cmd = false;
+		data->line = readline("\033[4;34mMyBash-2.0$ \033[0m");
 		add_history(data->line);
 		if (data->line == NULL)
 		{
-			ft_putstr("\rMiniShell ");
+			ft_putstr("\r\033[4;34mMyBash-2.0$ \033[0m");
 			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
 		if (ft_strlen(data->line) == 0)
 			do_prompt(data);
-		/**/
 		recover_data(data);
 		free(data->line);
 	}

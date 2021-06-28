@@ -12,15 +12,14 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include <readline/readline.h>
-# include <readline/history.h>
+# include "../../../.brew/opt/readline/include/readline/readline.h"
+# include "../../../.brew/opt/readline/include/readline/history.h"
 # include "struct.h"
 # include <signal.h>
 # include <dirent.h>
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"
-# include "get_next_line.h"
 
 # define SUCCESS 0
 # define FAILURE 1
