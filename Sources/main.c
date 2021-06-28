@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: faherrau <faherrau@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 10:39:56 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 11:01:41 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,9 @@ int		is_builting_cmd(t_data *data)
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
-	data->parsing.argument = ft_split(data->line, ' ');
-	data->parsing.cmd = data->parsing.argument[0];
+	// start_parsing(data);
+	/* temporaire */data->parsing.argument = ft_split(data->line, ' ');
+	/* temporaire */data->parsing.cmd = data->parsing.argument[0];
 	/* parsing fab */
 	int code;
 

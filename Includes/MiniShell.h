@@ -20,7 +20,8 @@
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
 # include "builtins_functions.h"
-# include "get_next_line.h"
+# include "env.h"
+# include "parsing.h"
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -54,10 +55,5 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
-
-int		get_size_env(char **env);
-char	**copy_env(char **env);
-void	copy_env_add_one(t_data *data, char *new_elem);
-void	copy_env_del_one(t_data *data, int index_elem_to_del);
 
 #endif
