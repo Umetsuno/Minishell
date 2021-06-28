@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/24 14:35:04 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/28 10:36:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,13 @@ int	ft_error_arg(char *str)
 
 void	sig_ctrl_c(int signal)
 {
-	ft_putstr("\r\033[3;34mprompt : \033[0m");
 	(void)signal;
 }
 
 void	sig_ctrl_bs(int signal)
 {
 	printf("coucou \\");
-	ft_putstr("\r\033[3;34mprompt : \033[0m");
+	ft_putstr("bash-3.2$ ");
 	(void)signal;
 }
 
@@ -78,15 +77,17 @@ void	do_prompt(t_data *data)
 	{
 		data->fd = 1;
 		build_pwd(data);
-		data->line = readline("\033[3;34mprompt : \033[0m");
+		data->line = readline("bash-3.2$ ");
+		add_history(data->line);
 		if (data->line == NULL)
 		{
-			ft_putstr("\r\033[3;34mprompt : \033[0m");
+			ft_putstr("\rbash-3.2$ ");
 			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
 		if (ft_strlen(data->line) == 0)
 			do_prompt(data);
+		/**/
 		recover_data(data);
 		free(data->line);
 	}
@@ -98,8 +99,6 @@ int	main(int ac, char **av, char **env)
 	g_data.env = copy_env(env);
 	signal(SIGINT, sig_ctrl_c);
 	signal(SIGQUIT, sig_ctrl_bs);
-	if (g_data.line)
-		free(g_data.line);
 	if (ac != 1)
 		return (ft_error_arg("Argument Error: wrong number of arguments.\n"));
 	do_prompt(&g_data);
