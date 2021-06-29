@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   start_parsing.c                                    :+:      :+:    :+:   */
+/*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <faherrau@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:00:31 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 13:52:21 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/06/29 08:54:04 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "MiniShell.h"
+#include "../../Includes/MiniShell.h"
 
 t_data	*parser(t_data *data)
 {

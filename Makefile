@@ -65,7 +65,7 @@ compil:
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
-	@gcc -lreadline -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
@@ -81,7 +81,7 @@ fclean:
 	@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-	@gcc -lreadline -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
 	@./$(NAME)
 
 norm:
