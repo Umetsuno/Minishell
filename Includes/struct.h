@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 15:12:16 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/29 17:42:50 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ struct s_data
 	int			index;
 	int			fd;
 	bool		in_cmd;
+	bool		nonewline;
 };
 
 

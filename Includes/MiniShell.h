@@ -54,5 +54,6 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
+void	init_start_loop(t_data *data);
 
 #endif

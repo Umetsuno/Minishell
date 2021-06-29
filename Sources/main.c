@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/28 15:17:42 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/29 17:45:39 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,7 @@ void	do_prompt(t_data *data)
 {
 	while (1)
 	{
-		data->fd = 1;
-		build_pwd(data);
-		data->in_cmd = false;
+		init_start_loop(data);
 		data->line = readline("\033[4;34mMyBash-2.0$ \033[0m");
 		add_history(data->line);
 		if (data->line == NULL)
