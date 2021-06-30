@@ -12,38 +12,19 @@
 
 #include "../../Includes/MiniShell.h"
 
-void	Create_file(t_data *data, char *name)
+void	Create_file_to_write(t_data *data, char *name, int code)
 {
 	int	fd;
-
-	fd = open(name, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	if (code == 1)
+		fd = open(name, O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	else
+		fd = open(name, O_CREAT | O_WRONLY, 0644);
 	if (data->fd != 1 && data->fd != fd)
 		close(data->fd);
 	data->fd = fd;
 }
 
-void	Create_file_or_write_at_end(t_data *data, char *name, char *arg)
+void	write_in_file(t_data *data, char *output)
 {
-	int	fd;
-
-	fd = open(name, O_CREAT | O_WRONLY, 0644);
-	if (data->fd != 1 && data->fd != fd)
-		close(data->fd);
-	data->fd = fd;
-	write(data->fd, arg, ft_strlen(arg));
-}
-
-void	write_in(t_data *data)
-{
-
-}
-
-int main(void)
-{
-	g_data.fd = 1;
-
-	Create_file(&g_data, "hello");
-	write_in(&g_data);
-
-	return 0;
+	write(data->fd, &output, ft_strlen(output));
 }

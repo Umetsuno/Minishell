@@ -52,6 +52,8 @@ void	recover_data(t_data *data)
 		printf("bash: %s: command not found\n", data->line);
 		errno = 127;
 	}
+	if (data->fd != 1)
+		close(data->fd);
 }
 
 int	ft_error_arg(char *str)
