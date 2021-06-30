@@ -6,22 +6,11 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:22:11 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/28 15:33:06 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/06/30 15:16:53 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
-
-static	int	ft_strlenn(char *str)
-{
-	int i = 0;
-
-	while (str[i])
-	{
-		i++;
-	}
-	return (i);
-}
 
 void	Create_file(t_data *data, char *name)
 {
@@ -41,7 +30,7 @@ void	Create_file_or_write_at_end(t_data *data, char *name, char *arg)
 	if (data->fd != 1 && data->fd != fd)
 		close(data->fd);
 	data->fd = fd;
-	write(data->fd, arg, ft_strlenn(arg));
+	write(data->fd, arg, ft_strlen(arg));
 }
 
 void	write_in(t_data *data)
