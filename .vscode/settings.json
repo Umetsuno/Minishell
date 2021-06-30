@@ -4,6 +4,13 @@
 		"signal.h": "c",
 		"history.h": "c",
 		"readline.h": "c",
-		"tilde.h": "c"
+		"tilde.h": "c",
+		"libft.h": "c",
+		"string.h": "c",
+		"stdbool.h": "c",
+		"parsing.h": "c",
+		"struct.h": "c",
+		"_pthread_types.h": "c",
+		"_pthread_t.h": "c"
 	}
 }
