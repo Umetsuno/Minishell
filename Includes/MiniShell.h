@@ -12,8 +12,8 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include "../readline/readline.h"
-# include "../readline/history.h"
+# include "../../../.brew/opt/readline/include/readline/readline.h"
+# include "../../../.brew/opt/readline/include/readline/history.h"
 # include "struct.h"
 # include <signal.h>
 # include <dirent.h>

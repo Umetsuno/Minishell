@@ -63,7 +63,6 @@ all:	compil $(NAME)
 
 compil:
 	@make -C $(LIB_PERSO)
-	@make -C $(LIB_READLINE)
 
 %.o:	%.c $(HEADER)
 	@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
@@ -75,7 +74,6 @@ $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
 
 clean:
 	@make clean -C $(LIB_PERSO)
-	@make clean -C $(LIB_READLINE)
 	@$(RM) $(OBJS)
 
 fclean:	clean
