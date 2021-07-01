@@ -11,6 +11,13 @@
 		"parsing.h": "c",
 		"struct.h": "c",
 		"_pthread_types.h": "c",
-		"_pthread_t.h": "c"
+		"_pthread_t.h": "c",
+		"rltypedefs.h": "c",
+		"keymaps.h": "c",
+		"rlprivate.h": "c",
+		"xmalloc.h": "c",
+		"tcap.h": "c",
+		"rlmbutil.h": "c",
+		"rldefs.h": "c"
 	}
 }

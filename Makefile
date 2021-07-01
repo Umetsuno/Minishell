@@ -23,10 +23,12 @@ HEADER = ./Includes/MiniShell.h
 # Libf_perso
 LIB_PERSO = ./Lib_perso
 
+LIB_READLINE = ./readline
+
 # Lib_perso (.a)
 LIBP = -L./Lib_perso -lftprintf
 
-LIBR = -L ./readline/lib -l readline.8 -l history.8
+LIBR = -lreadline -L /Users/$(USER)/.brew/opt/readline/lib -I/Users/$(USER)/.brew/opt/readline/include
 
 # chemin Sources
 SA = Sources/
@@ -61,20 +63,22 @@ all:	compil $(NAME)
 
 compil:
 	@make -C $(LIB_PERSO)
+	@make -C $(LIB_READLINE)
 
 %.o:	%.c $(HEADER)
 	@printf "\033[2K\r$(PURPLE)$<: $(CYAN)loading..$(RESET)"
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
-	@gcc $(LIBR) -I ./readline/include/readline $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
+	@gcc $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
 	@make clean -C $(LIB_PERSO)
+	@make clean -C $(LIB_READLINE)
 	@$(RM) $(OBJS)
 
-fclean:
+fclean:	clean
 	@make fclean -C $(LIB_PERSO)
 	@$(RM) $(OBJS)
 	@$(RM) $(NAME)
@@ -83,7 +87,7 @@ fclean:
 	@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
+	@gcc $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@./$(NAME)
 
 norm:
