@@ -12,8 +12,6 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include "../../../.brew/opt/readline/include/readline/readline.h"
-# include "../../../.brew/opt/readline/include/readline/history.h"
 # include "struct.h"
 # include <signal.h>
 # include <dirent.h>
@@ -22,6 +20,15 @@
 # include "builtins_functions.h"
 # include "env.h"
 # include "parsing.h"
+
+#if defined (CORRECTION)
+# include "../../.brew/opt/readline/include/readline/readline.h"
+# include "../../.brew/opt/readline/include/readline/history.h"
+#else
+# include "../../../.brew/opt/readline/include/readline/readline.h"
+# include "../../../.brew/opt/readline/include/readline/history.h"
+#endif
+
 
 # define SUCCESS 0
 # define FAILURE 1

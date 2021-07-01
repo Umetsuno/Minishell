@@ -69,6 +69,10 @@ compil:
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
+	@gcc -D CORRECTION $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
+	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
+
+m:	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
 	@gcc $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
@@ -93,4 +97,4 @@ norm:
 
 re : fclean all
 
-.PHONY: all clean fclean re shell
+.PHONY: all clean fclean re shell norm m
