@@ -24,7 +24,9 @@ HEADER = ./Includes/MiniShell.h
 LIB_PERSO = ./Lib_perso
 
 # Lib_perso (.a)
-LIB = -L./Lib_perso -lftprintf
+LIBP = -L./Lib_perso -lftprintf
+
+LIBR = -L ./readline/lib -l readline.8 -l history.8
 
 # chemin Sources
 SA = Sources/
@@ -65,7 +67,7 @@ compil:
 	@gcc $(CFLAGS) -c $< -o $@
 
 $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
-	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@gcc $(LIBR) -I ./readline/include/readline $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
 clean:
@@ -81,7 +83,7 @@ fclean:
 	@printf "$(CYAN)'$(NAME)', all .o & libftprintf.a $(RESET)has been $(RED)deleted. 🗑️\n"
 
 shell:
-	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIB) -o $(NAME)
+	@gcc -lreadline -L readline/lib -Ireadline/include $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@./$(NAME)
 
 norm:
