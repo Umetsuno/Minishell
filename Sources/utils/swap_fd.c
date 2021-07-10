@@ -23,11 +23,12 @@ void	replace_fd(t_data *data)
 
 static void	swap_fd(t_data *data, char *name, int nb_of_chevron)
 {
-	int	output_fd;
+	int		output_fd;
 
+	output_fd = 1;
 	if (nb_of_chevron == 1)
 		output_fd = open(name, O_CREAT | O_TRUNC | O_WRONLY, 0644);
-	else
+	else if (nb_of_chevron == 2)
 		output_fd = open(name, O_CREAT | O_WRONLY, 0644);
 	if (output_fd != data->temp_fd)
 		close(data->temp_fd);
