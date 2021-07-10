@@ -111,3 +111,9 @@ exemple :
 bash-3.2$ echo coucou << 
 bash: syntax error near unexpected token `newline'
 bash-3.2$ new commande....
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+pour les pipe consulter l'example:
+
+https://linuxhint.com/dup2_system_call_c/
