@@ -15,6 +15,7 @@
 void	init_structure(t_data *data, char **av)
 {
 	*av = NULL;
+	data->temp_fd = 1;
 	data->line = NULL;
 	data->path = NULL;
 	data->path_pwd = NULL;
@@ -30,7 +31,7 @@ void	init_structure(t_data *data, char **av)
 
 void	init_start_loop(t_data *data)
 {
-	data->fd = 1;
+	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)
 		printf("\r");

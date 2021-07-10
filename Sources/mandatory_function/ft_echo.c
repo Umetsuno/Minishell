@@ -28,14 +28,14 @@ void	ft_echo(t_data *data)
 	while (data->parsing.argument[index])
 	{
 		if (!strcmp("$?", data->parsing.argument[index]))
-			ft_putnbr_fd(errno, 1);
+			ft_putnbr(errno);
 		else
-			ft_putstr_fd(data->parsing.argument[index], data->fd);
+			ft_putstr(data->parsing.argument[index]);
 		if (data->parsing.argument[index + 1])
-			ft_putstr_fd(" ", data->fd);
+			ft_putstr(" ");
 		index++;
 	}
 	if (flag == 0)
-		ft_putstr_fd("\n", data->fd);
+		ft_putstr("\n");
 	errno = 0;
 }

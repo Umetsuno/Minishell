@@ -36,7 +36,8 @@ struct s_data
 	char		*path_home;
 	char		*path_oldpwd;
 	int			index;
-	int			fd;
+	int			temp_fd;
+	int			save_fd;
 	bool		in_cmd;
 	bool		nonewline;
 };

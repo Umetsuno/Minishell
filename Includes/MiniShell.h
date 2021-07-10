@@ -48,8 +48,9 @@ t_data g_data;
 */
 void	free_minishell(t_data *data);
 
-void	init_structure(t_data *data, char **av);
 void	init_ptr(void (*f[8])(t_data*));
+void	init_structure(t_data *data, char **av);
+void	init_start_loop(t_data *data);
 
 char	*strtrim_space(char *str);
 int		get_path(t_data *data);
@@ -61,6 +62,8 @@ void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
-void	init_start_loop(t_data *data);
+
+void	replace_fd(t_data *data);
+void	scan_fd_to_print(t_data *data);
 
 #endif

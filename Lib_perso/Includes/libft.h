@@ -68,7 +68,9 @@ char	*ft_itoa(int nb);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 
 void	ft_putchar_fd(char c, int fd);
+void	ft_putchar(char c);
 void	ft_putnbr_fd(int n, int fd);
+void	ft_putnbr(int n);
 void	ft_putstr_fd(char const *s, int fd);
 void	ft_putstr(char const *s);
 void	ft_triple_putstr(char *s1, char *s2, char *s3);

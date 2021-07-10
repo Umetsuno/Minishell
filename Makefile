@@ -44,12 +44,13 @@ SRCS =	$(SA)main.c \
 		$(SM)ft_export.c \
 		$(SM)ft_exec.c \
 		$(SM)ft_unset.c \
-		$(SU)trim.c \
+		$(SU)ft_strerror.c \
+		$(SU)function_env.c \
 		$(SU)get_path.c \
+		$(SU)swap_fd.c \
+		$(SU)trim.c \
 		$(SU)free.c \
 		$(SU)init.c \
-		$(SU)function_env.c \
-		$(SU)ft_strerror.c \
 		$(SP)parser.c
 
 # normal Flags

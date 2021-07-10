@@ -37,11 +37,13 @@ void	recover_data(t_data *data)
 	/* parsing fab */
 	// parser(data);
 	/* temporaire */data->parsing.argument = ft_split(data->line, ' ');
-	/* temporaire */data->parsing.cmd = data->parsing.argument[0];
+	/* temporaire */data->parsing.cmd = ft_strdup(data->parsing.argument[0]);
 	/* parsing fab */
 	int code;
 
 	data->in_cmd = true;
+	data->save_fd = dup(1);
+	scan_fd_to_print(data);
 	code = is_builting_cmd(data);
 	if (code != NO_FCT)
 		ft_exec_builting_cmd(data, code);
@@ -52,8 +54,6 @@ void	recover_data(t_data *data)
 		printf("bash: %s: command not found\n", data->line);
 		errno = 127;
 	}
-	if (data->fd != 1)
-		close(data->fd);
 }
 
 int	ft_error_arg(char *str)
