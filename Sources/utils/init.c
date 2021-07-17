@@ -15,6 +15,7 @@
 void	init_structure(t_data *data, char **av)
 {
 	*av = NULL;
+	data->save_fd = dup(1);
 	data->temp_fd = 1;
 	data->line = NULL;
 	data->path = NULL;

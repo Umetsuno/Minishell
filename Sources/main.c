@@ -42,8 +42,12 @@ void	recover_data(t_data *data)
 	int code;
 
 	data->in_cmd = true;
-	data->save_fd = dup(1);
-	scan_fd_to_print(data);
+	if (ft_strchr(data->line, '>') != NULL) 
+		scan_fd(data);
+	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien. 
+	Print le msg d'erreur suivant si le cas au dessus arrive et set code a ERROR_PARS :
+	bash: syntax error near unexpected token `newline'
+	*/
 	code = is_builting_cmd(data);
 	if (code != NO_FCT)
 		ft_exec_builting_cmd(data, code);

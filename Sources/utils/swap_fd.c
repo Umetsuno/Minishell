@@ -14,29 +14,30 @@
 
 void	replace_fd(t_data *data)
 {
-	if (data->temp_fd != 1)
+	if (data->temp_fd != data->save_fd)
 	{
-		dup2(data->save_fd, 1);
 		close(data->temp_fd);
+		dup2(data->save_fd, 1);
 	}
+	data->temp_fd = 1;
 }
 
 static void	swap_fd(t_data *data, char *name, int nb_of_chevron)
 {
 	int		output_fd;
 
-	output_fd = 1;
+	output_fd = data->temp_fd;
 	if (nb_of_chevron == 1)
 		output_fd = open(name, O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	else if (nb_of_chevron == 2)
-		output_fd = open(name, O_CREAT | O_WRONLY, 0644);
+		output_fd = open(name, O_CREAT | O_WRONLY | O_APPEND, 0644);
 	if (output_fd != data->temp_fd)
 		close(data->temp_fd);
-	dup2(output_fd, 1);
 	data->temp_fd = output_fd;
+	dup2(output_fd, 1);
 }
 
-void	scan_fd_to_print(t_data *data)
+void	scan_fd(t_data *data)
 {
 	char	**new_arg;
 	int		i;

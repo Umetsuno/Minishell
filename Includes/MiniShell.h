@@ -21,14 +21,8 @@
 # include "env.h"
 # include "parsing.h"
 
-#if defined (CORRECTION)
-# include "../../.brew/opt/readline/include/readline/readline.h"
-# include "../../.brew/opt/readline/include/readline/history.h"
-#else
 # include "../../../.brew/opt/readline/include/readline/readline.h"
 # include "../../../.brew/opt/readline/include/readline/history.h"
-#endif
-
 
 # define SUCCESS 0
 # define FAILURE 1
@@ -64,6 +58,6 @@ void	sig_ctrl_bs(int signal);
 void	do_prompt(t_data *data);
 
 void	replace_fd(t_data *data);
-void	scan_fd_to_print(t_data *data);
+void	scan_fd(t_data *data);
 
 #endif

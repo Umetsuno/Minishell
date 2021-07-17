@@ -73,10 +73,6 @@ $(NAME):	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
 	@gcc -D CORRECTION $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
 	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
 
-m:	$(OBJS) $(HEADER) $(LIB_PERSO)/libftprintf.a
-	@gcc $(LIBR) $(CFLAGS) $(SRCS) $(LIBP) -o $(NAME)
-	@printf "\033[2K\r$(BLUE)$(NAME)$(RESET)$(BLUEE): $(ICONOK)Compiled [√]$(RESET)\n"
-
 clean:
 	@make clean -C $(LIB_PERSO)
 	@$(RM) $(OBJS)
