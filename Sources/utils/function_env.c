@@ -29,6 +29,8 @@ char	**copy_env(char **env)
 
 	i = 0;
 	new_env = NULL;
+	if (!env)
+		return (new_env);
 	i = get_size_env(env);
 	new_env = malloc(sizeof(char *) * (i + 1));
 	new_env[i] = 0;

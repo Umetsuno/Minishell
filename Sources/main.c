@@ -42,8 +42,9 @@ void	recover_data(t_data *data)
 	int code;
 
 	data->in_cmd = true;
-	if (ft_strchr(data->line, '>') != NULL) 
-		scan_fd(data);
+	if (scan_input(data))
+		return ;
+	scan_fd(data);
 	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien. 
 	Print le msg d'erreur suivant si le cas au dessus arrive :
 	bash: syntax error near unexpected token `newline'
@@ -102,6 +103,8 @@ void	do_prompt(t_data *data)
 			do_prompt(data);
 		recover_data(data);
 		free(data->line);
+		if (data->del_temp == true)
+			remove("temp_file");
 	}
 }
 

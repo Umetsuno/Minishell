@@ -48,6 +48,7 @@ SRCS =	$(SA)main.c \
 		$(SU)function_env.c \
 		$(SU)get_path.c \
 		$(SU)swap_fd.c \
+		$(SU)get_input.c \
 		$(SU)trim.c \
 		$(SU)free.c \
 		$(SU)init.c \

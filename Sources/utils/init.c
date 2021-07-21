@@ -32,6 +32,8 @@ void	init_structure(t_data *data, char **av)
 
 void	init_start_loop(t_data *data)
 {
+	data->error = false;
+	data->del_temp = false;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

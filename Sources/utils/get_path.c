@@ -31,7 +31,7 @@ int	check_path(char *path)
 		return (FAILURE);
 }
 
-char	*do_split_path(t_data *data)
+static char	*do_split_path(t_data *data)
 {
 	int		index;
 	char	*tmp;

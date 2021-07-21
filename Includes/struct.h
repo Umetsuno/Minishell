@@ -38,10 +38,10 @@ struct s_data
 	int			index;
 	int			temp_fd;
 	int			save_fd;
+	bool		error;
 	bool		in_cmd;
 	bool		nonewline;
+	bool		del_temp;
 };
-
-
 
 #endif

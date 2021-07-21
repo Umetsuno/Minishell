@@ -18,6 +18,7 @@
 		"xmalloc.h": "c",
 		"tcap.h": "c",
 		"rlmbutil.h": "c",
-		"rldefs.h": "c"
+		"rldefs.h": "c",
+		"system_error": "c"
 	}
 }

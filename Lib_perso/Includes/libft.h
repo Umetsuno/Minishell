@@ -75,6 +75,7 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putstr(char const *s);
 void	ft_triple_putstr(char *s1, char *s2, char *s3);
 void	ft_putendl_fd(char const *s, int fd);
+int		get_next_line(int fd, char **line);
 
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);

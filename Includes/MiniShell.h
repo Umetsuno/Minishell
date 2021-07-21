@@ -48,6 +48,7 @@ void	init_start_loop(t_data *data);
 
 char	*strtrim_space(char *str);
 int		get_path(t_data *data);
+int		check_path(char *path);
 void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_strerror_export(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
@@ -59,5 +60,7 @@ void	do_prompt(t_data *data);
 
 void	replace_fd(t_data *data);
 void	scan_fd(t_data *data);
+
+int	scan_input(t_data *data);
 
 #endif
