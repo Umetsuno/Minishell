@@ -48,7 +48,7 @@ static char	*do_split_path(t_data *data)
 		if (check_path(tmp) == SUCCESS)
 		{
 			if (data->parsing.cmd)
-				wrfree(data->parsing.cmd);
+				free(data->parsing.cmd);
 			break ;
 		}
 		free(tmp);

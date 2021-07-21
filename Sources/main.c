@@ -47,7 +47,7 @@ void	recover_data(t_data *data)
 	scan_fd(data);
 	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien.
 	Print le msg d'erreur suivant si le cas au dessus arrive :
-	bash: syntax error near unexpected token `newline'
+	bash: syntax error near unexpected token `newline' errno = 258;
 	*/
 	code = is_builting_cmd(data);
 	if (code != NO_FCT)
@@ -59,6 +59,8 @@ void	recover_data(t_data *data)
 		printf("bash: %s: command not found\n", data->line);
 		errno = 127;
 	}
+	free(data->parsing.cmd);
+	free_double_etoile(data->parsing.argument);
 }
 
 int	ft_error_arg(char *str)

@@ -35,6 +35,9 @@ void	free_minishell(t_data *data)
 		free(data->path_oldpwd);
 	if (data->path_home)
 		free(data->path_home);
+	if (data->parsing.cmd)
+		free(data->parsing.cmd);
+	free_double_etoile(data->parsing.argument);
 	printf("exit\n");
 	exit(0);
 }
