@@ -12,7 +12,7 @@
 
 #include "../../Includes/MiniShell.h"
 
-int	get_size_env(char **env)
+int	size_env(char **env)
 {
 	int	i;
 
@@ -31,7 +31,7 @@ char	**copy_env(char **env)
 	new_env = NULL;
 	if (!env)
 		return (new_env);
-	i = get_size_env(env);
+	i = size_env(env);
 	new_env = malloc(sizeof(char *) * (i + 1));
 	new_env[i] = 0;
 	i = 0;
@@ -51,7 +51,7 @@ void	copy_env_add_one(t_data *data, char *new_elem)
 
 	j = 0;
 	env = NULL;
-	i = get_size_env(data->env);
+	i = size_env(data->env);
 	env = malloc(sizeof(char *) * (i + 2));
 	while (j < i)
 	{
@@ -69,16 +69,16 @@ void	copy_env_del_one(t_data *data, int index_elem_to_del)
 {
 	int		i;
 	int		j;
-	int		size_env;
+	int		s_env;
 	char	**env;
 
 	i = 0;
 	j = 0;
-	size_env = get_size_env(data->env);
-	env = malloc(sizeof(char *) * (size_env + 1));
-	env[size_env] = NULL;
-	env[size_env - 1] = NULL;
-	while (i < size_env)
+	s_env = size_env(data->env);
+	env = malloc(sizeof(char *) * (s_env + 1));
+	env[s_env] = NULL;
+	env[s_env - 1] = NULL;
+	while (i < s_env)
 	{
 		if (i != index_elem_to_del)
 		{

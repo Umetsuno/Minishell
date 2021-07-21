@@ -15,7 +15,7 @@
 
 # include "MiniShell.h"
 
-int		get_size_env(char **env);
+int		size_env(char **env);
 char	**copy_env(char **env);
 char	*my_getenv(t_data *data, char *str);
 void	copy_env_add_one(t_data *data, char *new_elem);

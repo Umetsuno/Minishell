@@ -36,8 +36,16 @@ void	get_data_input(t_data *data, char *name, char **new_arg)
 	close(fd);
 }
 
-static void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron)
+void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron)
 {
+	if (data->already)
+	{
+		data->index--;
+		free(new_arg[data->index]);
+	}
+	data->already = true;
+	if (ft_strcmp(new_arg[data->index - 1], data->parsing.cmd))
+		return ;
 	if (nb_of_chevron == 1)
 	{
 		if (check_path(name) == SUCCESS)
@@ -60,8 +68,7 @@ int	scan_input(t_data *data)
 	char	**new_arg;
 	int		i;
 
-	i = get_size_env(data->parsing.argument);
-	new_arg = malloc(sizeof(char *) * (i + 1));
+	new_arg = malloc(sizeof(char *) * (size_env(data->parsing.argument) + 1));
 	i = -1;
 	data->index = 0;
 	while (data->parsing.argument[++i])
@@ -69,7 +76,7 @@ int	scan_input(t_data *data)
 		if (!strcmp("<", data->parsing.argument[i]))
 		{
 			get_input(data, data->parsing.argument[i + 1], new_arg, 1);
-			break;
+			i++;
 		}
 		else if (!strcmp("<<", data->parsing.argument[i]))
 		{

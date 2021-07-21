@@ -61,6 +61,7 @@ void	do_prompt(t_data *data);
 void	replace_fd(t_data *data);
 void	scan_fd(t_data *data);
 
-int	scan_input(t_data *data);
+int		scan_input(t_data *data);
+void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron);
 
 #endif

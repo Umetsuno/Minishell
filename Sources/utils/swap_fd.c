@@ -42,8 +42,7 @@ void	scan_fd(t_data *data)
 	char	**new_arg;
 	int		i;
 
-	i = get_size_env(data->parsing.argument);
-	new_arg = malloc(sizeof(char *) * (i + 1));
+	new_arg = malloc(sizeof(char *) * (size_env(data->parsing.argument) + 1));
 	i = -1;
 	data->index = 0;
 	while (data->parsing.argument[++i])

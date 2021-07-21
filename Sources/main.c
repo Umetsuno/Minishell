@@ -45,7 +45,7 @@ void	recover_data(t_data *data)
 	if (scan_input(data))
 		return ;
 	scan_fd(data);
-	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien. 
+	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien.
 	Print le msg d'erreur suivant si le cas au dessus arrive :
 	bash: syntax error near unexpected token `newline'
 	*/
