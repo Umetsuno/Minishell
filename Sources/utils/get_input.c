@@ -21,6 +21,8 @@ void	get_data_input(t_data *data, char *name, char **new_arg)
 	while (1)
 	{
 		line = readline("> ");
+		if (line == NULL)
+			break ;
 		if (ft_strcmp(name, line) == SUCCESS)
 			break ;
 		else
