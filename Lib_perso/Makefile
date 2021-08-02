@@ -69,6 +69,7 @@ SRCS =	$(L)ft_utils.c \
 		$(L)ft_lstclear.c \
 		$(L)ft_lstiter.c \
 		$(L)get_next_line.c \
+		$(L)get_next_line_utils.c \
 		$(L)ft_lstmap.c
 
 OBJS = $(SRCS:.c=.o)

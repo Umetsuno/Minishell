@@ -44,6 +44,7 @@ struct s_data
 	bool		nonewline;
 	bool		del_temp;
 	bool		already;
+	int			pipe;
 };
 
 #endif

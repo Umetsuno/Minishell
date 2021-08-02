@@ -36,6 +36,7 @@ void	init_start_loop(t_data *data)
 	data->del_temp = false;
 	data->last_input = NULL;
 	data->already = false;
+	data->pipe = 0;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

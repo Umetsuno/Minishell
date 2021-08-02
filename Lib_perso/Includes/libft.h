@@ -27,6 +27,10 @@ struct	s_list
 
 typedef struct s_list	t_list;
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
+
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);
@@ -75,7 +79,12 @@ void	ft_putstr_fd(char const *s, int fd);
 void	ft_putstr(char const *s);
 void	ft_triple_putstr(char *s1, char *s2, char *s3);
 void	ft_putendl_fd(char const *s, int fd);
+
 int		get_next_line(int fd, char **line);
+size_t	fh_strlen(const char *s);
+size_t	fh_strcpy(char *dst, const char *src);
+char	*fh_strjoin(char const *s1, char const *s2);
+int		contains(char *str, char c);
 
 t_list	*ft_lstlast(t_list *lst);
 t_list	*ft_lstnew(void *content);

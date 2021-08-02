@@ -32,6 +32,11 @@ int		is_builting_cmd(t_data *data)
 		return (NO_FCT);
 }
 
+void	split_cmd(t_data *data)
+{
+	(void)data;
+}
+
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
@@ -40,6 +45,8 @@ void	recover_data(t_data *data)
 	/* temporaire */data->parsing.cmd = ft_strdup(data->parsing.argument[0]);
 	/* parsing fab */
 	int code;
+	if (pipe != 0)
+		split_cmd(data);
 
 	data->in_cmd = true;
 	if (scan_input(data))

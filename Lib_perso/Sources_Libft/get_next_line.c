@@ -3,68 +3,102 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/24 10:08:47 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/03/24 15:59:21 by sbaranes         ###   ########lyon.fr   */
+/*   Created: 2021/05/21 17:56:28 by faherrau          #+#    #+#             */
+/*   Updated: 2021/05/21 17:59:18 by faherrau         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/libft.h"
 
-static int	glen(char *ptr)
+char	*get_first_part(char *str)
 {
-	int	i;
+	char	*result;
+	size_t	i;
 
+	if (!str)
+		return (0);
 	i = 0;
-	while (ptr[i])
+	while (str[i] && str[i] != '\n')
 		i++;
-	return (i);
-}
-
-static char	*grea(char *pt, int size)
-{
-	char	*new;
-	int		i;
-
+	result = NULL;
+	result = malloc((i + 1) * sizeof(char));
+	if (result == NULL)
+		return (0);
 	i = 0;
-	new = malloc(size + 1);
-	while (size-- > 1 && pt[i])
+	while (str[i] && str[i] != '\n')
 	{
-		new[i] = pt[i];
+		result[i] = str[i];
 		i++;
 	}
-	new[i++] = 0;
-	new[i] = 0;
-	free(pt);
-	pt = NULL;
-	return (new);
+	result[i] = '\0';
+	return (result);
+}
+
+char	*get_second_part(char *str)
+{
+	char	*result;
+
+	if (!str)
+		return (0);
+	fh_strcpy(str, &str[contains(str, '\n') + 1]);
+	result = NULL;
+	result = malloc((fh_strlen(str) + 1) * sizeof(char));
+	if (result == NULL)
+		return (str);
+	fh_strcpy(result, str);
+	free(str);
+	str = NULL;
+	return (result);
+}
+
+int	normv2_sucks(int read_result, char **backup)
+{
+	if (read_result == 0)
+	{
+		free(*backup);
+		*backup = NULL;
+		return (0);
+	}
+	return (1);
+}
+
+int	normv2_sucks_2(char **backup, int fd, int read_result)
+{
+	char	buffer[BUFFER_SIZE + 1];
+
+	while (contains(*backup, '\n') == -1 && read_result)
+	{
+		read_result = read(fd, &buffer, BUFFER_SIZE);
+		if (read_result == -1)
+			return (-1);
+		buffer[read_result] = '\0';
+		*backup = fh_strjoin(*backup, buffer);
+		if (!*backup)
+			return (-1);
+	}
+	return (read_result);
 }
 
 int	get_next_line(int fd, char **line)
 {
-	char	buf[1];
-	int		l;
-	int		ret;
+	static char	*backup;
+	int			read_result;
 
-	*line = malloc(1);
-	**line = 0;
-	l = 2;
-	while (l > 1)
-	{
-		*line = grea(*line, glen(*line) + 1);
-		ret = read(fd, buf, 1);
-		if (ret)
-		{
-			if (buf[0] == '\n')
-				l = 1;
-			else
-				(*line)[glen(*line)] = buf[0];
-		}
-		else
-		{
-			l = 0;
-		}
-	}
-	return (l);
+	*line = NULL;
+	if ((fd < 0 || !line || BUFFER_SIZE < 1
+			|| read(fd, 0, 0) == -1))
+		return (-1);
+	read_result = 1;
+	read_result = normv2_sucks_2(&backup, fd, read_result);
+	if (read_result == -1)
+		return (-1);
+	*line = get_first_part(backup);
+	if (*line == NULL)
+		return (-1);
+	if (normv2_sucks(read_result, &backup) == 0)
+		return (0);
+	backup = get_second_part(backup);
+	return (1);
 }
