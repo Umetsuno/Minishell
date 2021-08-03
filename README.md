@@ -113,7 +113,11 @@ bash: syntax error near unexpected token `newline'
 bash-3.2$ new commande....
 
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+pour les redirection regarder :
+
+https://linuxhint.com/dup2_system_call_c/
+
 
 pour les pipe consulter l'example:
 
-https://linuxhint.com/dup2_system_call_c/
+https://www.tala-informatique.fr/wiki/index.php/C_pipe#Utilisation_bidirectionnelle
