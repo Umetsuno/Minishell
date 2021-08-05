@@ -45,7 +45,14 @@ void	recover_data(t_data *data)
 	/* temporaire */data->parsing.cmd = ft_strdup(data->parsing.argument[0]);
 	/* parsing fab */
 	int code;
-	if (pipe != 0)
+	t_data	*data2;
+
+	data2 = malloc(sizeof(t_data*));
+	data2 = data;
+
+	data2->parsing.argument = ft_split("echo bien et toi", ' ');
+	data2->parsing.cmd = ft_strdup(data2->parsing.argument[0]);
+	if (data->pipe != 0)
 		split_cmd(data);
 
 	data->in_cmd = true;
@@ -87,7 +94,7 @@ void	sig_ctrl_c(int signal)
 
 void	sig_ctrl_bs(int signal)
 {
-	if (g_data.in_cmd == true)
+	if (g_data[0].in_cmd == true)
 		printf("Quit: 3\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
@@ -95,32 +102,37 @@ void	sig_ctrl_bs(int signal)
 	(void)signal;
 }
 
-void	do_prompt(t_data *data)
+void	do_prompt(t_data **data)
 {
 	while (1)
 	{
-		init_start_loop(data);
-		data->line = readline("\033[4;34mMyBash-2.0$ \033[0m");
-		add_history(data->line);
-		if (data->line == NULL)
+		init_start_loop(data[0]);
+		init_start_loop(data[1]);
+		data[0]->line = readline("\033[4;34mMyBash-2.0$ \033[0m");
+		add_history(data[0]->line);
+		if (data[0]->line == NULL)
 		{
 			ft_putstr("\r\033[4;34mMyBash-2.0$ \033[0m");
-			data->line = ft_strdup("exit");
+			data[0]->line = ft_strdup("exit");
 		}
-		data->line = strtrim_space(data->line);
-		if (ft_strlen(data->line) == 0)
+		data[0]->line = strtrim_space(data[0]->line);
+		if (ft_strlen(data[0]->line) == 0)
 			do_prompt(data);
+		data[0]->index = 1;
 		recover_data(data);
-		free(data->line);
-		if (data->del_temp == true)
+		free(data[0]->line);
+		if (data[0]->del_temp == true)
 			remove("temp_file");
 	}
 }
 
 int	main(int ac, char **av, char **env)
 {
-	init_structure(&g_data, av);
-	g_data.env = copy_env(env);
+	g_data = malloc(sizeof(t_data*) * 2);
+	init_structure(&g_data[0], av);
+	init_structure(&g_data[1], av);
+	g_data[0].env = copy_env(env);
+	g_data[1].env = copy_env(env);
 	signal(SIGINT, sig_ctrl_c);
 	signal(SIGQUIT, sig_ctrl_bs);
 	if (ac != 1)

@@ -36,7 +36,7 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
-t_data g_data;
+t_data *g_data;
 /*
 **	?? Main functions ??
 */
@@ -56,7 +56,7 @@ void	free_double_etoile(char **str);
 void	set_oldpwd(t_data *data);
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
-void	do_prompt(t_data *data);
+void	do_prompt(t_data **data);
 
 void	replace_fd(t_data *data);
 void	scan_fd(t_data *data);
