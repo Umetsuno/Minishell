@@ -36,32 +36,74 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
-t_data *g_data;
+t_data g_data;
 /*
-**	?? Main functions ??
+**	main.c
+*/
+void	do_prompt(t_data *data);
+
+
+/*
+**	--- utils ---
+**	free.c
 */
 void	free_minishell(t_data *data);
+void	free_double_etoile(char **str);
 
+/*
+**	errro.c
+*/
+void	ft_strerror(char *s1, char *s2, char *s3);
+int		ft_strerror_export(char *s1, char *s2, char *s3);
+int		ft_error_arg(char *str);
+
+/*
+**	init.c
+*/
 void	init_ptr(void (*f[8])(t_data*));
 void	init_structure(t_data *data, char **av);
 void	init_start_loop(t_data *data);
 
-char	*strtrim_space(char *str);
-int		get_path(t_data *data);
-int		check_path(char *path);
-void	ft_strerror(char *s1, char *s2, char *s3);
-int		ft_strerror_export(char *s1, char *s2, char *s3);
-int		ft_error_arg(char *str);
-void	free_double_etoile(char **str);
-void	set_oldpwd(t_data *data);
+/*
+**	signal.c
+*/
 void	sig_ctrl_c(int signal);
 void	sig_ctrl_bs(int signal);
-void	do_prompt(t_data **data);
 
+/*
+**	swap_fd.c
+*/
 void	replace_fd(t_data *data);
 void	scan_fd(t_data *data);
 
+/*
+**	get_input.c
+*/
 int		scan_input(t_data *data);
 void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron);
+
+/*
+**	trim.c
+*/
+char	*strtrim_space(char *str);
+
+/*
+**	get_path.c
+*/
+int		get_path(t_data *data);
+int		check_path(char *path);
+
+/*
+**	--- mandatoyu_function ---
+**	utils_mandatory.c
+*/
+int		is_builting_cmd(t_data *data);
+
+/*
+**	ft_pwd.c
+*/
+void	set_oldpwd(t_data *data);
+
+
 
 #endif

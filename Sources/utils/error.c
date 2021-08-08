@@ -54,3 +54,9 @@ int	ft_strerror_export(char *s1, char *s2, char *s3)
 	errno = 1;
 	return (1);
 }
+
+int	ft_error_arg(char *str)
+{
+	write(1, &str, ft_strlen(str));
+	return (1);
+}

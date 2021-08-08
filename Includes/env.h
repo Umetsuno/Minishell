@@ -15,6 +15,10 @@
 
 # include "MiniShell.h"
 
+/*
+**	--- utils ---
+**	function_env.c
+*/
 int		size_env(char **env);
 char	**copy_env(char **env);
 char	*my_getenv(t_data *data, char *str);
