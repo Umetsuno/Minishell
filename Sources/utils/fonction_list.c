@@ -24,6 +24,7 @@ void	cmdclear(t_data *data)
 		free(data->all_cmd);
 		data->all_cmd = p;
 	}
+	free(data->all_cmd);
 }
 
 t_cmd	*new_cmd_parsing(char **argument)
@@ -33,7 +34,7 @@ t_cmd	*new_cmd_parsing(char **argument)
 	element = malloc(sizeof(t_cmd));
 	if (!element)
 		return (NULL);
-	element->argument = argument;
+	element->argument = copy_env(argument);
 	element->cmd = ft_strdup(argument[0]);
 	element->next = NULL;
 	return (element);

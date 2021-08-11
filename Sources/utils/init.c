@@ -32,9 +32,9 @@ void	init_start_loop(t_data *data)
 {
 	data->error = false;
 	data->del_temp = false;
-	data->last_input = NULL;
 	data->already = false;
 	data->p.pipe = false;
+	data->all_cmd = NULL;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

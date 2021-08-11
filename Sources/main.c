@@ -15,13 +15,10 @@
 void	check_arg(t_data *data)
 {
 	if (check_if_have_pipe(data) == true)
-	{
-		puts("start here");
 		split_cmd(data);
-		puts("end here");
-	}
 	else
 		data->all_cmd = new_cmd_parsing(data->parseur.argument);
+	free_double_etoile(data->parseur.argument);
 }
 
 void	recover_data(t_data *data)

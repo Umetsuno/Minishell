@@ -51,7 +51,6 @@ struct s_data
 	char	*path_pwd;
 	char	*path_home;
 	char	*path_oldpwd;
-	char	*last_input;
 	int		index;
 	int		temp_fd;
 	int		save_fd;
