@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 11:30:00 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,15 @@ void	ft_export(t_data *data)
 
 	i = 1;
 	errno = 0;
-	if (!data->parsing->argument[1])
+	if (!data->cmd->argument[1])
 		print_export(data);
-	while (data->parsing->argument[i])
+	while (data->cmd->argument[i])
 	{
-		if (data->parsing->argument[i][0] == '=' ||
-			ft_isnumber(data->parsing->argument[i][0]))
-			ft_strerror_export("export", data->parsing->argument[i], "not a valid identifier\n");
+		if (data->cmd->argument[i][0] == '=' ||
+			ft_isnumber(data->cmd->argument[i][0]))
+			ft_strerror_export("export", data->cmd->argument[i], "not a valid identifier\n");
 		else
-			add_elem_to_env(data, data->parsing->argument[i]);
+			add_elem_to_env(data, data->cmd->argument[i]);
 		i++;
 	}
 }

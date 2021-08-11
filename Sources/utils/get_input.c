@@ -33,7 +33,7 @@ void	get_data_input(t_data *data, char *name, char **new_arg)
 		free(line);
 	}
 	free(line);
-	if (cmd_not_compatible(data->parsing->cmd))
+	if (cmd_not_compatible(data->cmd->cmd))
 		new_arg[data->index++] = ft_strdup("temp_file");
 	close(fd);
 }
@@ -46,13 +46,13 @@ void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron)
 		free(new_arg[data->index]);
 	}
 	data->already = true;
-	if (ft_strcmp(new_arg[data->index - 1], data->parsing->cmd))
+	if (ft_strcmp(new_arg[data->index - 1], data->cmd->cmd))
 		return ;
 	if (nb_of_chevron == 1)
 	{
 		if (check_path(name) == SUCCESS)
 		{
-			if (cmd_not_compatible(data->parsing->cmd))
+			if (cmd_not_compatible(data->cmd->cmd))
 				new_arg[data->index++] = ft_strdup(name);
 		}
 		else
@@ -70,26 +70,26 @@ int	scan_input(t_data *data)
 	char	**new_arg;
 	int		i;
 
-	new_arg = malloc(sizeof(char *) * (size_env(data->parsing->argument) + 1));
+	new_arg = malloc(sizeof(char *) * (size_env(data->cmd->argument) + 1));
 	i = -1;
 	data->index = 0;
-	while (data->parsing->argument[++i])
+	while (data->cmd->argument[++i])
 	{
-		if (!strcmp("<", data->parsing->argument[i]))
+		if (!strcmp("<", data->cmd->argument[i]))
 		{
-			get_input(data, data->parsing->argument[i + 1], new_arg, 1);
+			get_input(data, data->cmd->argument[i + 1], new_arg, 1);
 			i++;
 		}
-		else if (!strcmp("<<", data->parsing->argument[i]))
+		else if (!strcmp("<<", data->cmd->argument[i]))
 		{
-			get_input(data, data->parsing->argument[i + 1], new_arg, 2);
+			get_input(data, data->cmd->argument[i + 1], new_arg, 2);
 			i++;
 		}
 		else
-			new_arg[data->index++] = ft_strdup(data->parsing->argument[i]);
+			new_arg[data->index++] = ft_strdup(data->cmd->argument[i]);
 	}
 	new_arg[data->index] = 0;
-	free_double_etoile(data->parsing->argument);
-	data->parsing->argument = new_arg;
+	free_double_etoile(data->cmd->argument);
+	data->cmd->argument = new_arg;
 	return (data->error);
 }

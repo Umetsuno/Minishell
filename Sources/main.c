@@ -6,31 +6,51 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 13:29:37 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 18:00:44 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/MiniShell.h"
 
-void	split_cmd(t_data *data)
+void	check_arg(t_data *data)
 {
-	(void)data;
+	if (check_if_have_pipe(data) == true)
+		split_cmd(data);
+	else
+		data->all_cmd = new_cmd_parsing(data->parseur.argument);
 }
 
 void	recover_data(t_data *data)
 {
 	/* parsing fab */
 	// parser(data);
-	data->all_cmd = new_cmd_parsing(ft_split(data->line, ' '));
-	// /* temporaire */data->parsing->argument = ft_split(data->line, ' ');
-	// /* temporaire */data->parsing->cmd = ft_strdup(data->parsing->argument[0]);
+	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
 	/* parsing fab */
-	data->parsing = data->all_cmd;
+	check_arg(data);
+	data->cmd = data->all_cmd;
+	int	i = 0;
+	int y = 0;
+	t_cmd	*t;
+
+	t = data->all_cmd;
+	while (t)
+	{
+		printf("cmd numero %d\n",i);
+		y = 0;
+		while (t->argument[y])
+		{
+			printf("arg %d - '%s' | ",y ,t->argument[y]);
+			y++;
+		}
+		printf("\nnext cmd\n\n");
+		t = t->next;
+		i++;
+	}
 	if (data->p.pipe == false)
 		exe_cmd(data);
 	else
 		exe_pipe(data);
-	cmdclear_parsing(data);
+	cmdclear(data);
 }
 
 void	do_prompt(t_data *data)

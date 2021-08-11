@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:09:27 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 11:30:47 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_exec_path(t_data *data)
 	}
 	else
 	{
-		if (execve(data->parsing->cmd, data->parsing->argument, data->env) == -1)
+		if (execve(data->cmd->cmd, data->cmd->argument, data->env) == -1)
 			printf("Error (execve) : %s\n", strerror(errno));
 		errno = 0;
 		exit(EXIT_FAILURE);

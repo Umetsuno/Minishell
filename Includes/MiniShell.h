@@ -60,8 +60,15 @@ int		ft_error_arg(char *str);
 /*
 **	fonction_list.c
 */
-void		cmdclear_parsing(t_data *data);
-t_parsing	*new_cmd_parsing(char **argument);
+void	cmdclear(t_data *data);
+t_cmd	*new_cmd_parsing(char **argument);
+void	lstadd_back_cmd(t_cmd **alst, t_cmd *new);
+
+/*
+**	split_cmd.c
+*/
+void	split_cmd(t_data *data);
+bool	check_if_have_pipe(t_data *data);
 
 /*
 **	init.c

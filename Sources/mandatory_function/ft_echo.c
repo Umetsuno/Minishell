@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:49 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 11:29:48 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,19 @@ void	ft_echo(t_data *data)
 
 	index = 1;
 	flag = 0;
-	while (data->parsing->argument[index] && (strcmp("-n", data->parsing->argument[index]) == 0))
+	while (data->cmd->argument[index] && (strcmp("-n", data->cmd->argument[index]) == 0))
 	{
 		flag++;
 		data->nonewline = true;
 		index++;
 	}
-	while (data->parsing->argument[index])
+	while (data->cmd->argument[index])
 	{
-		if (!strcmp("$?", data->parsing->argument[index]))
+		if (!strcmp("$?", data->cmd->argument[index]))
 			ft_putnbr(errno);
 		else
-			ft_putstr(data->parsing->argument[index]);
-		if (data->parsing->argument[index + 1])
+			ft_putstr(data->cmd->argument[index]);
+		if (data->cmd->argument[index + 1])
 			ft_putstr(" ");
 		index++;
 	}

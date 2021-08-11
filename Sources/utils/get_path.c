@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:37:28 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 11:30:47 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	ft_concate(char *tmp, t_data *data, int index)
 {
 		ft_strcat(tmp, data->path_split[index]);
 		ft_strcat(tmp, "/");
-		ft_strcat(tmp, data->parsing->cmd);
+		ft_strcat(tmp, data->cmd->cmd);
 }
 
 int	check_path(char *path)
@@ -41,14 +41,14 @@ static char	*do_split_path(t_data *data)
 	data->path_split = ft_split(data->path, ':');
 	while (data->path_split[index])
 	{
-		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + strlen(data->parsing->cmd) + 2)));
+		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + strlen(data->cmd->cmd) + 2)));
 		if (tmp == NULL)
 			return (NULL);
 		ft_concate(tmp, data, index);
 		if (check_path(tmp) == SUCCESS)
 		{
-			if (data->parsing->cmd)
-				free(data->parsing->cmd);
+			if (data->cmd->cmd)
+				free(data->cmd->cmd);
 			break ;
 		}
 		free(tmp);
@@ -62,16 +62,16 @@ static char	*do_split_path(t_data *data)
 int	get_path(t_data *data)
 {
 	data->index = -1;
-	if (data->parsing->cmd[0] != '/' && ft_strncmp(data->parsing->cmd, "./", 2) != 0)
+	if (data->cmd->cmd[0] != '/' && ft_strncmp(data->cmd->cmd, "./", 2) != 0)
 	{
 		data->path = my_getenv(data, "PATH=");
 		if (data->path == NULL)
 			return (FAILURE);
-		data->parsing->cmd = do_split_path(data);
-		if (data->parsing->cmd == NULL)
+		data->cmd->cmd = do_split_path(data);
+		if (data->cmd->cmd == NULL)
 			return (FAILURE);
 	}
-	if (data->parsing->cmd)
+	if (data->cmd->cmd)
 		return (SUCCESS);
 	return (FAILURE);
 }
