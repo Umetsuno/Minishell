@@ -21,6 +21,7 @@ static void	add_to_cmd(t_data *data, int start, int end)
 	tmp = malloc(sizeof(char*) * (start + end + 1));
 	while (start < end)
 	{
+		printf("");
 		tmp[start] = ft_strdup(data->parseur.argument[start]);
 		start++;
 	}
@@ -29,7 +30,6 @@ static void	add_to_cmd(t_data *data, int start, int end)
 
 void	split_cmd(t_data *data)
 {
-	int	end;
 	int	start;
 	int	i;
 
@@ -39,9 +39,8 @@ void	split_cmd(t_data *data)
 	{
 		if (!ft_strcmp("|" , data->parseur.argument[i]) || !data->parseur.argument[i + 1])
 		{
-			end = i;
-			add_to_cmd(data, start, end);
-			i++;
+			printf("start = %d | end = %d", start , i);
+			add_to_cmd(data, start, i);
 			start = i;
 		}
 		i++;

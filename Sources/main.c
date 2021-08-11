@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 18:00:44 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 18:19:39 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 void	check_arg(t_data *data)
 {
 	if (check_if_have_pipe(data) == true)
+	{
+		puts("start here");
 		split_cmd(data);
+		puts("end here");
+	}
 	else
 		data->all_cmd = new_cmd_parsing(data->parseur.argument);
 }
@@ -28,24 +32,6 @@ void	recover_data(t_data *data)
 	/* parsing fab */
 	check_arg(data);
 	data->cmd = data->all_cmd;
-	int	i = 0;
-	int y = 0;
-	t_cmd	*t;
-
-	t = data->all_cmd;
-	while (t)
-	{
-		printf("cmd numero %d\n",i);
-		y = 0;
-		while (t->argument[y])
-		{
-			printf("arg %d - '%s' | ",y ,t->argument[y]);
-			y++;
-		}
-		printf("\nnext cmd\n\n");
-		t = t->next;
-		i++;
-	}
 	if (data->p.pipe == false)
 		exe_cmd(data);
 	else
