@@ -46,6 +46,7 @@ SRCS =	$(SA)main.c \
 		$(SM)utils_mandatory.c \
 		$(SM)ft_unset.c \
 		$(SU)error.c \
+		$(SU)fonction_list.c \
 		$(SU)function_env.c \
 		$(SU)get_path.c \
 		$(SU)swap_fd.c \

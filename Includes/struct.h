@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/29 17:42:50 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 11:37:25 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,26 @@
 
 # include "MiniShell.h"
 
-typedef struct s_data	t_data;
+typedef struct s_data		t_data;
+typedef struct s_parsing	t_parsing;
 
-typedef struct s_parsing
+struct s_parsing
 {
-	char	*line;
-	char	*cmd;
-	char	**argument;
-}t_parsing;
+	char		*cmd;
+	char		**argument;
+	t_parsing	*next;
+};
+
+typedef struct s_pipe
+{
+	bool		pipe;
+	int			*pipefd;
+}t_pipe;
 
 struct s_data
 {
-	t_parsing	parsing;
+	t_parsing	*parsing;
+	t_pipe		p;
 	void		(*f[8])(t_data*);
 	char		*line;
 	char		*path;
@@ -44,7 +52,6 @@ struct s_data
 	bool		nonewline;
 	bool		del_temp;
 	bool		already;
-	int			pipe;
 };
 
 #endif

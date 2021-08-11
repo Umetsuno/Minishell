@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/29 17:45:42 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 12:53:17 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,10 @@ void	init_structure(t_data *data, char **av)
 	data->path = NULL;
 	data->path_pwd = NULL;
 	data->path_split = NULL;
-	data->parsing.cmd = NULL;
-	data->parsing.line = NULL;
 	data->path_oldpwd = NULL;
-	data->parsing.argument = NULL;
 	data->in_cmd = false;
 	data->nonewline = false;
+	data->p.pipe = false;
 	init_ptr(data->f);
 }
 
@@ -36,7 +34,7 @@ void	init_start_loop(t_data *data)
 	data->del_temp = false;
 	data->last_input = NULL;
 	data->already = false;
-	data->pipe = 0;
+	data->p.pipe = false;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

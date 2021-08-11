@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:18 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/15 18:13:32 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 11:30:20 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ void	ft_cd(t_data *data)
 	char	*home;
 
 	home = NULL;
-	if (!data->parsing.argument[1] || !ft_strcmp(data->parsing.argument[1], "~"))
+	if (!data->parsing->argument[1] || !ft_strcmp(data->parsing->argument[1], "~"))
 	{
 		home = my_getenv(data, "HOME=");
-		if (!home && !data->parsing.argument[1])
+		if (!home && !data->parsing->argument[1])
 			return (ft_strerror("cd", NULL, "HOME not set\n"));
 		else
 		{
@@ -44,14 +44,14 @@ void	ft_cd(t_data *data)
 			build_pwd(data);
 		}
 	}
-	else if (data->parsing.argument[1])
+	else if (data->parsing->argument[1])
 	{
-		if (check_cd_args(data, data->parsing.argument[1]) == SUCCESS)
+		if (check_cd_args(data, data->parsing->argument[1]) == SUCCESS)
 			return ;
 		else
 		{
 			errno = 1;
-			ft_strerror("cd", data->parsing.argument[1], "No such file or directory\n");
+			ft_strerror("cd", data->parsing->argument[1], "No such file or directory\n");
 		}
 	}
 	errno = 0;

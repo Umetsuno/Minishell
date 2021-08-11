@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/06/29 17:45:39 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 12:53:45 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,14 @@ void	recover_data(t_data *data)
 {
 	/* parsing fab */
 	// parser(data);
-	/* temporaire */data->parsing.argument = ft_split(data->line, ' ');
-	/* temporaire */data->parsing.cmd = ft_strdup(data->parsing.argument[0]);
+	data->parsing = new_cmd_parsing(ft_split(data->line, ' '));
+	// /* temporaire */data->parsing->argument = ft_split(data->line, ' ');
+	// /* temporaire */data->parsing->cmd = ft_strdup(data->parsing->argument[0]);
 	/* parsing fab */
-	int code;
-
-	if (data->pipe != 0)
-		split_cmd(data);
-	data->in_cmd = true;
-	if (scan_input(data))
-		return ;
-	scan_fd(data);
-	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien.
-	Print le msg d'erreur suivant si le cas au dessus arrive :
-	bash: syntax error near unexpected token `newline' errno = 258;
-	*/
-	code = is_builting_cmd(data);
-	if (code != NO_FCT)
-		ft_exec_builting_cmd(data, code);
-	else if (get_path(data) == SUCCESS)
-		ft_exec_path(data);
+	if (data->p.pipe == false)
+		exe_cmd(data);
 	else
-	{
-		printf("bash: %s: command not found\n", data->line);
-		errno = 127;
-	}
-	free(data->parsing.cmd);
-	free_double_etoile(data->parsing.argument);
+		exe_pipe(data);
 }
 
 

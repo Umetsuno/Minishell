@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_file.c                                      :+:      :+:    :+:   */
+/*   swap_fd.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:22:11 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/30 15:16:53 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 11:30:18 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,25 +42,25 @@ void	scan_fd(t_data *data)
 	char	**new_arg;
 	int		i;
 
-	new_arg = malloc(sizeof(char *) * (size_env(data->parsing.argument) + 1));
+	new_arg = malloc(sizeof(char *) * (size_env(data->parsing->argument) + 1));
 	i = -1;
 	data->index = 0;
-	while (data->parsing.argument[++i])
+	while (data->parsing->argument[++i])
 	{
-		if (!strcmp(">", data->parsing.argument[i]))
+		if (!strcmp(">", data->parsing->argument[i]))
 		{
-			swap_fd(data, data->parsing.argument[i + 1], 1);
+			swap_fd(data, data->parsing->argument[i + 1], 1);
 			i++;
 		}
-		else if (!strcmp(">>", data->parsing.argument[i]))
+		else if (!strcmp(">>", data->parsing->argument[i]))
 		{
-			swap_fd(data, data->parsing.argument[i + 1], 2);
+			swap_fd(data, data->parsing->argument[i + 1], 2);
 			i++;
 		}
 		else
-			new_arg[data->index++] = ft_strdup(data->parsing.argument[i]);
+			new_arg[data->index++] = ft_strdup(data->parsing->argument[i]);
 	}
 	new_arg[data->index] = 0;
-	free_double_etoile(data->parsing.argument);
-	data->parsing.argument = new_arg;
+	free_double_etoile(data->parsing->argument);
+	data->parsing->argument = new_arg;
 }

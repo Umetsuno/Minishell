@@ -58,6 +58,12 @@ int		ft_strerror_export(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
 
 /*
+**	fonction_list.c
+*/
+void		cmdclear_parsing(t_data *data);
+t_parsing	*new_cmd_parsing(char **argument);
+
+/*
 **	init.c
 */
 void	init_ptr(void (*f[8])(t_data*));
@@ -98,12 +104,12 @@ int		check_path(char *path);
 **	utils_mandatory.c
 */
 int		is_builting_cmd(t_data *data);
-
+void	exe_cmd(t_data *data);
+void	exe_pipe(t_data *data);
 /*
 **	ft_pwd.c
 */
 void	set_oldpwd(t_data *data);
-
 
 
 #endif
