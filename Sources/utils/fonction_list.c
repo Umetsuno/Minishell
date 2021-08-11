@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/11 11:41:10 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 12:48:46 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 13:24:01 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ void	cmdclear_parsing(t_data *data)
 {
 	t_parsing	*p;
 
-	while (data->parsing)
+	while (data->all_cmd)
 	{
-		p = data->parsing->next;
-		free(data->parsing->cmd);
-		free_double_etoile(data->parsing->argument);
-		free(data->parsing);
-		data->parsing = p;
+		p = data->all_cmd->next;
+		free(data->all_cmd->cmd);
+		free_double_etoile(data->all_cmd->argument);
+		free(data->all_cmd);
+		data->all_cmd = p;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 11:37:25 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 13:20:36 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_pipe
 struct s_data
 {
 	t_parsing	*parsing;
+	t_parsing	*all_cmd;
 	t_pipe		p;
 	void		(*f[8])(t_data*);
 	char		*line;

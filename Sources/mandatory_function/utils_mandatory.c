@@ -22,8 +22,6 @@ void	exe_cmd(t_data *data)
 		printf("bash: %s: command not found\n", data->line);
 		errno = 127;
 	}
-	free(data->parsing->cmd);
-	free_double_etoile(data->parsing->argument);
 }
 
 void	exe_pipe(t_data *data)

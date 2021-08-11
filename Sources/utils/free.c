@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:58:30 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 11:30:47 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 13:30:23 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_double_etoile(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -35,9 +35,7 @@ void	free_minishell(t_data *data)
 		free(data->path_oldpwd);
 	if (data->path_home)
 		free(data->path_home);
-	if (data->parsing->cmd)
-		free(data->parsing->cmd);
-	free_double_etoile(data->parsing->argument);
+	cmdclear_parsing(data);
 	printf("exit\n");
 	exit(0);
 }

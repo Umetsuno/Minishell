@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 12:53:45 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/11 13:29:37 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,17 @@ void	recover_data(t_data *data)
 {
 	/* parsing fab */
 	// parser(data);
-	data->parsing = new_cmd_parsing(ft_split(data->line, ' '));
+	data->all_cmd = new_cmd_parsing(ft_split(data->line, ' '));
 	// /* temporaire */data->parsing->argument = ft_split(data->line, ' ');
 	// /* temporaire */data->parsing->cmd = ft_strdup(data->parsing->argument[0]);
 	/* parsing fab */
+	data->parsing = data->all_cmd;
 	if (data->p.pipe == false)
 		exe_cmd(data);
 	else
 		exe_pipe(data);
+	cmdclear_parsing(data);
 }
-
 
 void	do_prompt(t_data *data)
 {
