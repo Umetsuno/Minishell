@@ -9,7 +9,7 @@ bool	check_if_have_pipe(t_data *data)
 	{
 		if (!ft_strcmp("|" , data->parseur.argument[i]))
 		{
-			data->p.pipe = true;
+			data->check_pipe = true;
 			return (true);
 		}
 		i++;
@@ -53,4 +53,5 @@ void	split_cmd(t_data *data)
 		i++;
 	}
 	add_to_cmd(data, start, i);
+	set_up_prev(data);
 }

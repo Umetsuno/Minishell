@@ -1,6 +1,6 @@
 #include "../../Includes/MiniShell.h"
 
-void	exe_cmd(t_data *data)
+void	test(t_data *data)
 {
 	int code;
 
@@ -24,9 +24,58 @@ void	exe_cmd(t_data *data)
 	}
 }
 
+void	exe_cmd(t_data *data)
+{
+	pid_t	pid;
+	int		status;
+
+	status = 0;
+	pid = 0;
+	pid = fork();
+
+	if (pid == -1)
+		printf("Error (fork) : %s\n", strerror(errno));
+	else if (pid > 0)
+	{
+		waitpid(pid, &status, 0);
+		kill(pid, SIGTERM);
+	}
+	else
+	{
+		test(data);
+		errno = 0;
+		exit(EXIT_FAILURE);
+	}
+
+}
+
 void	exe_pipe(t_data *data)
 {
-	(void)data;
+	int	status;
+
+	while (data->cmd)
+	{
+		status = 0;
+		// if (!init_pipe(data))
+		// 	return ;
+		data->cmd->pid = fork();
+		if (data->cmd->pid == -1)
+			return (ft_strerror(data->cmd->cmd, NULL, strerror(errno)));
+		else if (data->cmd->pid > 0)
+		{
+			waitpid(data->cmd->pid, &status, 0);
+			kill(data->cmd->pid, SIGTERM);
+			if (data->cmd->prev != NULL)
+				close(data->cmd->prev->pipefd[0]);
+			if (data->cmd->pipefd[1] != 0)
+				close(data->cmd->pipefd[1]);
+			data->cmd = data->cmd->next;
+		}
+		else
+		{
+			child(data);
+		}
+	}
 }
 
 int		is_builting_cmd(t_data *data)

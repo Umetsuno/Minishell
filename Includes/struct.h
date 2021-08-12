@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 14:41:51 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/12 15:43:14 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,11 @@ struct s_cmd
 {
 	char	*cmd;
 	char	**argument;
+	int		pipefd[2];
+	pid_t	pid;
 	t_cmd	*next;
+	t_cmd	*prev;
 };
-
-typedef struct s_pipe
-{
-	bool	pipe;
-	int		*pipefd;
-}t_pipe;
 
 typedef struct s_pars
 {
@@ -42,7 +39,6 @@ struct s_data
 	t_pars	parseur;
 	t_cmd	*cmd;
 	t_cmd	*all_cmd;
-	t_pipe	p;
 	void	(*f[8])(t_data*);
 	char	*line;
 	char	*path;
@@ -59,6 +55,7 @@ struct s_data
 	bool	nonewline;
 	bool	del_temp;
 	bool	already;
+	bool	check_pipe;
 };
 
 #endif

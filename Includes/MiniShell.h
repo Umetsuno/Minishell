@@ -36,6 +36,7 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
+void	test(t_data *data);
 t_data g_data;
 /*
 **	main.c
@@ -49,7 +50,7 @@ void	do_prompt(t_data *data);
 */
 void	free_minishell(t_data *data);
 void	free_double_etoile(char **str);
-
+void	kill_lst(t_cmd *cmd);
 /*
 **	errro.c
 */
@@ -63,6 +64,8 @@ int		ft_error_arg(char *str);
 void	cmdclear(t_data *data);
 t_cmd	*new_cmd_parsing(char **argument);
 void	lstadd_back_cmd(t_cmd **alst, t_cmd *new);
+void	set_up_prev(t_data *data);
+t_cmd	*lstget_last(t_data *data);
 
 /*
 **	split_cmd.c
@@ -113,10 +116,16 @@ int		check_path(char *path);
 int		is_builting_cmd(t_data *data);
 void	exe_cmd(t_data *data);
 void	exe_pipe(t_data *data);
+
 /*
 **	ft_pwd.c
 */
 void	set_oldpwd(t_data *data);
 
+/*
+**	pipe.c
+*/
+int		init_pipe(t_data *data);
+void	child(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 16:12:43 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 18:19:39 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/12 18:19:03 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	recover_data(t_data *data)
 	/* parsing fab */
 	check_arg(data);
 	data->cmd = data->all_cmd;
-	if (data->p.pipe == false)
+	if (data->check_pipe == false)
 		exe_cmd(data);
 	else
 		exe_pipe(data);

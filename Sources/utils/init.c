@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 12:53:17 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/12 13:49:23 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	init_structure(t_data *data, char **av)
 	data->path_oldpwd = NULL;
 	data->in_cmd = false;
 	data->nonewline = false;
-	data->p.pipe = false;
+	data->check_pipe = false;
 	init_ptr(data->f);
 }
 
@@ -33,7 +33,7 @@ void	init_start_loop(t_data *data)
 	data->error = false;
 	data->del_temp = false;
 	data->already = false;
-	data->p.pipe = false;
+	data->check_pipe = false;
 	data->all_cmd = NULL;
 	replace_fd(data);
 	build_pwd(data);

@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 17:58:30 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 14:37:58 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/12 16:36:58 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,14 @@ void	free_minishell(t_data *data)
 	cmdclear(data);
 	printf("exit\n");
 	exit(0);
+}
+
+void	kill_lst(t_cmd *cmd)
+{
+	ft_strerror("wait", NULL, strerror(errno));
+	while (cmd)
+	{
+		kill(cmd->pid, SIGKILL);
+		cmd = cmd->next;
+	}
 }

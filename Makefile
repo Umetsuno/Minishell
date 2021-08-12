@@ -43,6 +43,7 @@ SRCS =	$(SA)main.c \
 		$(SM)ft_env.c \
 		$(SM)ft_export.c \
 		$(SM)ft_exec.c \
+		$(SM)pipe.c \
 		$(SM)utils_mandatory.c \
 		$(SM)ft_unset.c \
 		$(SU)error.c \
