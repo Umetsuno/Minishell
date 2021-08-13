@@ -38,7 +38,7 @@ struct s_data
 {
 	t_pars	parseur;
 	t_cmd	*cmd;
-	t_cmd	*all_cmd;
+	t_cmd	*cmd_unique;
 	void	(*f[8])(t_data*);
 	char	*line;
 	char	*path;

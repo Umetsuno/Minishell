@@ -16,15 +16,15 @@ void	cmdclear(t_data *data)
 {
 	t_cmd	*p;
 
-	while (data->all_cmd)
+	while (data->cmd_unique)
 	{
-		p = data->all_cmd->next;
-		free(data->all_cmd->cmd);
-		free_double_etoile(data->all_cmd->argument);
-		free(data->all_cmd);
-		data->all_cmd = p;
+		p = data->cmd_unique->next;
+		free(data->cmd_unique->cmd);
+		free_double_etoile(data->cmd_unique->argument);
+		free(data->cmd_unique);
+		data->cmd_unique = p;
 	}
-	free(data->all_cmd);
+	free(data->cmd_unique);
 }
 
 t_cmd	*new_cmd_parsing(char **argument)
@@ -65,7 +65,7 @@ void	set_up_prev(t_data *data)
 	int		i;
 
 	i = 0;
-	elem = data->all_cmd;
+	elem = data->cmd_unique;
 	while (elem)
 	{
 		if (i != 0)
@@ -80,7 +80,7 @@ t_cmd	*lstget_last(t_data *data)
 {
 	t_cmd *cursor;
 
-	cursor = data->all_cmd;
+	cursor = data->cmd_unique;
 	while (cursor->next)
 	{
 		cursor = cursor->next;
