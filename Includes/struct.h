@@ -22,19 +22,20 @@ struct s_cmd
 {
 	char	*cmd;
 	char	**argument;
+	pid_t	pid;
 	t_cmd	*next;
+	t_cmd	*prev;
 };
 
 typedef struct s_pipe
 {
-	bool	pipe;
+	
 	int		*pipefd;
 }t_pipe;
 
 typedef struct s_pars
 {
 	char	**argument;
-	int		nb_pipe;
 }t_pars;
 
 struct s_data
@@ -59,6 +60,7 @@ struct s_data
 	bool	nonewline;
 	bool	del_temp;
 	bool	already;
+	bool	pipe;
 };
 
 #endif

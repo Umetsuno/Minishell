@@ -12,7 +12,7 @@
 
 #include "../Includes/MiniShell.h"
 
-void	check_arg(t_data *data)
+void	check_pipe(t_data *data)
 {
 	if (check_if_have_pipe(data) == true)
 		split_cmd(data);
@@ -27,9 +27,9 @@ void	recover_data(t_data *data)
 	// parser(data);
 	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
 	/* parsing fab */
-	check_arg(data);
+	check_pipe(data);
 	data->cmd = data->all_cmd;
-	if (data->p.pipe == false)
+	if (data->pipe != true)
 		exe_cmd(data);
 	else
 		exe_pipe(data);

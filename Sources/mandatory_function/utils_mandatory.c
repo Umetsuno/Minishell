@@ -2,7 +2,7 @@
 
 void	exe_cmd(t_data *data)
 {
-	int code;
+	int	code;
 
 	data->in_cmd = true;
 	if (scan_input(data))
@@ -26,7 +26,24 @@ void	exe_cmd(t_data *data)
 
 void	exe_pipe(t_data *data)
 {
-	(void)data;
+	int	status;
+	
+	while (data->cmd)
+	{
+		status = 0;
+		data->cmd->pid = fork();
+		if (data->cmd->pid == -1)
+			printf("Error (fork pipe) : %s\n", strerror(errno));
+		else if (data->cmd->pid > 0)
+		{
+			waitpid(data->cmd->pid, &status, 0);
+			kill(data->cmd->pid, SIGTERM);
+			data->cmd = data->cmd->next;
+		}
+		else
+			exe_cmd(data);
+	}
+	// future kill all;
 }
 
 int		is_builting_cmd(t_data *data)

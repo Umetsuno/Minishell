@@ -24,7 +24,7 @@ void	init_structure(t_data *data, char **av)
 	data->path_oldpwd = NULL;
 	data->in_cmd = false;
 	data->nonewline = false;
-	data->p.pipe = false;
+	data->pipe = false;
 	init_ptr(data->f);
 }
 
@@ -33,7 +33,7 @@ void	init_start_loop(t_data *data)
 	data->error = false;
 	data->del_temp = false;
 	data->already = false;
-	data->p.pipe = false;
+	data->pipe = false;
 	data->all_cmd = NULL;
 	replace_fd(data);
 	build_pwd(data);

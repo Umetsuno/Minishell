@@ -9,7 +9,7 @@ bool	check_if_have_pipe(t_data *data)
 	{
 		if (!ft_strcmp("|" , data->parseur.argument[i]))
 		{
-			data->p.pipe = true;
+			data->pipe = true;
 			return (true);
 		}
 		i++;
