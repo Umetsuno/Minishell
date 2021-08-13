@@ -12,9 +12,8 @@
 
 #include "../../Includes/MiniShell.h"
 
-void	init_structure(t_data *data, char **av)
+void	init_structure(t_data *data)
 {
-	*av = NULL;
 	data->save_fd = dup(1);
 	data->temp_fd = 1;
 	data->line = NULL;
@@ -27,6 +26,7 @@ void	init_structure(t_data *data, char **av)
 	data->check_pipe = false;
 	data->cmd = NULL;
 	data->all_cmd = NULL;
+	data->save_all_cmd = NULL;
 	init_ptr(data->f);
 }
 
@@ -36,6 +36,7 @@ void	init_start_loop(t_data *data)
 	data->del_temp = false;
 	data->already = false;
 	data->check_pipe = false;
+	data->index = 0;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

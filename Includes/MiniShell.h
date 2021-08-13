@@ -83,7 +83,7 @@ bool	check_if_have_pipe(t_data *data);
 **	init.c
 */
 void	init_ptr(void (*f[8])(t_data*));
-void	init_structure(t_data *data, char **av);
+void	init_structure(t_data *data);
 void	init_start_loop(t_data *data);
 
 /*

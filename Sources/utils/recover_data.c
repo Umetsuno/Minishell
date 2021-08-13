@@ -23,10 +23,9 @@ void	recover_data(t_data *data)
 	// parser(data);
 	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
 	/* parsing fab */
-	t_cmd	*save_p;
 
 	cmd_check_cmd(data);
-	save_p = data->all_cmd;
+	data->save_all_cmd = data->all_cmd;
 	while (data->all_cmd)
 	{
 		check_pipe(data);
@@ -38,6 +37,5 @@ void	recover_data(t_data *data)
 		cmdclear(data);
 		data->all_cmd = data->all_cmd->next;
 	}
-	data->all_cmd = save_p;
 	big_cmdclear(data);
 }

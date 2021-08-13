@@ -27,7 +27,6 @@ void	do_prompt(t_data *data)
 		data->line = strtrim_space(data->line);
 		if (ft_strlen(data->line) == 0)
 			do_prompt(data);
-		data->index = 1;
 		recover_data(data);
 		free(data->line);
 		if (data->del_temp == true)
@@ -37,7 +36,8 @@ void	do_prompt(t_data *data)
 
 int	main(int ac, char **av, char **env)
 {
-	init_structure(&g_data, av);
+	(void)av;
+	init_structure(&g_data);
 	g_data.env = copy_env(env);
 	signal(SIGINT, sig_ctrl_c);
 	signal(SIGQUIT, sig_ctrl_bs);

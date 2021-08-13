@@ -40,6 +40,7 @@ struct s_data
 	t_cmd	*cmd;
 	t_cmd	*save_cmd;
 	t_cmd	*all_cmd;
+	t_cmd	*save_all_cmd;
 	void	(*f[8])(t_data*);
 	char	*line;
 	char	*path;

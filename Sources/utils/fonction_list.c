@@ -16,16 +16,17 @@ void	big_cmdclear(t_data *data)
 {
 	t_cmd	*p;
 
-	while (data->all_cmd)
+	while (data->save_all_cmd)
 	{
-		p = data->all_cmd->next;
-		if (data->all_cmd->cmd)
-			free(data->all_cmd->cmd);
-		free_double_etoile(data->all_cmd->argument);
-		free(data->all_cmd);
-		data->all_cmd = p;
+		p = data->save_all_cmd->next;
+		if (data->save_all_cmd->cmd)
+			free(data->save_all_cmd->cmd);
+		free_double_etoile(data->save_all_cmd->argument);
+		free(data->save_all_cmd);
+		data->save_all_cmd = p;
 	}
-	free(data->all_cmd);
+	free(data->save_all_cmd);
+	data->save_all_cmd = NULL;
 	data->all_cmd = NULL;
 }
 

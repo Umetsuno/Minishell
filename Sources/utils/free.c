@@ -36,16 +36,7 @@ void	free_minishell(t_data *data)
 	if (data->path_home)
 		free(data->path_home);
 	cmdclear(data);
+	big_cmdclear(data);
 	printf("exit\n");
-	exit(0);
-}
-
-void	kill_lst(t_cmd *cmd)
-{
-	ft_strerror("wait", NULL, strerror(errno));
-	while (cmd)
-	{
-		kill(cmd->pid, SIGKILL);
-		cmd = cmd->next;
-	}
+	exit(EXIT_SUCCESS);
 }
