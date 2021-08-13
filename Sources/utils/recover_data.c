@@ -36,6 +36,7 @@ void	recover_data(t_data *data)
 			exe_pipe(data);
 		cmdclear(data);
 		data->all_cmd = data->all_cmd->next;
+		init_start_loop(data);
 	}
 	big_cmdclear(data);
 }

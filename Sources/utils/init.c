@@ -27,6 +27,10 @@ void	init_structure(t_data *data)
 	data->cmd = NULL;
 	data->all_cmd = NULL;
 	data->save_all_cmd = NULL;
+	data->error = false;
+	data->del_temp = false;
+	data->already = false;
+	data->index = 0;
 	init_ptr(data->f);
 }
 

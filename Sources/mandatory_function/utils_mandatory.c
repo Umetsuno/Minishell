@@ -19,7 +19,7 @@ void	exe_cmd(t_data *data)
 		ft_exec_path(data);
 	else
 	{
-		printf("bash: %s: command not found\n", data->line);
+		printf("bash: %s: command not found\n", data->cmd->argument[0]);
 		errno = 127;
 	}
 }
