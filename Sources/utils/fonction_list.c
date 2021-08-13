@@ -12,6 +12,21 @@
 
 #include "../../Includes/MiniShell.h"
 
+void	big_cmdclear(t_data *data)
+{
+	t_cmd	*p;
+
+	while (data->all_cmd)
+	{
+		p = data->all_cmd->next;
+		free(data->all_cmd->cmd);
+		free_double_etoile(data->all_cmd->argument);
+		free(data->all_cmd);
+		data->all_cmd = p;
+	}
+	free(data->cmd_unique);
+}
+
 void	cmdclear(t_data *data)
 {
 	t_cmd	*p;

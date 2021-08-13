@@ -47,6 +47,8 @@ SRCS =	$(SA)main.c \
 		$(SM)utils_mandatory.c \
 		$(SM)ft_unset.c \
 		$(SU)error.c \
+		$(SU)recover_data.c \
+		$(SU)split_cmd_pipe.c \
 		$(SU)split_cmd.c \
 		$(SU)fonction_list.c \
 		$(SU)function_env.c \

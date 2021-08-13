@@ -36,13 +36,18 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
-void	test(t_data *data);
 t_data g_data;
+
+// temps
+void	cmd_check_cmd(t_data *data);
+bool	check_if_have_cmd(t_data *data);
+void	cmd_split_cmd(t_data *data);
+
 /*
 **	main.c
 */
 void	do_prompt(t_data *data);
-
+void	recover_data(t_data *data);
 
 /*
 **	--- utils ---
@@ -61,6 +66,7 @@ int		ft_error_arg(char *str);
 /*
 **	fonction_list.c
 */
+void	big_cmdclear(t_data *data);
 void	cmdclear(t_data *data);
 t_cmd	*new_cmd_parsing(char **argument);
 void	lstadd_back_cmd(t_cmd **alst, t_cmd *new);
@@ -68,7 +74,7 @@ void	set_up_prev(t_data *data);
 t_cmd	*lstget_last(t_data *data);
 
 /*
-**	split_cmd.c
+**	split_cmd_pipe.c
 */
 void	split_cmd(t_data *data);
 bool	check_if_have_pipe(t_data *data);

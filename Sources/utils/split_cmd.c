@@ -1,23 +1,20 @@
 #include "../../Includes/MiniShell.h"
 
-bool	check_if_have_pipe(t_data *data)
+bool	check_if_have_cmd(t_data *data)
 {
 	int	i;
 
 	i = 0;
 	while (data->parseur.argument[i])
 	{
-		if (!ft_strcmp("|" , data->parseur.argument[i]))
-		{
-			data->check_pipe = true;
+		if (!ft_strcmp(";" , data->parseur.argument[i]))
 			return (true);
-		}
 		i++;
 	}
 	return (false);
 }
 
-static void	add_to_cmd(t_data *data, int start, int end)
+static void	add_cmd_to_cmd(t_data *data, int start, int end)
 {
 	char	**tmp;
 	int		i;
@@ -31,11 +28,11 @@ static void	add_to_cmd(t_data *data, int start, int end)
 		start++;
 		i++;
 	}
-	lstadd_back_cmd(&data->cmd_unique, new_cmd_parsing(tmp));
+	lstadd_back_cmd(&data->all_cmd, new_cmd_parsing(tmp));
 	free_double_etoile(tmp);
 }
 
-void	split_cmd(t_data *data)
+void	cmd_split_cmd(t_data *data)
 {
 	int	start;
 	int	i;
@@ -46,12 +43,12 @@ void	split_cmd(t_data *data)
 	{
 		if (!ft_strcmp("|" , data->parseur.argument[i]))
 		{
-			add_to_cmd(data, start, i);
+			add_cmd_to_cmd(data, start, i);
 			i++;
 			start = i;
 		}
 		i++;
 	}
-	add_to_cmd(data, start, i);
+	add_cmd_to_cmd(data, start, i);
 	set_up_prev(data);
 }

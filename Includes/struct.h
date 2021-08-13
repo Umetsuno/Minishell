@@ -34,11 +34,18 @@ typedef struct s_pars
 	int		nb_pipe;
 }t_pars;
 
+typedef struct s_char
+{
+	char	*argument;
+	t_char	*next;
+}t_char;
+
 struct s_data
 {
 	t_pars	parseur;
 	t_cmd	*cmd;
 	t_cmd	*cmd_unique;
+	t_char	*all_cmd;
 	void	(*f[8])(t_data*);
 	char	*line;
 	char	*path;

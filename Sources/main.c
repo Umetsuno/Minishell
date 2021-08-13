@@ -12,31 +12,6 @@
 
 #include "../Includes/MiniShell.h"
 
-void	check_pipe(t_data *data)
-{
-	if (check_if_have_pipe(data) == true)
-		split_cmd(data);
-	else
-		data->cmd_unique = new_cmd_parsing(data->parseur.argument);
-	free_double_etoile(data->parseur.argument);
-}
-
-void	recover_data(t_data *data)
-{
-	/* parsing fab */
-	// parser(data);
-	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
-	/* parsing fab */
-
-	check_pipe(data);
-	data->cmd = data->cmd_unique;
-	if (data->check_pipe == false)
-		exe_cmd(data);
-	else
-		exe_pipe(data);
-	cmdclear(data);
-}
-
 void	do_prompt(t_data *data)
 {
 	while (1)
