@@ -41,7 +41,7 @@ void	cmd_split_cmd(t_data *data)
 	start = 0;
 	while (data->parseur.argument[i])
 	{
-		if (!ft_strcmp("|" , data->parseur.argument[i]))
+		if (!ft_strcmp(";" , data->parseur.argument[i]))
 		{
 			add_cmd_to_cmd(data, start, i);
 			i++;
@@ -50,5 +50,4 @@ void	cmd_split_cmd(t_data *data)
 		i++;
 	}
 	add_cmd_to_cmd(data, start, i);
-	set_up_prev(data);
 }

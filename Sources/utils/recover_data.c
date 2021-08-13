@@ -14,7 +14,7 @@ void	check_pipe(t_data *data)
 	if (check_if_have_pipe(data) == true)
 		split_cmd(data);
 	else
-		data->cmd_unique = new_cmd_parsing(data->all_cmd->argument);
+		data->cmd = new_cmd_parsing(data->all_cmd->argument);
 }
 
 void	recover_data(t_data *data)
@@ -23,31 +23,14 @@ void	recover_data(t_data *data)
 	// parser(data);
 	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
 	/* parsing fab */
+	t_cmd	*save_p;
 
 	cmd_check_cmd(data);
-	puts("start test");
-	t_cmd *t;
-	t = data->all_cmd;
-	int y = 0;
-	int i;
-	while (t)
-	{
-		printf("\ncmd %d = :\n\n", y);
-		i = 0;
-		while (t->argument[i])
-		{
-			printf("arg %d = '%s'\n", i, t->argument[i]);
-			i++;
-		}
-		y++;
-		t = t->next;
-	}
-	puts("\nend test");
+	save_p = data->all_cmd;
 	while (data->all_cmd)
 	{
 		check_pipe(data);
-		data->cmd_unique = data->all_cmd;
-		data->cmd = data->cmd_unique;
+		data->save_cmd = data->cmd;
 		if (data->check_pipe == false)
 			exe_cmd(data);
 		else
@@ -55,5 +38,6 @@ void	recover_data(t_data *data)
 		cmdclear(data);
 		data->all_cmd = data->all_cmd->next;
 	}
+	data->all_cmd = save_p;
 	big_cmdclear(data);
 }

@@ -25,6 +25,8 @@ void	init_structure(t_data *data, char **av)
 	data->in_cmd = false;
 	data->nonewline = false;
 	data->check_pipe = false;
+	data->cmd = NULL;
+	data->all_cmd = NULL;
 	init_ptr(data->f);
 }
 
@@ -34,7 +36,6 @@ void	init_start_loop(t_data *data)
 	data->del_temp = false;
 	data->already = false;
 	data->check_pipe = false;
-	data->cmd_unique = NULL;
 	replace_fd(data);
 	build_pwd(data);
 	if (data->in_cmd == true && data->nonewline != true)

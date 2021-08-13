@@ -31,7 +31,7 @@ static void	add_to_cmd(t_data *data, int start, int end)
 		start++;
 		i++;
 	}
-	lstadd_back_cmd(&data->cmd_unique, new_cmd_parsing(tmp));
+	lstadd_back_cmd(&data->cmd, new_cmd_parsing(tmp));
 	free_double_etoile(tmp);
 }
 
