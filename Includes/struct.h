@@ -31,7 +31,6 @@ struct s_cmd
 typedef struct s_pars
 {
 	char	**argument;
-	int		nb_pipe;
 }t_pars;
 
 struct s_data
