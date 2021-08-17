@@ -17,11 +17,11 @@ void	do_prompt(t_data *data)
 	while (1)
 	{
 		init_start_loop(data);
-		data->line = readline("\033[4;34mMyBash-2.0$ \033[0m");
+		data->line = readline("\033[5;34mMyBash-2.0$ \033[0m");
 		add_history(data->line);
 		if (data->line == NULL)
 		{
-			ft_putstr("\r\033[4;34mMyBash-2.0$ \033[0m");
+			ft_putstr("\r\033[5;34mMyBash-2.0$ \033[0m");
 			data->line = ft_strdup("exit");
 		}
 		data->line = strtrim_space(data->line);
@@ -29,8 +29,7 @@ void	do_prompt(t_data *data)
 			do_prompt(data);
 		recover_data(data);
 		free(data->line);
-		if (data->del_temp == true)
-			remove("temp_file");
+		
 	}
 }
 

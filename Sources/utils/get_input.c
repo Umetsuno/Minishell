@@ -17,7 +17,7 @@ void	get_data_input(t_data *data, char *name, char **new_arg)
 
 	line = NULL;
 	data->del_temp = true;
-	fd = open("temp_file", O_CREAT | O_TRUNC | O_WRONLY, 0644);
+	fd = open("tp_file", O_CREAT | O_TRUNC | O_WRONLY, 0644);
 	while (1)
 	{
 		line = readline("> ");
@@ -34,7 +34,7 @@ void	get_data_input(t_data *data, char *name, char **new_arg)
 	}
 	free(line);
 	if (cmd_not_compatible(data->cmd->cmd))
-		new_arg[data->index++] = ft_strdup("temp_file");
+		new_arg[data->index++] = ft_strdup("tp_file");
 	close(fd);
 }
 

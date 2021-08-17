@@ -47,6 +47,8 @@ void	init_start_loop(t_data *data)
 		printf("\r");
 	data->in_cmd = false;
 	data->nonewline = false;
+	if (data->del_temp == true)
+			remove("tp_file");
 }
 
 void	init_ptr(void (*f[8])(t_data*))
