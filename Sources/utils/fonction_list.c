@@ -55,6 +55,7 @@ t_cmd	*new_cmd_parsing(char **argument)
 		return (NULL);
 	element->argument = copy_env(argument);
 	element->cmd = ft_strdup(argument[0]);
+	element->status = 0;
 	element->next = NULL;
 	element->prev = NULL;
 	return (element);

@@ -22,8 +22,9 @@ struct s_cmd
 {
 	char	*cmd;
 	char	**argument;
-	int		pipefd[2];
 	pid_t	pid;
+	int		status;
+	int		pipefd[2];
 	t_cmd	*next;
 	t_cmd	*prev;
 };
