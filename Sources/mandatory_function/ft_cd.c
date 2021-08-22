@@ -24,6 +24,7 @@ static int	check_cd_args(t_data *data, char *arg)
 		set_oldpwd(data);
 		chdir(arg);
 		build_pwd(data);
+		errno = 0;
 		return (SUCCESS);
 	}
 }
@@ -50,9 +51,8 @@ void	ft_cd(t_data *data)
 			return ;
 		else
 		{
-			errno = 1;
 			ft_strerror("cd", data->cmd->argument[1], "No such file or directory\n");
+			errno = 1;
 		}
 	}
-	errno = 0;
 }

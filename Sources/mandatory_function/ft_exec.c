@@ -20,7 +20,6 @@ void	ft_exec_path(t_data *data)
 	status = 0;
 	pid = 0;
 	pid = fork();
-
 	if (pid == -1)
 		printf("Error (fork) : %s\n", strerror(errno));
 	else if (pid > 0)
@@ -31,11 +30,10 @@ void	ft_exec_path(t_data *data)
 	else
 	{
 		if (execve(data->cmd->cmd, data->cmd->argument, data->env) == -1)
-			printf("Error (execve) : %s\n", strerror(errno));
-		errno = 0;
-		exit(EXIT_FAILURE);
+				printf("Error (execve) : %s\n", strerror(errno));
+		else
+			errno = 0;
 	}
-	
 }
 
 void	ft_exec_builting_cmd(t_data *data, int code)

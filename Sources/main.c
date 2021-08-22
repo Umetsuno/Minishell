@@ -29,7 +29,6 @@ void	do_prompt(t_data *data)
 			do_prompt(data);
 		recover_data(data);
 		free(data->line);
-		
 	}
 }
 

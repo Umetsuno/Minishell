@@ -28,7 +28,7 @@ void	ft_echo(t_data *data)
 	while (data->cmd->argument[index])
 	{
 		if (!strcmp("$?", data->cmd->argument[index]))
-			ft_putnbr(errno);
+			ft_putnbr(data->my_errno);
 		else
 			ft_putstr(data->cmd->argument[index]);
 		if (data->cmd->argument[index + 1])

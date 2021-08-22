@@ -58,6 +58,7 @@ struct s_data
 	bool	del_temp;
 	bool	already;
 	bool	check_pipe;
+	int		my_errno;
 };
 
 #endif

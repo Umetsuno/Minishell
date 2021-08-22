@@ -22,6 +22,7 @@ void	exe_cmd(t_data *data)
 		printf("bash: %s: command not found\n", data->cmd->argument[0]);
 		errno = 127;
 	}
+	data->my_errno = errno;
 }
 
 void	exe_pipe(t_data *data)
@@ -34,11 +35,7 @@ void	exe_pipe(t_data *data)
 		if (data->cmd->pid == -1)
 			return (ft_strerror(data->cmd->cmd, NULL, strerror(errno)));
 		else if (data->cmd->pid > 0)
-		{
-			waitpid(data->cmd->pid, &data->cmd->status, 0);
-			kill(data->cmd->pid, SIGTERM);
 			data->cmd = data->cmd->next;
-		}
 		else
 			child(data);
 	}
