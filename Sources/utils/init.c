@@ -37,7 +37,6 @@ void	init_structure(t_data *data)
 void	init_start_loop(t_data *data)
 {
 	data->error = false;
-	data->del_temp = false;
 	data->already = false;
 	data->check_pipe = false;
 	data->index = 0;
@@ -49,6 +48,7 @@ void	init_start_loop(t_data *data)
 	data->nonewline = false;
 	if (data->del_temp == true)
 			remove("tp_file");
+	data->del_temp = false;
 }
 
 void	init_ptr(void (*f[8])(t_data*))
