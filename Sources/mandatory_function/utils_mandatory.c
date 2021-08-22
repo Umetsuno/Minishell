@@ -35,7 +35,9 @@ void	exe_pipe(t_data *data)
 		if (data->cmd->pid == -1)
 			return (ft_strerror(data->cmd->cmd, NULL, strerror(errno)));
 		else if (data->cmd->pid > 0)
+		{
 			data->cmd = data->cmd->next;
+		}
 		else
 			child(data);
 	}

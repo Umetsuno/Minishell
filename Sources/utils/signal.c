@@ -5,7 +5,6 @@ void	sig_ctrl_c(int signal)
 	printf("\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
-	rl_redisplay();
 	(void)signal;
 }
 
@@ -15,6 +14,5 @@ void	sig_ctrl_bs(int signal)
 		printf("Quit: 3\n");
 	rl_on_new_line();
 	rl_replace_line("", 0);
-	rl_redisplay();
 	(void)signal;
 }

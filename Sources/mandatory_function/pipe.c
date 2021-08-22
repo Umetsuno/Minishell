@@ -19,7 +19,6 @@ static void	init_pipe(t_data *data)
 	{
 		dup2(data->cmd->pipefd[1], 1);
 		close(data->cmd->pipefd[0]);
-		close(data->cmd->pipefd[1]);
 	}
 	else if (data->cmd->prev && data->cmd->next)
 	{
@@ -32,6 +31,7 @@ static void	init_pipe(t_data *data)
 	{
 		dup2(data->cmd->prev->pipefd[0], 0);
 		close(data->cmd->pipefd[0]);
+		close(data->cmd->pipefd[1]);
 		replace_fd(data);
 	}
 }
@@ -40,6 +40,5 @@ void	child(t_data *data)
 {
 	init_pipe(data);
 	exe_cmd(data);
-	//execve(data->cmd->cmd, data->cmd->argument, data->env);
 	exit(EXIT_SUCCESS);
 }
