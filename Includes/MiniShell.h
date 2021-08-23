@@ -131,6 +131,7 @@ void	set_oldpwd(t_data *data);
 /*
 **	pipe.c
 */
+void	close_pipe(t_data *data);
 void	close_all_pid(t_data *data);
 void	child(t_data *data);
 

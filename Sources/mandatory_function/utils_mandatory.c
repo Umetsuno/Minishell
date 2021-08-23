@@ -36,18 +36,7 @@ void	exe_pipe(t_data *data)
 			return (ft_strerror(data->cmd->cmd, NULL, strerror(errno)));
 		else if (data->cmd->pid > 0)
 		{
-			if (!data->cmd->prev)
-				close(data->cmd->pipefd[1]);
-			else if (data->cmd->prev && data->cmd->next)
-			{
-				close(data->cmd->prev->pipefd[0]);
-				close(data->cmd->pipefd[1]);
-			}
-			else if (data->cmd->prev && !data->cmd->next)
-			{
-				close(data->cmd->pipefd[0]);
-				close(data->cmd->pipefd[1]);
-			}
+			close_pipe(data);
 			data->cmd = data->cmd->next;
 		}
 		else

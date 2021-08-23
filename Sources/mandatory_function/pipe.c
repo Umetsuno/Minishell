@@ -12,6 +12,22 @@ void	close_all_pid(t_data *data)
 	}
 }
 
+void	close_pipe(t_data *data)
+{
+	if (!data->cmd->prev)
+		close(data->cmd->pipefd[1]);
+	else if (data->cmd->prev && data->cmd->next)
+	{
+		close(data->cmd->prev->pipefd[0]);
+		close(data->cmd->pipefd[1]);
+	}
+	else if (data->cmd->prev && !data->cmd->next)
+	{
+		close(data->cmd->pipefd[0]);
+		close(data->cmd->pipefd[1]);
+	}
+}
+
 static void	init_pipe(t_data *data)
 {
 	if (!data->cmd->prev)
