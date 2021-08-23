@@ -8,7 +8,6 @@ void	close_all_pid(t_data *data)
 	while (cursor)
 	{
 		waitpid(cursor->pid, &cursor->status, 0);
-		kill(cursor->pid, SIGKILL);
 		cursor = cursor->next;
 	}
 }

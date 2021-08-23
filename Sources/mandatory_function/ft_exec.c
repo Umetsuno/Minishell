@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 15:09:27 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/12 19:35:55 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/23 15:15:57 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ void	ft_exec_path(t_data *data)
 	if (pid == -1)
 		printf("Error (fork) : %s\n", strerror(errno));
 	else if (pid > 0)
-	{
 		waitpid(pid, &status, 0);
-		kill(pid, SIGTERM);
-	}
 	else
 	{
 		if (execve(data->cmd->cmd, data->cmd->argument, data->env) == -1)
