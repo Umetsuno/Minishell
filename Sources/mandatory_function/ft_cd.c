@@ -14,7 +14,7 @@
 
 static int	check_cd_args(t_data *data, char *arg)
 {
-	DIR* rep;
+	DIR*	rep;
 
 	rep = opendir(arg);
 	if (rep == NULL)
@@ -25,6 +25,7 @@ static int	check_cd_args(t_data *data, char *arg)
 		chdir(arg);
 		build_pwd(data);
 		errno = 0;
+		closedir(rep);
 		return (SUCCESS);
 	}
 }
@@ -51,7 +52,8 @@ void	ft_cd(t_data *data)
 			return ;
 		else
 		{
-			ft_strerror("cd", data->cmd->argument[1], "No such file or directory\n");
+			ft_strerror("cd", data->cmd->argument[1], \
+				"No such file or directory\n");
 			errno = 1;
 		}
 	}

@@ -19,7 +19,8 @@ void	ft_echo(t_data *data)
 
 	index = 1;
 	flag = 0;
-	while (data->cmd->argument[index] && (strcmp("-n", data->cmd->argument[index]) == 0))
+	while (data->cmd->argument[index] && \
+		(strcmp("-n", data->cmd->argument[index]) == 0))
 	{
 		flag++;
 		data->nonewline = true;

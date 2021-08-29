@@ -53,8 +53,8 @@ t_cmd	*new_cmd_parsing(char **argument)
 	element = malloc(sizeof(t_cmd));
 	if (!element)
 		return (NULL);
-	element->argument = copy_env(argument);
 	element->cmd = ft_strdup(argument[0]);
+	element->argument = copy_env(argument);
 	element->status = 0;
 	element->next = NULL;
 	element->prev = NULL;
@@ -94,16 +94,4 @@ void	set_up_prev(t_data *data)
 		elem = elem->next;
 		i++;
 	}
-}
-
-t_cmd	*lstget_last(t_data *data)
-{
-	t_cmd *cursor;
-
-	cursor = data->cmd;
-	while (cursor->next)
-	{
-		cursor = cursor->next;
-	}
-	return (cursor);
 }

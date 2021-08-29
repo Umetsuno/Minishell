@@ -2,7 +2,7 @@
 
 void	exe_cmd(t_data *data)
 {
-	int code;
+	int	code;
 
 	data->in_cmd = true;
 	if (scan_input(data))
@@ -19,7 +19,7 @@ void	exe_cmd(t_data *data)
 		ft_exec_path(data);
 	else
 	{
-		printf("bash: %s: command not found\n", data->cmd->argument[0]);
+		ft_strerror(data->cmd->argument[0], NULL, "command not found\n");
 		errno = 127;
 	}
 	data->my_errno = errno;

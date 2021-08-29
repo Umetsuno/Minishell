@@ -14,15 +14,15 @@
 
 static void	ft_concate(char *tmp, t_data *data, int index)
 {
-		ft_strcat(tmp, data->path_split[index]);
-		ft_strcat(tmp, "/");
-		ft_strcat(tmp, data->cmd->cmd);
+	ft_strcat(tmp, data->path_split[index]);
+	ft_strcat(tmp, "/");
+	ft_strcat(tmp, data->cmd->cmd);
 }
 
 int	check_path(char *path)
 {
-	struct stat buffer;
-	int check;
+	struct stat	buffer;
+	int			check;
 
 	check = stat(path, &buffer);
 	if(check == 0)
@@ -55,7 +55,8 @@ static char	*do_split_path(t_data *data)
 		tmp = NULL;
 		index++;
 	}
-	free_double_etoile(data->path_split);
+	if (!tmp)
+		free(data->cmd->cmd);
 	return (tmp);
 }
 
@@ -68,6 +69,7 @@ int	get_path(t_data *data)
 		if (data->path == NULL)
 			return (FAILURE);
 		data->cmd->cmd = do_split_path(data);
+		free_double_etoile(data->path_split);
 		if (data->cmd->cmd == NULL)
 			return (FAILURE);
 	}

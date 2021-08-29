@@ -29,7 +29,6 @@ void	ft_strerror(char *s1, char *s2, char *s3)
 	{
 		write(2, s3, ft_strlen(s3));
 	}
-	
 }
 
 int	ft_strerror_export(char *s1, char *s2, char *s3)

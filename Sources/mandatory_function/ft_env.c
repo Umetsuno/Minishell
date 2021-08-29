@@ -30,7 +30,7 @@ char	*my_getenv(t_data *data, char *str)
 
 void	ft_env(t_data *data)
 {
-	int index;
+	int	index;
 
 	index = 0;
 	if (data->env == NULL)

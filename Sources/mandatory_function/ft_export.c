@@ -14,7 +14,7 @@
 
 static bool	check_if_already_exists(t_data *data, char *elem)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (data->env[i])

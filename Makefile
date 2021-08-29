@@ -66,7 +66,7 @@ CC = gcc
 
 OBJS = $(SRCS:.c=.o)
 
-CFLAGS = -Wall -Wextra -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror #-g3 -fsanitize=address
 
 all:	compil $(NAME)
 

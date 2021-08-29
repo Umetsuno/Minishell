@@ -38,11 +38,6 @@
 
 t_data g_data;
 
-// temps
-void	cmd_check_cmd(t_data *data);
-bool	check_if_have_cmd(t_data *data);
-void	cmd_split_cmd(t_data *data);
-
 /*
 **	main.c
 */
@@ -71,13 +66,18 @@ void	cmdclear(t_data *data);
 t_cmd	*new_cmd_parsing(char **argument);
 void	lstadd_back_cmd(t_cmd **alst, t_cmd *new);
 void	set_up_prev(t_data *data);
-t_cmd	*lstget_last(t_data *data);
 
 /*
 **	split_cmd_pipe.c
 */
 void	split_cmd(t_data *data);
 bool	check_if_have_pipe(t_data *data);
+
+// split_cmd
+void	cmd_check_cmd(t_data *data);
+bool	check_if_have_cmd(t_data *data);
+void	cmd_split_cmd(t_data *data);
+
 
 /*
 **	init.c
