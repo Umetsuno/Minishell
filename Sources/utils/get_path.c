@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 12:37:28 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:08:55 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	check_path(char *path)
 	int			check;
 
 	check = stat(path, &buffer);
-	if(check == 0)
+	if (check == 0)
 		return (SUCCESS);
 	else
 		return (FAILURE);
@@ -39,9 +39,10 @@ static char	*do_split_path(t_data *data)
 	index = 0;
 	tmp = NULL;
 	data->path_split = ft_split(data->path, ':');
-	while (data->path_split[index])
+	while (data->path_split[index++])
 	{
-		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + strlen(data->cmd->cmd) + 2)));
+		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + \
+			strlen(data->cmd->cmd) + 2)));
 		if (tmp == NULL)
 			return (NULL);
 		ft_concate(tmp, data, index);
@@ -53,7 +54,6 @@ static char	*do_split_path(t_data *data)
 		}
 		free(tmp);
 		tmp = NULL;
-		index++;
 	}
 	if (!tmp)
 		free(data->cmd->cmd);

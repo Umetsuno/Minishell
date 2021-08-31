@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 16:06:21 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/15 18:44:00 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:10:36 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*my_getenv(t_data *data, char *str)
 	while (data->env[i])
 	{
 		if (!ft_strncmp(data->env[i], str, size_str))
-			return	(&data->env[i][size_str]);
+			return (&data->env[i][size_str]);
 		i++;
 	}
 	return (NULL);

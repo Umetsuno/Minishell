@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/12 13:49:23 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:08:11 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	init_start_loop(t_data *data)
 	data->in_cmd = false;
 	data->nonewline = false;
 	if (data->del_temp == true)
-			remove("tp_file");
+		remove("tp_file");
 	data->del_temp = false;
 }
 

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   MiniShell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 14:13:45 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/08/31 14:17:26 by sbaranes         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef MINISHELL_H
 # define MINISHELL_H
 
@@ -36,7 +48,7 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
-t_data g_data;
+t_data	g_data;
 
 /*
 **	main.c
@@ -77,7 +89,6 @@ bool	check_if_have_pipe(t_data *data);
 void	cmd_check_cmd(t_data *data);
 bool	check_if_have_cmd(t_data *data);
 void	cmd_split_cmd(t_data *data);
-
 
 /*
 **	init.c

@@ -1,4 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_mandatory.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 14:13:19 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/08/31 14:15:27 by sbaranes         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/MiniShell.h"
+
+/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme :
+** > ou >> puis rien.
+** Print le msg d'erreur suivant si le cas au dessus arrive :
+** bash: syntax error near unexpected token `newline' errno = 258;
+*/
 
 void	exe_cmd(t_data *data)
 {
@@ -8,10 +26,6 @@ void	exe_cmd(t_data *data)
 	if (scan_input(data))
 		return ;
 	scan_fd(data);
-	/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme > ou >> puis rien.
-	Print le msg d'erreur suivant si le cas au dessus arrive :
-	bash: syntax error near unexpected token `newline' errno = 258;
-	*/
 	code = is_builting_cmd(data);
 	if (code != NO_FCT)
 		ft_exec_builting_cmd(data, code);
@@ -45,7 +59,7 @@ void	exe_pipe(t_data *data)
 	close_all_pid(data);
 }
 
-int		is_builting_cmd(t_data *data)
+int	is_builting_cmd(t_data *data)
 {
 	if (ft_strcmp("exit", data->cmd->cmd) == SUCCESS)
 		return (FCT_EXIT);

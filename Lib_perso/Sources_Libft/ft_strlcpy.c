@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/23 13:40:38 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/05/31 17:50:11 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:16:25 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 char	*ft_strcpy(char *dest, char *src)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	while (src[x] != '\0')

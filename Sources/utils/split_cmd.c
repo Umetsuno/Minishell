@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_cmd.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 14:06:25 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/08/31 14:06:51 by sbaranes         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/MiniShell.h"
 
 bool	check_if_have_cmd(t_data *data)
@@ -7,7 +19,7 @@ bool	check_if_have_cmd(t_data *data)
 	i = 0;
 	while (data->parseur.argument[i])
 	{
-		if (!ft_strcmp(";" , data->parseur.argument[i]))
+		if (!ft_strcmp(";", data->parseur.argument[i]))
 			return (true);
 		i++;
 	}
@@ -20,7 +32,7 @@ static void	add_cmd_to_cmd(t_data *data, int start, int end)
 	int		i;
 
 	i = 0;
-	tmp = malloc(sizeof(char*) * (end - start + 1));
+	tmp = malloc(sizeof(char *) * (end - start + 1));
 	tmp[(end - start)] = NULL;
 	while (start < end)
 	{
@@ -41,7 +53,7 @@ void	cmd_split_cmd(t_data *data)
 	start = 0;
 	while (data->parseur.argument[i])
 	{
-		if (!ft_strcmp(";" , data->parseur.argument[i]))
+		if (!ft_strcmp(";", data->parseur.argument[i]))
 		{
 			add_cmd_to_cmd(data, start, i);
 			i++;

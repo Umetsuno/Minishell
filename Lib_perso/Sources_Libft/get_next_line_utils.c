@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: faherrau <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/21 17:56:22 by faherrau          #+#    #+#             */
-/*   Updated: 2021/05/21 17:59:23 by faherrau         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:16:18 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	fh_strlen(const char *s)
 {
-	size_t length;
+	size_t	length;
 
 	if (!s)
 		return (0);
@@ -50,7 +50,8 @@ char	*fh_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	concat_size = fh_strlen(s1) + fh_strlen(s2) + 1;
-	if (!(concat = malloc(concat_size * sizeof(char))))
+	concat = malloc(concat_size * sizeof(char));
+	if (!concat)
 	{
 		free((void *)s1);
 		return (NULL);
@@ -61,7 +62,7 @@ char	*fh_strjoin(char const *s1, char const *s2)
 	return (concat);
 }
 
-int		contains(char *str, char c)
+int	contains(char *str, char c)
 {
 	size_t	i;
 

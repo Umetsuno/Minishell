@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:18:00 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:10:05 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ void	ft_export(t_data *data)
 	{
 		if (data->cmd->argument[i][0] == '=' ||
 			ft_isnumber(data->cmd->argument[i][0]))
-			ft_strerror_export("export", data->cmd->argument[i], "not a valid identifier\n");
+			ft_strerror_export("export", data->cmd->argument[i], \
+				"not a valid identifier\n");
 		else
 			add_elem_to_env(data, data->cmd->argument[i]);
 		i++;

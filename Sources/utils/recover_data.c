@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   recover_data.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 14:12:56 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/08/31 14:12:58 by sbaranes         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/MiniShell.h"
 
 void	cmd_check_cmd(t_data *data)
@@ -23,7 +35,6 @@ void	recover_data(t_data *data)
 	// parser(data);
 	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
 	/* parsing fab */
-
 	cmd_check_cmd(data);
 	data->save_all_cmd = data->all_cmd;
 	while (data->all_cmd)

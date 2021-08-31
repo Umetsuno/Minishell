@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   split_cmd_pipe.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/08/31 14:07:02 by sbaranes          #+#    #+#             */
+/*   Updated: 2021/08/31 14:07:09 by sbaranes         ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../Includes/MiniShell.h"
 
 bool	check_if_have_pipe(t_data *data)
@@ -7,7 +19,7 @@ bool	check_if_have_pipe(t_data *data)
 	i = 0;
 	while (data->all_cmd->argument[i])
 	{
-		if (!ft_strcmp("|" , data->all_cmd->argument[i]))
+		if (!ft_strcmp("|", data->all_cmd->argument[i]))
 		{
 			data->check_pipe = true;
 			return (true);
@@ -23,7 +35,7 @@ static void	add_to_cmd(t_data *data, int start, int end)
 	int		i;
 
 	i = 0;
-	tmp = malloc(sizeof(char*) * (end - start + 1));
+	tmp = malloc(sizeof(char *) * (end - start + 1));
 	tmp[(end - start)] = NULL;
 	while (start < end)
 	{
@@ -44,7 +56,7 @@ void	split_cmd(t_data *data)
 	start = 0;
 	while (data->all_cmd->argument[i])
 	{
-		if (!ft_strcmp("|" , data->all_cmd->argument[i]))
+		if (!ft_strcmp("|", data->all_cmd->argument[i]))
 		{
 			add_to_cmd(data, start, i);
 			i++;

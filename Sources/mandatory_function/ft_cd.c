@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/24 18:00:18 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/11 14:35:06 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/08/31 14:12:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	check_cd_args(t_data *data, char *arg)
 {
-	DIR*	rep;
+	DIR	*rep;
 
 	rep = opendir(arg);
 	if (rep == NULL)
