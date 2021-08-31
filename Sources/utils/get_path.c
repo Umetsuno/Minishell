@@ -39,7 +39,7 @@ static char	*do_split_path(t_data *data)
 	index = 0;
 	tmp = NULL;
 	data->path_split = ft_split(data->path, ':');
-	while (data->path_split[index++])
+	while (data->path_split[index])
 	{
 		tmp = ft_calloc(sizeof(char), ((ft_strlen(data->path_split[index]) + \
 			strlen(data->cmd->cmd) + 2)));
@@ -48,12 +48,12 @@ static char	*do_split_path(t_data *data)
 		ft_concate(tmp, data, index);
 		if (check_path(tmp) == SUCCESS)
 		{
-			if (data->cmd->cmd)
-				free(data->cmd->cmd);
+			free(data->cmd->cmd);
 			break ;
 		}
 		free(tmp);
 		tmp = NULL;
+		index++;
 	}
 	if (!tmp)
 		free(data->cmd->cmd);
