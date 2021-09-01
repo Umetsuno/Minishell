@@ -69,7 +69,7 @@ void	get_input(t_data *data, char *name, char **new_arg, int nb_of_chevron)
 		}
 		else
 		{
-			ft_strerror(name, NULL, "No such file or directory");
+			ft_strerror(name, NULL, "No such file or directory\n");
 			data->error = true;
 		}
 	}

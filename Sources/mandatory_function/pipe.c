@@ -46,6 +46,7 @@ static void	init_pipe(t_data *data)
 	{
 		dup2(data->cmd->pipefd[1], 1);
 		close(data->cmd->pipefd[0]);
+		close(data->cmd->pipefd[1]);
 	}
 	else if (data->cmd->prev && data->cmd->next)
 	{
