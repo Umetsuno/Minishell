@@ -3,32 +3,54 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:05:01 by oghma             #+#    #+#             */
-/*   Updated: 2021/09/03 19:12:20 by oghma            ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 19:56:26 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-char	*ft_realloc(char *ptr, size_t new_size)
+char	**ft_realloc_tab(char **tab)
 {
-	size_t	current_size;
-	char	*new_ptr;
+	int		i;
+	int		j;
+	char	**new_tab;
 
-	if (ptr == 0)
-		return (malloc(new_size));
-	current_size = ft_strlen(ptr);
-	if (new_size <= current_size)
-		return (ptr);
-	new_ptr = malloc(new_size);
-	ft_bcopy(ptr, new_ptr, (int)current_size);
-	free(ptr);
-	return(new_ptr);
+	j = 0;
+	new_tab = NULL;
+	i = size_env(tab);
+	new_tab = malloc(sizeof(char *) * (i + 2));
+	while (j < i)
+	{
+		new_tab[j] = ft_strdup(tab[j]);
+		j++;
+	}
+	new_tab[j] = NULL;
+	j++;
+	new_tab[j] = NULL;
+	free_double_etoile(tab);
+	return (new_tab);
 }
 
-/* char	*ft_realloc(char *ptr, size_t new_size)
+// char	*ft_realloc(char *ptr, size_t new_size)
+// {
+// 	size_t	current_size;
+// 	char	*new_ptr;
+
+// 	if (ptr == 0)
+// 		return (malloc(new_size));
+// 	current_size = ft_strlen(ptr);
+// 	if (new_size <= current_size)
+// 		return (ptr);
+// 	new_ptr = malloc(new_size);
+// 	ft_bcopy(ptr, new_ptr, (int)current_size);
+// 	free(ptr);
+// 	return(new_ptr);
+// }
+
+char	*ft_realloc(char *ptr, size_t new_size)
 {
 	size_t	current_size;
 	char	*new_ptr;
@@ -49,4 +71,4 @@ char	*ft_realloc(char *ptr, size_t new_size)
 	new_ptr[current_size] = '\0';
 	free(ptr);
 	return (new_ptr);
-} */
+}

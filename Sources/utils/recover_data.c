@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 14:12:56 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/09/03 17:47:08 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 19:37:17 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	check_pipe(t_data *data)
 
 void	recover_data(t_data *data)
 {
-	if (parsing_split(data, ' ') == -1)
+	if (parsing_split(data) == -1)
     {
             /* GESTION D'ERREURS PERSONNALISEES */
         return ;
