@@ -3,16 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 11:00:31 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/11 14:39:07 by sbaranes         ###   ########lyon.fr   */
+/*   Created: 2021/08/19 13:39:55 by oghma             #+#    #+#             */
+/*   Updated: 2021/09/03 14:09:39 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-// t_data	*parser(t_data *data)
-// {
-// 	return (data);
-// }
+int parsing_split(t_data *data, char *limit)
+{
+	char	*token;
+
+    token = NULL;
+	/* ft_split sur les espaces */
+    data->index = 0;
+	if (ft_token(data, limit, token) != SUCCESS)
+        return (-1);
+	while (token)
+    {
+		data->parseur.argument = (char **)ft_realloc(data->parseur.argument, ((data->index + 1) * sizeof(char *)));
+		data->parseur.argument[data->index] = ft_strdup(token);
+        free(token);
+		if (ft_token(data, limit, token) != SUCCESS)
+            return (-1);
+		data->index++;
+	}
+	/* Allocation d'un element qu'on met a NULL a la fin du tableau */
+	data->parseur.argument = (char **)ft_realloc(data->parseur.argument, ((data->index + 1) * sizeof(char *)));
+	data->parseur.argument[data->index] = NULL;
+    return (SUCCESS);
+}

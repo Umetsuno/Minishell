@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.h                                          :+:      :+:    :+:   */
+/*   quote_sizing.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/06/28 11:02:02 by faherrau          #+#    #+#             */
-/*   Updated: 2021/09/03 14:09:33 by oghma            ###   ########lyon.fr   */
+/*   Created: 2021/09/01 12:16:57 by oghma             #+#    #+#             */
+/*   Updated: 2021/09/03 11:36:23 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PARSING_H
-# define PARSING_H
+#include "minishell.h"
 
-# include "MiniShell.h"
+/* Cette fonction prend une string en argument.
+Elle renvoie un int représentant l'index de la deuxième occurence du premier caractere de la string ou une erreur (-1)*/
+int		quote_sizing(char *str)
+{
+	int		i;
 
-int	ft_token(t_data *data, char c, char *token);
-int parsing_split(t_data *data, char *limit);
-
-#endif
+	i = 1;
+	while (str[i])
+    {
+        if (str[i] == str[0])
+            return (i);
+		i++;
+    }
+	return (-1);
+}

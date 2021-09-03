@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   recover_data.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 14:12:56 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/31 14:12:58 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 14:11:02 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,12 @@ void	check_pipe(t_data *data)
 
 void	recover_data(t_data *data)
 {
-	/* parsing fab */
-	// parser(data);
-	/* temporaire */ data->parseur.argument = ft_split(data->line, ' ');
-	/* parsing fab */
+	if (parsing_split(data->line, ' ') == -1)
+    {
+            /* GESTION D'ERREURS PERSONNALISEES */
+        return ;
+    }
+    data->index = 0;
 	cmd_check_cmd(data);
 	data->save_all_cmd = data->all_cmd;
 	while (data->all_cmd)

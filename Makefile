@@ -59,6 +59,8 @@ SRCS =	$(SA)main.c \
 		$(SU)free.c \
 		$(SU)init.c \
 		$(SU)signal.c \
+		$(SP)ft_token.c \
+		$(SP)quote_sizing.c \
 		$(SP)parser.c
 
 # normal Flags
