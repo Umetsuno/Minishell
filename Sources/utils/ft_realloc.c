@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 18:05:01 by oghma             #+#    #+#             */
-/*   Updated: 2021/09/03 19:56:26 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 20:03:45 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-char	**ft_realloc_tab(char **tab)
+char	**ft_realloc_tab(char **tab, char *n)
 {
 	int		i;
 	int		j;
@@ -27,7 +27,7 @@ char	**ft_realloc_tab(char **tab)
 		new_tab[j] = ft_strdup(tab[j]);
 		j++;
 	}
-	new_tab[j] = NULL;
+	new_tab[j] = ft_strdup(n);
 	j++;
 	new_tab[j] = NULL;
 	free_double_etoile(tab);

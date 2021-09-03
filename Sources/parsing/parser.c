@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 13:39:55 by oghma             #+#    #+#             */
-/*   Updated: 2021/09/03 19:56:15 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 20:04:27 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int parsing_split(t_data *data)
 	while (token)
 	{
 		data->parseur.argument = ft_realloc_tab(data->parseur.argument);
-		data->parseur.argument[data->index] = ft_strdup(token);
-		free(token);
+/* 		data->parseur.argument[data->index] = ft_strdup(token);
+ */		free(token);
 		if (ft_token(data, token) != SUCCESS)
 			return (-1);
 		data->index++;
