@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/28 11:02:02 by faherrau          #+#    #+#             */
-/*   Updated: 2021/09/03 14:09:33 by oghma            ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 17:50:15 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "MiniShell.h"
 
-int	ft_token(t_data *data, char c, char *token);
-int parsing_split(t_data *data, char *limit);
+int	ft_token(t_data *data, char *token);
+int	parsing_split(t_data *data);
+int	quote_sizing(char *str);
 
 #endif

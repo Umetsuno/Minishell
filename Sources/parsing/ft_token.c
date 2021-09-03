@@ -3,56 +3,55 @@
 /*                                                        :::      ::::::::   */
 /*   ft_token.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 10:11:40 by oghma             #+#    #+#             */
-/*   Updated: 2021/09/03 14:14:26 by oghma            ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 17:50:51 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/minishell.h"
+#include "../../Includes/MiniShell.h"
 
-static char	*alt_string(char *token, int start, int end, bool check)
+static char	*alt_string(t_data *data, char *token, int end)
 {
 	int i;
 
 	i = 0;
-	if (check == true)
+	if (data->parseur.check == true)
 	{
-		start++;
+		data->parseur.start++;
 		end--;
 	}
-	token = (char *)malloc(sizeof(char) * ((end - start) + 1));
-	while (start < end)
+	token = (char *)malloc(sizeof(char) * ((end - data->parseur.start) + 1));
+	while (data->parseur.start < end)
 	{
-		token[i] = data->line[start];
+		token[i] = data->line[data->parseur.start];
 		i++;
-		start++;
+		data->parseur.start++;
 	}
 	token[i] = '\0';
 	return (token);
 }
 
-int	ft_token(t_data *data, char c, char *token)
+int	ft_token(t_data *data, char *token)
 {
 	int		i;
-	int		start;
-	bool 	check;
 
 	i = data->index;
-	start = i;
-	check = false;
+	data->parseur.start = i;
+	data->parseur.check = false;
 	while (data->line[i] && data->line[i] != ' ')
 	{
 		if ((data->line[i] == 34) || (data->line[i] == 39))
         {
             i = quote_sizing(&data->line[i]);
-			check = true;
+			data->parseur.check = true;
             if (i == -1)
                 return (i);
         }
 		i++;
 	}
 	data->index = i;
-	token = copie_string(token, start, i, check);
+	token = alt_string(data, token, i);
+	return (SUCCESS);
 }

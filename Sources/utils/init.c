@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/25 18:01:50 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/31 14:08:11 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 17:44:48 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void	init_structure(t_data *data)
 	data->del_temp = false;
 	data->already = false;
 	data->index = 0;
+	data->parseur.start = 0;
 	init_ptr(data->f);
 }
 
@@ -39,6 +40,7 @@ void	init_start_loop(t_data *data)
 	data->error = false;
 	data->already = false;
 	data->check_pipe = false;
+	data->parseur.start = 0;
 	data->index = 0;
 	replace_fd(data);
 	build_pwd(data);

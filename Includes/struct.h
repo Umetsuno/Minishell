@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/19 17:17:08 by faherrau          #+#    #+#             */
-/*   Updated: 2021/08/12 15:43:14 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 17:45:35 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ struct s_cmd
 typedef struct s_pars
 {
 	char	**argument;
+	int		start;
+	bool	check;
 }t_pars;
 
 struct s_data
