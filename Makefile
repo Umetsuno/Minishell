@@ -59,6 +59,8 @@ SRCS =	$(SA)main.c \
 		$(SU)free.c \
 		$(SU)init.c \
 		$(SU)signal.c \
+		$(SU)ft_bcopy.c \
+		$(SU)ft_realloc.c \
 		$(SP)ft_token.c \
 		$(SP)quote_sizing.c \
 		$(SP)parser.c

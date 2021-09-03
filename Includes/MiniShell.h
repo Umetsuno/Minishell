@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MiniShell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
+/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 14:13:45 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/31 14:17:26 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/03 19:11:57 by oghma            ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,11 @@ void	recover_data(t_data *data);
 void	free_minishell(t_data *data);
 void	free_double_etoile(char **str);
 void	kill_lst(t_cmd *cmd);
+char	*ft_realloc(char *ptr, size_t new_size);
+void	ft_bcopy(const void *src, void *dest, size_t len);
+
 /*
-**	errro.c
+**	errno.c
 */
 void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_strerror_export(char *s1, char *s2, char *s3);
