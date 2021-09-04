@@ -32,8 +32,9 @@ struct s_cmd
 typedef struct s_pars
 {
 	char	**argument;
+	char	*token;
 	int		start;
-	bool	check;
+	char	type_cote;
 }t_pars;
 
 struct s_data

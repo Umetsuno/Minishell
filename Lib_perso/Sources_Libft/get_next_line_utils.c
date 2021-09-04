@@ -50,7 +50,7 @@ char	*fh_strjoin(char const *s1, char const *s2)
 	if (!s1 && !s2)
 		return (NULL);
 	concat_size = fh_strlen(s1) + fh_strlen(s2) + 1;
-	concat = malloc(concat_size * sizeof(char));
+	concat = ft_calloc(concat_size, sizeof(char));
 	if (!concat)
 	{
 		free((void *)s1);

@@ -23,7 +23,7 @@ char	*strtrim_space(char *str)
 	while (str[i] == ' ')
 		i++;
 	j = (ft_strlen(str) - i);
-	new_str = malloc(sizeof(char) * j + 1);
+	new_str = ft_calloc((j + 1), sizeof(char));
 	j = 0;
 	while (str[i])
 		new_str[j++] = str[i++];

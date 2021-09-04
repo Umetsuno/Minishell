@@ -50,7 +50,7 @@ char	**malloc_dest(char **dest, char const *s, char c, size_t count)
 
 	i = 0;
 	re_count = 0;
-	dest = (char **)malloc(sizeof(char *) * (count + 1));
+	dest = (char **)ft_calloc((count + 1), sizeof(char *));
 	if (!dest)
 		return (0);
 	while (s[i] && re_count < count)
@@ -63,7 +63,7 @@ char	**malloc_dest(char **dest, char const *s, char c, size_t count)
 			t_malloc++;
 			i++;
 		}
-		dest[re_count] = (char *)malloc(sizeof(char) * (t_malloc + 1));
+		dest[re_count] = ft_calloc((t_malloc + 1), sizeof(char));
 		if (!dest)
 			return (free_all(dest, re_count));
 		re_count++;

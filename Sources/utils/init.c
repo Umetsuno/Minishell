@@ -32,6 +32,7 @@ void	init_structure(t_data *data)
 	data->already = false;
 	data->index = 0;
 	data->parseur.start = 0;
+	data->parseur.argument = NULL;
 	init_ptr(data->f);
 }
 

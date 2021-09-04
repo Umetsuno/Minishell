@@ -81,7 +81,7 @@ char	*ft_itoa(int nb)
 
 	base = "0123456789";
 	t_malloc = count_tnum(nb);
-	str = (char *)malloc(sizeof(char) * (t_malloc + 1));
+	str = ft_calloc((t_malloc + 1), sizeof(char));
 	if (!str)
 		return (0);
 	ft_itoa_lol(nb, &str, base, 0);

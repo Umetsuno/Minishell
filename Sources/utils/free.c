@@ -12,19 +12,45 @@
 
 #include "../../Includes/MiniShell.h"
 
+void	free_tab_arg(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (!data->parseur.argument)
+		return ;
+	while (data->parseur.argument[i])
+	{
+		if (data->parseur.argument[i])
+		{
+			free(data->parseur.argument[i]);
+			data->parseur.argument[i] = NULL;
+		}
+		i++;
+	}
+	free(data->parseur.argument);
+	data->parseur.argument = NULL;
+}
+
 void	free_double_etoile(char **str)
 {
 	int	i;
 
 	i = 0;
+	if (!str)
+		return ;
 	while (str[i])
 	{
 		if (str[i])
+		{
 			free(str[i]);
+			str[i] = NULL;
+		}
 		i++;
 	}
 	if (str)
 		free(str);
+	str = NULL;
 }
 
 void	free_minishell(t_data *data)

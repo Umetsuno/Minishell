@@ -32,7 +32,7 @@ static void	add_cmd_to_cmd(t_data *data, int start, int end)
 	int		i;
 
 	i = 0;
-	tmp = malloc(sizeof(char *) * (end - start + 1));
+	tmp = ft_calloc((end - start + 1), sizeof(char *));
 	tmp[(end - start)] = NULL;
 	while (start < end)
 	{

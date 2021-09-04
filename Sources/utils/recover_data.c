@@ -18,7 +18,7 @@ void	cmd_check_cmd(t_data *data)
 		cmd_split_cmd(data);
 	else
 		data->all_cmd = new_cmd_parsing(data->parseur.argument);
-	free_double_etoile(data->parseur.argument);
+	free_tab_arg(data);
 }
 
 void	check_pipe(t_data *data)
@@ -31,12 +31,14 @@ void	check_pipe(t_data *data)
 
 void	recover_data(t_data *data)
 {
-	if (parsing_split(data) == -1)
-    {
-            /* GESTION D'ERREURS PERSONNALISEES */
-        return ;
-    }
-    data->index = 0;
+	// if (parsing_split(data) == -1)
+	// {
+	// 	/* GESTION D'ERREURS PERSONNALISEES */
+	// 	return ;
+	// }
+	parsing_split(data);
+	// data->parseur.argument = ft_split(data->line, ' ');
+	data->index = 0;
 	cmd_check_cmd(data);
 	data->save_all_cmd = data->all_cmd;
 	while (data->all_cmd)

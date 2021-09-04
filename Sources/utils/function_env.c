@@ -17,6 +17,8 @@ int	size_env(char **env)
 	int	i;
 
 	i = 0;
+	if (!env)
+		return (i);
 	while (env[i])
 		i++;
 	return (i);
@@ -32,7 +34,7 @@ char	**copy_env(char **env)
 	if (!env)
 		return (new_env);
 	i = size_env(env);
-	new_env = malloc(sizeof(char *) * (i + 1));
+	new_env = ft_calloc((i + 1), sizeof(char *));
 	new_env[i] = 0;
 	i = 0;
 	while (env[i])
@@ -52,7 +54,7 @@ void	copy_env_add_one(t_data *data, char *new_elem)
 	j = 0;
 	env = NULL;
 	i = size_env(data->env);
-	env = malloc(sizeof(char *) * (i + 2));
+	env = ft_calloc((i + 2), sizeof(char *));
 	while (j < i)
 	{
 		env[j] = ft_strdup(data->env[j]);
@@ -75,7 +77,7 @@ void	copy_env_del_one(t_data *data, int index_elem_to_del)
 	i = 0;
 	j = 0;
 	s_env = size_env(data->env);
-	env = malloc(sizeof(char *) * (s_env + 1));
+	env = ft_calloc((s_env + 1), sizeof(char *));
 	env[s_env] = NULL;
 	env[s_env - 1] = NULL;
 	while (i < s_env)

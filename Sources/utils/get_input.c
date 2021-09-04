@@ -82,7 +82,7 @@ int	scan_input(t_data *data)
 	char	**new_arg;
 	int		i;
 
-	new_arg = malloc(sizeof(char *) * (size_env(data->cmd->argument) + 1));
+	new_arg = ft_calloc((size_env(data->cmd->argument) + 1), sizeof(char *));
 	i = -1;
 	data->index = 0;
 	while (data->cmd->argument[++i])

@@ -24,13 +24,13 @@ void	*wrmalloc(unsigned long size)
 	char	*buffer;
 	t_list	*new_elem;
 
-	buffer = malloc(size);
+	buffer = ft_calloc(1, size);
 	if (!buffer)
 	{
 		wrdestroy();
 		return (0);
 	}
-	new_elem = malloc(sizeof(t_list));
+	new_elem = ft_calloc(1, sizeof(t_list));
 	if (!new_elem)
 	{
 		free(buffer);

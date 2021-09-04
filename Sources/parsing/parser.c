@@ -12,41 +12,35 @@
 
 #include "../../Includes/MiniShell.h"
 
-void	print_tab(char **tab)
+void	print_tab(t_data *data)
 {
 	int i = 0;
 
-	printf("\nStart print tab ;\n");
-	while (tab[i])
+	printf("\nStart print tab :\n");
+	while (data->parseur.argument[i])
 	{
-		printf("tab %d = '%s'\n", i, tab[i]);
+		printf("tab %d = '%s'\n", i, data->parseur.argument[i]);
 		i++;
 	}
-	printf("\nEnd print tab ;\n");
+	printf("\nEnd print tab\n");
 }
-
-
 
 int parsing_split(t_data *data)
 {
-	char	*token;
-
-	token = NULL;
+	data->parseur.token = NULL;
 	/* ft_split sur les espaces */
 	data->index = 0;
-	if (ft_token(data, token) != SUCCESS)
+	if (ft_token(data) != SUCCESS)
 		return (-1);
-	while (token)
+	data->index++;
+	while (data->line[data->index])
 	{
-		data->parseur.argument = ft_realloc_tab(data->parseur.argument);
-/* 		data->parseur.argument[data->index] = ft_strdup(token);
- */		free(token);
-		if (ft_token(data, token) != SUCCESS)
+		ft_realloc_tab(data);
+		if (ft_token(data) != SUCCESS)
 			return (-1);
 		data->index++;
 	}
-	/* Allocation d'un element qu'on met a NULL a la fin du tableau */
-	data->parseur.argument = ft_realloc_tab(data->parseur.argument);
-	data->parseur.argument[data->index] = NULL;
+	ft_realloc_tab(data);
+	print_tab(data);
 	return (SUCCESS);
 }

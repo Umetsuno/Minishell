@@ -42,7 +42,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 		a++;
 	while (z > a && in_dico(s1[z - 1], set))
 		z--;
-	str = (char *)malloc(sizeof(char) * (z - a + 1));
+	str = ft_calloc((z - a + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	while (a < z)

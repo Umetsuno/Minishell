@@ -23,7 +23,7 @@ char	*get_first_part(char *str)
 	while (str[i] && str[i] != '\n')
 		i++;
 	result = NULL;
-	result = malloc((i + 1) * sizeof(char));
+	result = ft_calloc((i + 1), sizeof(char));
 	if (result == NULL)
 		return (0);
 	i = 0;
@@ -44,7 +44,7 @@ char	*get_second_part(char *str)
 		return (0);
 	fh_strcpy(str, &str[contains(str, '\n') + 1]);
 	result = NULL;
-	result = malloc((fh_strlen(str) + 1) * sizeof(char));
+	result = ft_calloc((fh_strlen(str) + 1), sizeof(char));
 	if (result == NULL)
 		return (str);
 	fh_strcpy(result, str);

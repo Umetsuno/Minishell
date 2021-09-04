@@ -18,7 +18,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	i;
 	size_t	x;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -40,7 +40,7 @@ char	*ft_strjoin_free_s1(char *s1, char *s2)
 	size_t	i;
 	size_t	x;
 
-	str = (char *)malloc(sizeof(char) *(ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 1), sizeof(char));
 	if (!str)
 		return (NULL);
 	i = -1;
@@ -63,7 +63,7 @@ char	*strjoin_free_s2_add_n(char *s1, char *s2)
 	size_t	i;
 	size_t	x;
 
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 2));
+	str = ft_calloc((ft_strlen(s1) + ft_strlen(s2) + 2), sizeof(char));
 	if (!str)
 		return (NULL);
 	i = -1;

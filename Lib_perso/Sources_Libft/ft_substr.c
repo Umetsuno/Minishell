@@ -43,7 +43,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 			size = len + 1;
 		else
 			size = ft_strlen(s + start);
-		str = malloc(sizeof(char) * size);
+		str = ft_calloc(size, sizeof(char));
 		if (!str)
 			return (NULL);
 		str = ft_strncpy(str, (char *)(s + start), len);

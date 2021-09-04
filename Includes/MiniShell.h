@@ -60,14 +60,14 @@ void	recover_data(t_data *data);
 **	--- utils ---
 **	free.c
 */
+void	free_tab_arg(t_data *data);
 void	free_minishell(t_data *data);
 void	free_double_etoile(char **str);
-void	kill_lst(t_cmd *cmd);
 
 /*
 **	ft_realloc.c
 */
-char	**ft_realloc_tab(char **tab)
+void	ft_realloc_tab(t_data *data);
 char	*ft_realloc(char *ptr, size_t new_size);
 
 /*

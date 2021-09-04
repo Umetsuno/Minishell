@@ -15,8 +15,7 @@
 
 # include "MiniShell.h"
 
-int	ft_token(t_data *data, char *token);
+int	ft_token(t_data *data);
 int	parsing_split(t_data *data);
-int	quote_sizing(char *str);
 
 #endif

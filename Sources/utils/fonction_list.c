@@ -50,7 +50,7 @@ t_cmd	*new_cmd_parsing(char **argument)
 {
 	t_cmd	*element;
 
-	element = malloc(sizeof(t_cmd));
+	element = ft_calloc(1, sizeof(t_cmd));
 	if (!element)
 		return (NULL);
 	element->cmd = ft_strdup(argument[0]);
