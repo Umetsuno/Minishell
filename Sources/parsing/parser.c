@@ -29,17 +29,15 @@ int parsing_split(t_data *data)
 {
 	data->parseur.token = NULL;
 	data->index = 0;
-	if (ft_token(data) != SUCCESS)
-		return (-1);
-	data->index++;
 	while (data->line[data->index])
 	{
-		ft_realloc_tab(data);
 		if (ft_token(data) != SUCCESS)
 			return (-1);
+		ft_realloc_tab(data);
 		data->index++;
 	}
-	ft_realloc_tab(data);
+	// celui en desous fdait segfault a pas remettre 
+	// ft_realloc_tab(data);
 	print_tab(data);
 	return (SUCCESS);
 }
