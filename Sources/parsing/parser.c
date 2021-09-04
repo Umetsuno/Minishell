@@ -28,7 +28,6 @@ void	print_tab(t_data *data)
 int parsing_split(t_data *data)
 {
 	data->parseur.token = NULL;
-	/* ft_split sur les espaces */
 	data->index = 0;
 	if (ft_token(data) != SUCCESS)
 		return (-1);
