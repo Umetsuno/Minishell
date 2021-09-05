@@ -28,9 +28,8 @@ void	ft_exec_path(t_data *data)
 	{
 		if (execve(data->cmd->cmd, data->cmd->argument, data->env) == -1)
 			printf("Error (execve) : %s\n", strerror(errno));
-		else
-			errno = 0;
 	}
+	errno = 0;
 }
 
 void	ft_exec_builting_cmd(t_data *data, int code)

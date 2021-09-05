@@ -33,8 +33,8 @@ typedef struct s_pars
 {
 	char	**argument;
 	char	*token;
-	int		start;
 	char	type_cote;
+	int		start;
 }t_pars;
 
 struct s_data

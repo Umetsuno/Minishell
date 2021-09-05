@@ -12,12 +12,6 @@
 
 #include "../../Includes/MiniShell.h"
 
-/* a lancer la fonction scan_fd que si il n'y a pas derreur d'arg comme :
-** > ou >> puis rien.
-** Print le msg d'erreur suivant si le cas au dessus arrive :
-** bash: syntax error near unexpected token `newline' errno = 258;
-*/
-
 void	exe_cmd(t_data *data)
 {
 	int	code;

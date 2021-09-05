@@ -14,6 +14,7 @@
 
 void	cmd_check_cmd(t_data *data)
 {
+	data->index = 0;
 	if (check_if_have_cmd(data) == true)
 		cmd_split_cmd(data);
 	else
@@ -31,14 +32,10 @@ void	check_pipe(t_data *data)
 
 void	recover_data(t_data *data)
 {
-	// if (parsing_split(data) == -1)
-	// {
-	// 	/* GESTION D'ERREURS PERSONNALISEES */
-	// 	return ;
-	// }
-	parsing_split(data);
-	// data->parseur.argument = ft_split(data->line, ' ');
-	data->index = 0;
+	if (parsing_split(data) != SUCCESS)
+		return (ft_strerror(NULL, NULL, "Error quote not close.\n"));
+	if (check_error(data) != SUCCESS)
+		return ;
 	cmd_check_cmd(data);
 	data->save_all_cmd = data->all_cmd;
 	while (data->all_cmd)

@@ -76,11 +76,12 @@ char	*ft_realloc(char *ptr, size_t new_size);
 void	ft_bcopy(const void *src, void *dest, size_t len);
 
 /*
-**	errno.c
+**	error.c
 */
 void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_strerror_export(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
+int	check_error(t_data *data);
 
 /*
 **	fonction_list.c

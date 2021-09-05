@@ -34,10 +34,9 @@ int parsing_split(t_data *data)
 		if (ft_token(data) != SUCCESS)
 			return (-1);
 		ft_realloc_tab(data);
-		data->index++;
+		if (data->line[data->index] != '\0')
+			data->index++;
 	}
-	// celui en desous fdait segfault a pas remettre 
-	// ft_realloc_tab(data);
 	print_tab(data);
 	return (SUCCESS);
 }

@@ -59,8 +59,10 @@ int	ft_token(t_data *data)
 	{
 		if ((data->line[i] == 34) || (data->line[i] == 39))
 		{
+			printf("befor quote index = %d - char = '%c'\n", i , data->line[i]);
 			data->parseur.type_cote = data->line[i];
 			i = quote_sizing(&data->line[i]);
+			printf("afther quote index = %d - char = '%c'\n", i , data->line[i]);
 			if (i == -1)
 				return (i);
 		}

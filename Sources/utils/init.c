@@ -38,6 +38,7 @@ void	init_structure(t_data *data)
 
 void	init_start_loop(t_data *data)
 {
+	free_tab_arg(data);
 	data->error = false;
 	data->already = false;
 	data->check_pipe = false;

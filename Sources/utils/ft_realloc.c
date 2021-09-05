@@ -20,9 +20,7 @@ void	ft_realloc_tab(t_data *data)
 
 	j = 0;
 	new_tab = NULL;
-	/* a dessous size_env compte parfoit 1 de trop */
 	i = size_env(data->parseur.argument);
-	printf("size env  = %d\n", i);
 	new_tab = ft_calloc((i + 2), sizeof(char *));
 	while (j < i)
 	{
@@ -32,7 +30,6 @@ void	ft_realloc_tab(t_data *data)
 	new_tab[j] = ft_strdup(data->parseur.token);
 	j++;
 	new_tab[j] = NULL;
-	/* du coup ici on a 1 index de tab en plus a check why ???*/
 	free_tab_arg(data);
 	free(data->parseur.token);
 	data->parseur.token = NULL;
