@@ -37,6 +37,7 @@ int parsing_split(t_data *data)
 		if (data->line[data->index] != '\0')
 			data->index++;
 	}
+
 	print_tab(data);
 	return (SUCCESS);
 }
