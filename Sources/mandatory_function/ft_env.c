@@ -19,10 +19,12 @@ char	*my_getenv(t_data *data, char *str)
 
 	i = 0;
 	size_str = ft_strlen(str);
+	if (!ft_strcmp(str, "?="))
+		return (ft_itoa(data->my_errno));
 	while (data->env[i])
 	{
 		if (!ft_strncmp(data->env[i], str, size_str))
-			return (&data->env[i][size_str]);
+			return (ft_strdup(&data->env[i][size_str]));
 		i++;
 	}
 	return (NULL);

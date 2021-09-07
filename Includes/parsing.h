@@ -17,5 +17,6 @@
 
 int	ft_token(t_data *data);
 int	parsing_split(t_data *data);
+int	prosses_dollar(t_data *data, int *start, int *i);
 
 #endif

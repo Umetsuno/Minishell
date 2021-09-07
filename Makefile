@@ -62,6 +62,7 @@ SRCS =	$(SA)main.c \
 		$(SU)ft_bcopy.c \
 		$(SU)ft_realloc.c \
 		$(SP)ft_token.c \
+		$(SP)prosses_dollar.c \
 		$(SP)parser.c
 
 # normal Flags

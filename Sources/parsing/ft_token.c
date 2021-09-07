@@ -30,8 +30,13 @@ static int	copy_in_to_string(t_data *data, int end, int *start, int i)
 	{
 		if (data->line[*start] != data->parseur.type_cote)
 		{
-			data->parseur.token[i] = data->line[*start];
-			i++;
+			if (data->line[*start] == '$' && data->parseur.type_cote == '\"')
+				prosses_dollar(data, start, &i);
+			if (data->line[*start] != data->parseur.type_cote)
+			{
+				data->parseur.token[i] = data->line[*start];
+				i++;
+			}
 		}
 		*start += 1;
 	}
@@ -44,7 +49,7 @@ static void	alt_string(t_data *data, int end, int start)
 
 	i = 0;
 	data->parseur.token = NULL;
-	data->parseur.token = ft_calloc(((end - start) + 1), sizeof(char));
+	data->parseur.token = ft_calloc((LINE_MAX), sizeof(char));
 	while (start < end)
 	{
 		if (data->line[start] == 34 || data->line[start] == 39)
@@ -52,7 +57,7 @@ static void	alt_string(t_data *data, int end, int start)
 			data->parseur.type_cote = data->line[start++];
 			i = copy_in_to_string(data, end, &start, i);
 		}
-		if (data->line[start] != data->parseur.type_cote)
+		else
 		{
 			data->parseur.token[i] = data->line[start];
 			i++;
