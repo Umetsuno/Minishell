@@ -65,7 +65,7 @@ int	get_path(t_data *data)
 	data->index = -1;
 	if (data->cmd->cmd[0] != '/' && ft_strncmp(data->cmd->cmd, "./", 2) != 0)
 	{
-		data->path = my_getenv(data, "PATH=");
+		data->path = my_getenv(data, "PATH");
 		if (data->path == NULL)
 			return (FAILURE);
 		data->cmd->cmd = do_split_path(data);

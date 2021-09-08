@@ -50,7 +50,7 @@ static void	alt_string(t_data *data, int end, int start)
 	i = 0;
 	data->parseur.token = NULL;
 	data->parseur.token = ft_calloc((LINE_MAX), sizeof(char));
-	while (start < end)
+	while (start < end && data->line[start])
 	{
 		if (data->line[start] == 34 || data->line[start] == 39)
 		{
@@ -59,8 +59,13 @@ static void	alt_string(t_data *data, int end, int start)
 		}
 		else
 		{
-			data->parseur.token[i] = data->line[start];
-			i++;
+			if (data->line[start] == '$')
+				prosses_dollar(data, &start, &i);
+			else
+			{
+				data->parseur.token[i] = data->line[start];
+				i++;
+			}
 		}
 		start++;
 	}

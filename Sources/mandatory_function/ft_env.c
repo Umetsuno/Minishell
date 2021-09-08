@@ -12,19 +12,46 @@
 
 #include "../../Includes/MiniShell.h"
 
-char	*my_getenv(t_data *data, char *str)
+char	*add_equal(char *var)
 {
-	int	i;
-	int	size_str;
+	int		i;
+	int		size;
+	char	*str;
 
 	i = 0;
-	size_str = ft_strlen(str);
+	size = ft_strlen(var);
+	str = ft_calloc(size + 2, sizeof(char));
+	while (var[i])
+	{
+		str[i] = var[i];
+		i++;
+	}
+	str[i++] = '=';
+	str[i] = 0;
+	return (str);
+}
+
+char	*my_getenv(t_data *data, char *var)
+{
+	int		i;
+	int		size;
+	char	*str;
+
+	i = 0;
+	str = add_equal(var);
+	size = ft_strlen(str);
 	if (!ft_strcmp(str, "?="))
+	{
+		free(str);
 		return (ft_itoa(data->my_errno));
+	}
 	while (data->env[i])
 	{
-		if (!ft_strncmp(data->env[i], str, size_str))
-			return (ft_strdup(&data->env[i][size_str]));
+		if (!ft_strncmp(data->env[i], str, size))
+		{
+			free(str);
+			return (ft_strdup(&data->env[i][size]));
+		}
 		i++;
 	}
 	return (NULL);

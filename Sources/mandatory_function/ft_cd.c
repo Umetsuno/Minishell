@@ -37,7 +37,7 @@ void	ft_cd(t_data *data)
 	home = NULL;
 	if (!data->cmd->argument[1] || !ft_strcmp(data->cmd->argument[1], "~"))
 	{
-		home = my_getenv(data, "HOME=");
+		home = my_getenv(data, "HOME");
 		if (!home && !data->cmd->argument[1])
 			return (ft_strerror("cd", NULL, "HOME not set\n"));
 		else

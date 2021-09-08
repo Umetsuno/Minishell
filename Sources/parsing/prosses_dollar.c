@@ -14,8 +14,8 @@
 
 static char	*get_name_var(t_data *data, int *i)
 {
-	int		save;
 	int		y;
+	int		save;
 	char	*name;
 
 	y = 0;
@@ -23,14 +23,13 @@ static char	*get_name_var(t_data *data, int *i)
 	save = *i;
 	while (data->line && data->line[*i] != ' ' && data->line[*i] != data->parseur.type_cote)
 		*i += 1;
-	name = ft_calloc((*i - save) + 2, sizeof(char));
+	name = ft_calloc((*i - save) + 1, sizeof(char));
 	while (save < *i)
 	{
 		name[y] = data->line[save];
 		y++;
 		save++;
 	}
-	name[y++] = '=';
 	name[y] = 0;
 	return (name);
 }
