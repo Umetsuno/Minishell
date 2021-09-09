@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 14:13:45 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/09/03 19:57:35 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/09 11:29:28 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,10 @@
 # include <limits.h>
 # include <stdbool.h>
 # include <fcntl.h>
-# include "struct.h"
 # include <signal.h>
 # include <dirent.h>
 # include <sys/_pthread/_pthread_types.h>
 # include <sys/_pthread/_pthread_t.h>
-# include "builtins_functions.h"
-# include "env.h"
-# include "parsing.h"
 
 # include "../../../.brew/opt/readline/include/readline/readline.h"
 # include "../../../.brew/opt/readline/include/readline/history.h"
@@ -48,13 +44,82 @@
 # define FCT_ECHO 6
 # define FCT_EXPORT 7
 
-t_data	g_data;
+typedef struct s_cmd	t_cmd;
+typedef struct s_data	t_data;
+
+t_data					g_data;
+
+struct s_cmd
+{
+	char	*cmd;
+	char	**argument;
+	pid_t	pid;
+	int		status;
+	int		pipefd[2];
+	t_cmd	*next;
+	t_cmd	*prev;
+};
+
+typedef struct s_pars
+{
+	char	**argument;
+	char	*token;
+	char	type_cote;
+	int		start;
+}t_pars;
+
+struct s_data
+{
+	t_pars	parseur;
+	t_cmd	*cmd;
+	t_cmd	*save_cmd;
+	t_cmd	*all_cmd;
+	t_cmd	*save_all_cmd;
+	void	(*f[8])(t_data*);
+	char	*line;
+	char	*path;
+	char	**env;
+	char	**path_split;
+	char	*path_pwd;
+	char	*path_home;
+	char	*path_oldpwd;
+	int		index;
+	int		temp_fd;
+	int		save_fd;
+	bool	error;
+	bool	in_cmd;
+	bool	nonewline;
+	bool	del_temp;
+	bool	already;
+	bool	check_pipe;
+	int		my_errno;
+};
 
 /*
 **	main.c
 */
 void	do_prompt(t_data *data);
 void	recover_data(t_data *data);
+
+/*
+**	--- mandatory_function ---
+*/
+void	ft_cd(t_data *data);
+void	ft_echo(t_data *data);
+void	ft_env(t_data *data);
+void	ft_export(t_data *data);
+void	ft_pwd(t_data *data);
+void	build_pwd(t_data *data);
+void	ft_unset(t_data *data);
+void	ft_exec_path(t_data *data);
+void	ft_exec_builting_cmd(t_data *data, int code);
+
+/*
+**	--- parsing ---
+*/
+int		ft_token(t_data *data);
+int		parsing_split(t_data *data);
+int		prosses_dollar(t_data *data, int *start, int *i);
 
 /*
 **	--- utils ---
@@ -71,6 +136,15 @@ void	ft_realloc_tab(t_data *data);
 char	*ft_realloc(char *ptr, size_t new_size);
 
 /*
+**	function_env.c
+*/
+int		size_env(char **env);
+char	**copy_env(char **env);
+char	*my_getenv(t_data *data, char *str);
+void	copy_env_add_one(t_data *data, char *new_elem);
+void	copy_env_del_one(t_data *data, int index_elem_to_del);
+
+/*
 **	ft_bcopy.c
 */
 void	ft_bcopy(const void *src, void *dest, size_t len);
@@ -81,7 +155,7 @@ void	ft_bcopy(const void *src, void *dest, size_t len);
 void	ft_strerror(char *s1, char *s2, char *s3);
 int		ft_strerror_export(char *s1, char *s2, char *s3);
 int		ft_error_arg(char *str);
-int	check_error(t_data *data);
+int		check_error(t_data *data);
 
 /*
 **	fonction_list.c

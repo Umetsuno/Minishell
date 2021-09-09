@@ -3,29 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oghma <fabien@42.fr>                       +#+  +:+       +#+        */
+/*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/19 13:39:55 by oghma             #+#    #+#             */
-/*   Updated: 2021/09/03 20:04:27 by oghma            ###   ########lyon.fr   */
+/*   Updated: 2021/09/09 11:14:18 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/MiniShell.h"
 
-void	print_tab(t_data *data)
-{
-	int i = 0;
-
-	printf("\nStart print tab :\n");
-	while (data->parseur.argument[i])
-	{
-		printf("tab %d = '%s'\n", i, data->parseur.argument[i]);
-		i++;
-	}
-	printf("\nEnd print tab\n");
-}
-
-int parsing_split(t_data *data)
+int	parsing_split(t_data *data)
 {
 	data->parseur.token = NULL;
 	data->index = 0;
@@ -37,6 +24,5 @@ int parsing_split(t_data *data)
 		if (data->line[data->index] != '\0')
 			data->index++;
 	}
-	// print_tab(data);
 	return (SUCCESS);
 }

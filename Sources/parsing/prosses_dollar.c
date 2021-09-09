@@ -6,7 +6,7 @@
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 14:13:19 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/08/31 14:15:27 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/09 11:11:07 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ static char	*get_name_var(t_data *data, int *i)
 	y = 0;
 	*i += 1;
 	save = *i;
-	while (data->line && data->line[*i] != ' ' && data->line[*i] != data->parseur.type_cote)
+	while (data->line[*i] != '\0' && data->line[*i] != ' ' && data->line[*i] \
+		!= data->parseur.type_cote)
 		*i += 1;
 	name = ft_calloc((*i - save) + 1, sizeof(char));
 	while (save < *i)

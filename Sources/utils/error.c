@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strerror.c                                      :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sbaranes <sbaranes@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/08 14:51:27 by sbaranes          #+#    #+#             */
-/*   Updated: 2021/06/08 14:51:30 by sbaranes         ###   ########lyon.fr   */
+/*   Updated: 2021/09/09 11:13:33 by sbaranes         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ int	check_error(t_data *data)
 		!ft_strcmp(data->parseur.argument[data->index], "<<") || \
 		!ft_strcmp(data->parseur.argument[data->index], ">") || \
 		!ft_strcmp(data->parseur.argument[data->index], ">>"))
-		{
-			ft_strerror(NULL, NULL, \
-				"syntax error near unexpected token `newline'\n");
-			errno = 258;
-			data->my_errno = 258;
-			return (FAILURE);
-		}
+	{
+		ft_strerror(NULL, NULL, \
+			"syntax error near unexpected token `newline'\n");
+		errno = 258;
+		data->my_errno = 258;
+		return (FAILURE);
+	}
 	return (SUCCESS);
 }
